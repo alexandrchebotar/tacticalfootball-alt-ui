@@ -1,20 +1,35 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-// import './App.css';
+import './style.sass';
 
-function App() {
-  return (
-    <div className="sidebar">
-      <a href="/"><div className="mainMenu team"></div></a>
-      <a href="/"><div className="mainMenu school"></div></a>
-      <a href="/"><div className="mainMenu office"></div></a>
-      <a href="/"><div className="mainMenu calendar"></div></a>
-      <a href="/"><div className="mainMenu statistic"></div></a>
-      <a href="/"><div className="mainMenu forum"></div></a>
-      <a href="/"><div className="mainMenu help"></div></a>
-      <a href="/"><div className="mainMenu settings"></div></a>
-    </div>
-  );
+class App extends Component {
+
+  items = [
+    'squad',
+    'office',
+    'competitions',
+    'forum',
+    'help',
+    'settings',
+  ];
+
+  getNavbarItems = () => {
+    return this.items.map((item, index) => (
+      <a href="/" key={index} >
+        <svg className="navbar-item">
+          <use xlinkHref={`images/icons.svg#${item}`}></use>
+        </svg>
+      </a>
+    ));
+  };
+
+  render() {
+    return (
+      <div className="navbar">
+        {this.getNavbarItems()}
+      </div>
+    );
+  }
 }
 
 export default App;

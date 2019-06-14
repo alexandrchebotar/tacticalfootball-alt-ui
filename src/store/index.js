@@ -7,18 +7,37 @@ import thunk from 'redux-thunk';
 
 const defaultState = { 
   competitions: {
-    leagues: {},
-    cups: {},
+    leagues: {
+      premiership: '',
+      div1: {
+        'div1 A': '',
+        'div1 B': '',
+      },
+      div2: {
+        'A - B': {
+          'A': '',
+          B: '',
+        },
+        'C - D': {
+          'div1 C': '',
+          div2: '',
+        },
+      },
+    },
+    cups: {
+      cup1: '',
+      cup2: '',
+    },
     national: {},
     current: {},
   },
   forums: {
-    general: {}, 
-    national: {},
+    general: [0, '', ''], 
+    national: [0, '', ''],
   },
   userClubs: {
-    SKIF: {},
-    England: {},
+    SKIF: [0, '', ''],
+    England: [0, '', ''],
   },
 };
 

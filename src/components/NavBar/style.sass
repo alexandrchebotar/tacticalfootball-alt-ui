@@ -1,0 +1,48 @@
+.navbar
+  position: fixed
+  top: 44px
+  width: 42px
+  height: calc(100vh - 44px)
+  background-color: black
+
+  &-item
+    width: 32px
+    height: 32px
+    margin: 10px 5px
+    fill: #DDDDDD
+    &:hover
+      fill: #999999
+
+  &-details
+    position: fixed
+    top: 44px
+    left: 42px
+    width: 200px
+    height: calc(100vh - 44px)
+    background-color: black
+    color: #DDDDDD
+    text-align: center
+    font-size: 1.05em
+    text-transform: capitalize;
+
+    h1
+      border-bottom: 1px solid #DDDDDD
+      margin: 0 20px
+      padding-bottom: 5px
+      font-size: 1.1em
+
+    ul
+      text-align: left
+
+      li
+        line-height: 1.5em
+        &:hover
+          font-weight: bold
+          color: #999999
+          cursor: pointer
+          list-style-type: none
+          padding-left: 1em
+          text-indent: -2.5em
+          &:before
+            content: "->"
+            padding-right: 5px

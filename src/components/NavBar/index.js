@@ -1,20 +1,62 @@
-import React from 'react';
+import React, {Component, Fragment} from 'react';
 
-// import './App.css';
+import './style.sass';
 
-function App() {
-  return (
-    <div className="sidebar">
-      <a href="/"><div className="mainMenu team"></div></a>
-      <a href="/"><div className="mainMenu school"></div></a>
-      <a href="/"><div className="mainMenu office"></div></a>
-      <a href="/"><div className="mainMenu calendar"></div></a>
-      <a href="/"><div className="mainMenu statistic"></div></a>
-      <a href="/"><div className="mainMenu forum"></div></a>
-      <a href="/"><div className="mainMenu help"></div></a>
-      <a href="/"><div className="mainMenu settings"></div></a>
-    </div>
-  );
+class NavBar extends Component {
+  state = {
+    activeItem: '',
+  };
+
+  items = {
+    'squad': ['senior', 'youth', 'training'],
+    'office': ['finances', 'personal', 'buildings', 'calendar'],
+    'competitions': ['leagues', 'cups', 'national', 'current'],
+    'forum': ['general', 'national'],
+    'help': ['manual', 'tour'],
+    'settings': ['alternate UI', 'user', 'club'],
+  };
+
+  showDetails = (activeItem) => {
+    this.setState({activeItem});
+  };
+
+  hideDetails = () => {
+    this.setState({activeItem: ''});
+  }
+
+  getNavbarItems() {
+    return Object.keys(this.items).map((item, index) => (
+      <a href="/" key={index} onMouseEnter={() => this.showDetails(item)} >
+        <svg className="navbar-item">
+          <use xlinkHref={`images/icons.svg#${item}`}></use>
+        </svg>
+      </a>
+    ));
+  }
+
+  getNavbarDetailsList() {
+    return this.items[this.state.activeItem].map((item, index) => (
+      <li key={index} >{item}</li>
+    ));
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <div className="navbar">
+          {this.getNavbarItems()}
+        </div>
+        {this.state.activeItem &&
+          <div className="navbar-details" onMouseLeave={this.hideDetails}>
+            <h1>{this.state.activeItem}</h1>
+            <ul>
+              {this.getNavbarDetailsList()}
+            </ul>
+          </div>
+        }
+      </Fragment>
+    );
+  }
 }
 
-export default App;
+export default NavBar;

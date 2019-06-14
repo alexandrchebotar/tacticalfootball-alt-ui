@@ -1,19 +1,23 @@
 import React, {Component, Fragment} from 'react';
+import { connect } from 'react-redux';
 
 import './style.sass';
 
-class NavBar extends Component {
+const mapStateToProps = ({competitions, forums}) => {
+  return {competitions, forums};
+};
+
+class Navbar extends Component {
   state = {
     activeItem: '',
-  };
-
-  items = {
-    'squad': ['senior', 'youth', 'training'],
-    'office': ['finances', 'personal', 'buildings', 'calendar'],
-    'competitions': ['leagues', 'cups', 'national', 'current'],
-    'forum': ['general', 'national'],
-    'help': ['manual', 'tour'],
-    'settings': ['alternate UI', 'user', 'club'],
+    items: {
+      squad: {'senior': {}, 'youth': {}, 'training': {}},
+      office: {'finances': {}, 'personal': {}, 'buildings': {}, 'calendar': {}},
+      competitions: this.props.competitions,
+      forum: this.props.forums,
+      help: {'manual': {}, 'tour': {}},
+      settings: {'alternate UI': {}, 'user': {}, 'club': {}},
+    },
   };
 
   showDetails = (activeItem) => {
@@ -25,7 +29,7 @@ class NavBar extends Component {
   }
 
   getNavbarItems() {
-    return Object.keys(this.items).map((item, index) => (
+    return Object.keys(this.state.items).map((item, index) => (
       <a href="/" key={index} onMouseEnter={() => this.showDetails(item)} >
         <svg className="navbar-item">
           <use xlinkHref={`images/icons.svg#${item}`}></use>
@@ -35,7 +39,7 @@ class NavBar extends Component {
   }
 
   getNavbarDetailsList() {
-    return this.items[this.state.activeItem].map((item, index) => (
+    return Object.keys(this.state.items[this.state.activeItem]).map((item, index) => (
       <li key={index} >{item}</li>
     ));
   }
@@ -59,4 +63,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default connect(mapStateToProps)(Navbar);

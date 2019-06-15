@@ -1,0 +1,82 @@
+$infobarHeight: 44px
+$appWidth: 992px
+
+.infobar
+  width: 100%
+  min-width: $appWidth
+  height: $infobarHeight
+  background-color: black
+  color: #DDDDDD
+  position: fixed
+  top: 0
+
+  a
+    text-decoration: none
+    color: #DDDDDD
+    fill: #DDDDDD
+    &:hover
+      color: #999999
+      fill: #999999
+
+    .logo
+      width: 32px
+      height: 32px
+      padding: 5px
+      float: left        
+
+  h1
+    font-size: 1.25em
+    line-height: 44px
+    margin: 0
+    padding-left: 5px
+    font-variant: small-caps
+    float: left
+
+  &-container
+    width: $appWidth
+
+  &-items
+    float: right
+    text-align: right
+    padding: 10px 5px 0 0
+
+  &-item
+    position: relative
+    padding: 0 5px
+    &::after 
+      content: "||"
+      padding-left: 5px
+
+    &-icon
+      width: 16px
+      height: 16px
+      fill: #DDDDDD
+      transform: scaleX(-1)
+      vertical-align: middle
+      cursor: pointer
+      padding-left: 5px;
+      &:hover
+        fill: #999999
+
+    &-dropdown
+      display: block
+      position: absolute
+      left: 0px
+      top: 5px
+      background: black
+      text-align: left
+      padding: 10px 10px 5px 25px
+
+      li
+        cursor: pointer
+        line-height: 1.75em
+        white-space: nowrap
+        &:hover
+          text-shadow: 0 0 1px #CCCCCC, 0 0 1px #CCCCCC;
+          color: #999999
+          list-style-type: none
+          margin-right: 5px
+          text-indent: -1.4em
+          &:before
+            content: "->"
+            padding-right: 4px

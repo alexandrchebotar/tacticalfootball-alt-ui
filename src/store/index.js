@@ -42,9 +42,17 @@ const defaultState = {
     general: [0, '', ''], 
     national: [0, '', ''],
   },
-  userClubs: {
-    SKIF: [0, '', ''],
-    England: [0, '', ''],
+  user: {
+    id: 409,
+    name: 'ArmagedOFF',
+    clubs: {
+      SKIF: [0, '', ''],
+      England: [0, '', ''],
+    },
+  },
+  currentClub: {
+    id: 788,
+    name: 'SKIF'
   },
 };
 
@@ -59,17 +67,6 @@ const forums = handleActions(
   },
   defaultState.forums
 );
-const userClubs = handleActions(
-  {
-    [combineActions(
-      GET_INIT_DATA,
-    )]: (state, action) => ({
-      ...state, 
-      ...action.payload.userClubs,
-    }),
-  },
-  defaultState.userClubs
-);
 const competitions = handleActions(
   {
     [combineActions(
@@ -81,11 +78,35 @@ const competitions = handleActions(
   },
   defaultState.competitions
 );
+const user = handleActions(
+  {
+    [combineActions(
+      GET_INIT_DATA,
+    )]: (state, action) => ({
+      ...state, 
+      ...action.payload.user,
+    }),
+  },
+  defaultState.user
+);
+const currentClub = handleActions(
+  {
+    [combineActions(
+      GET_INIT_DATA,
+    )]: (state, action) => ({
+      ...state, 
+      ...action.payload.currentClub,
+    }),
+  },
+  defaultState.currentClub
+);
+
 
 const appState = combineReducers({
   competitions,
   forums,
-  userClubs,
+  user,
+  currentClub,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

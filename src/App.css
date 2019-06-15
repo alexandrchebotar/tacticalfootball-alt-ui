@@ -6,20 +6,6 @@ body {
   font-size: 0.9rem;
 }
 
-.header {
-  width: 100%;
-  min-width: 992px;
-  height: 44px;
-  background-color: black;
-  color: white;
-  position: fixed;
-  top: 0;
-}
-
-.headerContainer {
-  width: 992px;
-  position: relative;
-}
 
 .footer {
   width: 100%;
@@ -30,23 +16,8 @@ body {
   left: 41px;
 }
 
-.logo {
-  width: 120px;
-  height: 44px;
-  background: url(/images/logo.png);
-  float: left;
-}
 
-.logo:hover {
-  background: url(/images/logoHover.png);
-}
 
-.infoBar {
-  height: 44px;
-  float: right;
-  text-align: right;
-  padding: 10px 5px 0 0;
-}
 
 .pageMenu {
   width: 950px;
@@ -67,24 +38,4 @@ body {
   padding: 5px;
   background: rgba(250, 250, 250, 0.75);
   z-index: -2;
-}
-
-.infoBarItem::after {
-  content: "||";
-  padding: 0 5px;
-}
-
-.login, .logout {
-  width: 16px;
-  height: 16px;
-  margin: 4px;
-  float: right;
-}
-
-.login {
-  background: url(/images/login.png);
-}
-
-.logout {
-  background: url(/images/logout.png);
 }

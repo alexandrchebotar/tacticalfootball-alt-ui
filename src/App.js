@@ -1,6 +1,6 @@
 import React from 'react';
-import InfoBar from './components/InfoBar';
-import NavBar from './components/NavBar';
+import InfoBar from './components/Infobar';
+import NavBar from './components/Navbar';
 import Footer from './components/Footer';
 import Squad from './pages/Squad';
 
@@ -9,34 +9,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <InfoBar>
-        <div className="header">
-            <div className="headerContainer">
-                <a href="/"><div className="logo"></div></a>
-                <div className="infoBar">
-                    $$infoBar
-                    <span className="infoBarItem">$7,258,104</span>
-                    <span className="infoBarItem">weak 7/14</span>
-                    <span className="infoBarItem">season 5</span>
-                    <span className="infoBarItem">19:47 04/03/2018</span>
-                    <span className="infoBarItem">ArmagedOFF</span>
-                    <a href="/"><div className="logout"></div></a>
-                </div>
-            </div>
-        </div>
-      </InfoBar>
-      <NavBar>
-        <div className="sidebar">
-            <a href="/"><div className="mainMenu team"></div></a>
-            <a href="/"><div className="mainMenu school"></div></a>
-            <a href="/"><div className="mainMenu office"></div></a>
-            <a href="/"><div className="mainMenu calendar"></div></a>
-            <a href="/"><div className="mainMenu statistic"></div></a>
-            <a href="/"><div className="mainMenu forum"></div></a>
-            <a href="/"><div className="mainMenu help"></div></a>
-            <a href="/"><div className="mainMenu settings"></div></a>
-        </div>
-      </NavBar>
+      <InfoBar />
+      <NavBar />
       <Squad>
         <div className="pageMenu">
             $$pageMenu

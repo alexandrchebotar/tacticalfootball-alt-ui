@@ -56,7 +56,7 @@ class Navbar extends Component {
     ));
   };
 
-  getSubmenuItems = (level) => {
+  getSubmenuItems = level => {
     return Object.entries(this.state.submenu[level].items).map(([name, value], index) => {
       let mouseEnterHandler;
       if (value.substr) {

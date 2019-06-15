@@ -28,8 +28,15 @@ const defaultState = {
       cup1: '',
       cup2: '',
     },
-    national: {},
-    current: {},
+    national: {
+      WC: '',
+      WL: '',
+    },
+    current: {
+      'Super League': '',
+      'IC group X': '',
+      IC: '',
+    },
   },
   forums: {
     general: [0, '', ''], 

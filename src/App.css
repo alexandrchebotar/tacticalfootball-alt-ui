@@ -15,27 +15,3 @@ body {
   bottom: 0;
   left: 41px;
 }
-
-
-
-
-.pageMenu {
-  width: 950px;
-  height: 32px;
-  background-color: rgba(0, 125, 0, 0.75);
-  position: fixed;
-  top: 44px;
-  left: 42px;
-  z-index: -1;
-}
-
-.content {
-  width: 950px;
-  min-height: calc(100vh - 76px);
-  position: absolute;
-  top: 76px;
-  left: 42px;
-  padding: 5px;
-  background: rgba(250, 250, 250, 0.75);
-  z-index: -2;
-}

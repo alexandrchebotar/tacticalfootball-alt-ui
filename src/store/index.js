@@ -14,11 +14,19 @@ const defaultState = {
         'div1 B': '',
       },
       div2: {
-        'A - B': {
+        'A - J': {
           'A': '',
           B: '',
+          C: '',
+          D: '',
+          E: '',
+          F: '',
+          G: '',
+          H: '',
+          I: '',
+          J: '',
         },
-        'C - D': {
+        'divisions': {
           'div1 C': '',
           div2: '',
         },
@@ -40,7 +48,7 @@ const defaultState = {
   },
   forums: {
     general: [0, '', ''], 
-    national: [0, '', ''],
+    national: ['name', 'href', 'unread'],
   },
   user: {
     id: 409,

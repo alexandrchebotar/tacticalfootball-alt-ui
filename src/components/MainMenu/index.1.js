@@ -1,5 +1,19 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
+import {
+  Alignment,
+  Button,
+  Switch,
+  Breadcrumbs,
+  Breadcrumb,
+  Icon,
+  CollapsibleList,
+  MenuItem,
+  Classes,
+  Popover,
+  Menu,
+  Position,
+} from "@blueprintjs/core";
 
 import './style.sass';
 
@@ -7,7 +21,7 @@ const mapStateToProps = ({competitions, forums}) => {
   return {competitions, forums};
 };
 
-class Navbar extends Component {
+class MainMenu extends Component {
   state = {
     items: {
       squad: {senior: '{}', youth: '{}', training: '{}'},
@@ -48,11 +62,40 @@ class Navbar extends Component {
 
   getNavbarItems = () => {
     return Object.keys(this.state.items).map((item, index) => (
-      <a href="/" key={index} onMouseEnter={() => this.showSubmenu(0, item, this.state.items[item])} >
-        <svg className="navbar-item">
+      <Popover
+        content={
+          <Menu>
+            <MenuItem text="Submenu">
+              <MenuItem text="Child one" />
+              <MenuItem text="Child two" />
+              <MenuItem text="Child three" />
+            </MenuItem>
+            <MenuItem text="Submenu">
+              <MenuItem text="Child one" />
+              <MenuItem text="Child two" />
+              <MenuItem text="Child three" />
+            </MenuItem>
+            <MenuItem text="Submenu"></MenuItem>
+            <MenuItem text="Submenu"></MenuItem>
+            <MenuItem text="Submenu"></MenuItem>
+            <MenuItem text="Submenu"></MenuItem>
+          </Menu>
+        } 
+        position={Position.RIGHT_TOP}
+        interactionKind="hover"
+        minimal
+        popoverClassName="bp3-dark"
+      >
+       {/* <Button icon="share" text="Open in..." /> */}
+        <svg className="main-menu-item">
           <use xlinkHref={`images/icons.svg#${item}`}></use>
         </svg>
-      </a>
+      </Popover>
+      // <a href="/" key={index} onMouseEnter={() => this.showSubmenu(0, item, this.state.items[item])} >
+      //   <svg className="main-menu-item">
+      //     <use xlinkHref={`images/icons.svg#${item}`}></use>
+      //   </svg>
+      // </a>
     ));
   };
 
@@ -83,26 +126,26 @@ class Navbar extends Component {
     const {state: {submenu}, getNavbarItems, getSubmenuItems, hideSubmenu} = this;
     return (
       <Fragment>
-        <div className="navbar">
+        <div className="main-menu">
           {getNavbarItems()}
         </div>
         {submenu[0].name &&
-          <div className="navbar-submenu" onMouseLeave={() => hideSubmenu(0)}>
+          <div className="main-menu-submenu" onMouseLeave={() => hideSubmenu(0)}>
             <h1>{submenu[0].name}</h1>
             <ul>{getSubmenuItems(0)}</ul>
 
             {submenu[1].name &&
-              <div className="navbar-submenu navbar-submenu-level-1" onMouseLeave={() => hideSubmenu(1)}>
+              <div className="main-menu-submenu main-menu-submenu-level-1" onMouseLeave={() => hideSubmenu(1)}>
                 <h1>{submenu[1].name}</h1>
                 <ul>{getSubmenuItems(1)}</ul>
 
                 {submenu[2].name &&
-                  <div className="navbar-submenu navbar-submenu-level-2" onMouseLeave={() => hideSubmenu(2)}>
+                  <div className="main-menu-submenu main-menu-submenu-level-2" onMouseLeave={() => hideSubmenu(2)}>
                     <h1>{submenu[2].name}</h1>
                     <ul>{getSubmenuItems(2)}</ul>
 
                     {submenu[3].name &&
-                      <div className="navbar-submenu navbar-submenu-level-3" onMouseLeave={() => hideSubmenu(3)}>
+                      <div className="main-menu-submenu main-menu-submenu-level-3" onMouseLeave={() => hideSubmenu(3)}>
                         <h1>{submenu[3].name}</h1>
                         <ul>{getSubmenuItems(3)}</ul>
                       </div>
@@ -118,4 +161,4 @@ class Navbar extends Component {
   }
 }
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps)(MainMenu);

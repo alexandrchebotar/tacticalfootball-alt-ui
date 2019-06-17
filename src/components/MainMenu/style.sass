@@ -1,0 +1,47 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
+$navbarWidth: 42px
+$submenuWidth: 175px
+
+.main-menu
+  position: fixed
+  top: 44px
+  width: $navbarWidth
+  height: calc(100vh - 44px)
+  background-color: black
+
+  &-item.bp3-button:not([class*="bp3-intent-"])
+    width: 42px
+    height: 42px
+    padding: 5px
+    background-color: black
+    background-image: none
+    &:hover
+      background-color: inherit
+
+  &-icon
+    width: 32px
+    height: 32px
+    fill: $light-gray1
+    &:hover
+      fill: $gray3
+    
+  &-icon.warning
+    fill: $orange5
+    &:hover
+      fill: $orange2
+
+
+
+
+  // .bp3-button
+  //   background-color: black
+
+  // &-submenu.bp3-menu
+  //   text-transform: capitalize
+  //   background-color: blue
+  //   color: green
+
+  //   .bp3-menu-header
+  //     background-color: blue
+  //     color: red

@@ -1,16 +1,16 @@
 import React from 'react';
-import InfoBar from './components/Infobar';
-import NavBar from './components/Navbar';
+import Infobar from './components/Infobar';
+import MainMenu from './components/MainMenu';
 import Footer from './components/Footer';
 import Squad from './pages/Squad';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <InfoBar />
-      <NavBar />
+      <Infobar />
+      <MainMenu />
       <Squad />
       <Footer>
         <div className="footer">

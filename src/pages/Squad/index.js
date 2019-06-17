@@ -1,15 +1,14 @@
 import React, {Fragment} from 'react';
+import PageMenu from '../../components/PageMenu';
 
-// import './App.css';
+import './style.sass';
 
-function App() {
+function Squad() {
   return (
-    <Fragment>
-      <div className="pageMenu">
-        $$pageMenu
-      </div>
+    <div className="page-content">
+      <PageMenu />
       <div className="content">
-        $$content
+        $$content!!
         <table>
               <thead>
                   <tr>
@@ -185,8 +184,8 @@ function App() {
               </tbody>
           </table>
       </div>
-    </Fragment>
+    </div>
   );
 }
 
-export default App;
+export default Squad;

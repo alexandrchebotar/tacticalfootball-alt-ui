@@ -6,6 +6,8 @@ import {
   H1,
   Text,
 } from "@blueprintjs/core";
+import ClubsMenu from './ClubsMenu';
+import UserMenu from './UserMenu';
 
 import './style.sass';
 

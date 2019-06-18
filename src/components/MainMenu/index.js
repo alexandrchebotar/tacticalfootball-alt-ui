@@ -72,7 +72,7 @@ class MainMenu extends Component {
               }
             </Menu>
           } 
-          position="top-right"
+          position="right-top"
           interactionKind="hover"
           minimal
           autoFocus={false}

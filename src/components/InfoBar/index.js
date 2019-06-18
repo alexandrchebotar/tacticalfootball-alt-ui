@@ -1,5 +1,14 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
+import {
+  Navbar,
+  Menu,
+  Popover,
+  Icon,
+  Button,
+  H1,
+  Text,
+} from "@blueprintjs/core";
 
 import './style.sass';
 
@@ -14,55 +23,77 @@ class Infobar extends Component {
     visibleClubList: false,
   };
 
-toggleClubList = () => {
-  this.setState(state => {
-    return {visibleClubList: !state.visibleClubList};
-  });
-}
+  getClubsMenu = () => {
+    const clubsList = this.props.user.clubs.map(({name, id, news}) => (
+      <Menu.Item
+        key={name}
+        text={name}
+        href={id}
+        icon={news ? <Icon icon="feed" intent="warning" /> : "dot"}
+      />
+    ));
+    return (
+      <Menu className="clubs-menu">
+        {clubsList}
+      </Menu>
+    );
+  }
 
   render() {
     const {user, currentClub} = this.props;
     const {visibleClubList} = this.state;
     return (
-      <div className="infobar">
-        <div className="infobar-container">
-          <a href="/">
-            <svg className="logo">
-              <use xlinkHref={'images/icons.svg#logo'}></use>
-            </svg>
-            <h1>Tactical Football</h1>
-          </a>
-          <div className="infobar-items">
+      <div className="infobar-container">
+        <Navbar className="infobar">
+          <Navbar.Group >
+            <Button href="#">
+              <H1>Tactical Football</H1>
+            </Button>
+          </Navbar.Group>
+          <Navbar.Group align="right">
             {user &&
               <Fragment>
-                <span className="infobar-item" onMouseEnter={this.toggleClubList} onMouseLeave={this.toggleClubList}>
-                  <svg className="infobar-item-icon">
-                    <use xlinkHref="images/icons.svg#arrowhead-down"></use>
-                  </svg>
-                  {currentClub.name}
-                  {visibleClubList &&
-                    <ul className="infobar-item-dropdown">
-                      <li>England</li>
-                      <li>SKIF</li>
-                      <li>Affiliate Football Club With Long Very Name</li>
-                    </ul>
-                  }
-                </span>
-                <span className="infobar-item">$7,258,104</span>
-              </Fragment> 
+                <Button href="#" icon="feed" intent="warning" minimal />
+                <Popover content={this.getClubsMenu()} position="bottom-left" minimal>
+                  <Button href={currentClub.id} text={currentClub.name} rightIcon="caret-down" />
+                </Popover>
+                <Navbar.Divider />
+              </Fragment>
             }
-            <span className="infobar-item">s20 wk7/14</span>
-            <span className="infobar-item">19:47</span>
-            {user &&
-              <a href="/" className="infobar-item">{user.name}</a>
+            {user ?
+              <Button href="#" text="s20 wk7/14 19:47" rightIcon="calendar" />
+            :
+              <Text>s20 wk7/14 19:47</Text>
             }
-            <a href="/">
-              <svg className="infobar-item-icon">
-                <use xlinkHref={`images/icons.svg#${user ? 'logout' : 'login'}`}></use>
-              </svg>
-            </a>
-          </div>
-        </div>
+            <Navbar.Divider />
+            {user ?
+              <Fragment>
+                {user.messages &&
+                  <Button href="#" icon="envelope" intent="warning" minimal />
+                }
+                <Popover 
+                  content={(
+                    <Menu>
+                      <Menu.Item href="#" text="settings" icon="cog" />
+                      <Menu.Item
+                        href="#"
+                        text="messages" 
+                        icon={user.messages ? <Icon icon="envelope" intent="warning" /> : "envelope"}
+                      />
+                      <Menu.Divider />
+                      <Menu.Item href="#" text="logout" icon="log-out" />
+                    </Menu>
+                  )}
+                  position="bottom-right"
+                  minimal>
+                  <Button text={user.name} rightIcon="user" />
+                </Popover>
+              </Fragment>
+            :
+              <Button text="Login" rightIcon="log-in" />
+            }
+          </Navbar.Group>
+        </Navbar>
       </div>
     )
   };

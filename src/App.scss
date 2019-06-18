@@ -1,7 +1,7 @@
 @import "~normalize.css";
 @import "~@blueprintjs/core/lib/css/blueprint.css";
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
-@import "~@blueprintjs/core/lib/scss/variables";
+@import "./common/variables.scss";
 
 $pt-text-color: $red1 !default;
 
@@ -25,21 +25,26 @@ body {
     text-transform: capitalize;
     border-radius: 0;
     background-color: black;
-    color: $light-gray1;
+    color: $light-text;
+    min-width: 100px;
 
     .bp3-icon,
     .bp3-heading {
-      color: $light-gray1;
+      color: $light-text;
+    }
+
+    .bp3-icon.bp3-intent-warning {
+      color: $intent-warning;
     }
 
     .bp3-menu-header>h6 {
       text-align: center;
       font-size: 1.1em;
       padding-bottom: 10px;
-      border-bottom: 1px solid rgba($light-gray1, 0.5);
+      border-bottom: 1px solid rgba($light-text, 0.5);
     }
 
     .bp3-menu-divider {
-      border-top: 1px solid rgba($light-gray1, 0.5);
+      border-top: 1px solid rgba($light-text, 0.5);
     }
 }

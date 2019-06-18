@@ -50,6 +50,7 @@ class MainMenu extends Component {
           interactionKind="hover"
           minimal
           autoFocus={false}
+          popoverClassName="main-menu-submenu"
         >
           <Button className="main-menu-item">
             <svg className={forumUnread ? "main-menu-icon warning" : "main-menu-icon"}>

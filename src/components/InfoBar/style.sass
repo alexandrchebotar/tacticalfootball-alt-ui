@@ -34,9 +34,12 @@
         .bp3-icon
           color: $light-text-hover
 
-    .bp3-button.bp3-minimal.bp3-intent-warning:hover
-      background: inherit
-      color: $intent-warning-hover
+    .bp3-button.bp3-minimal.bp3-intent-warning
+      // background: inherit
+      color: $intent-warning
+      &:hover
+        background: inherit
+        color: $intent-warning-hover
 
     h1
       font-size: 1.75em
@@ -50,6 +53,12 @@
 
     .bp3-navbar-divider
       border-left: 1px solid rgba($light-text, 0.5)
+
+
+
+.bp3-menu.clubs-menu
+  text-transform: none
+
 
     // &-items
     //   float: right

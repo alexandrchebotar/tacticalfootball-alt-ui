@@ -50,13 +50,15 @@ const defaultState = {
     general: [0, '', ''], 
     national: ['name', 'href', 'unread'],
   },
-  user: {
+  user:  {
     id: 409,
     name: 'ArmagedOFF',
-    clubs: {
-      SKIF: [0, '', ''],
-      England: [0, '', ''],
-    },
+    clubs: [
+      {name: 'SKIF', id: 225, news: true},
+      {name: 'England', id: 102, news: false}, 
+      {name: 'Some Affiliate Club with long name', id: 102, news: false}, 
+    ],
+    messages: false,
   },
   currentClub: {
     id: 788,

@@ -32,12 +32,21 @@ class MainMenu extends Component {
   getMainMenuItems = () => {
     return Object.entries(this.state.items).map(([name, items]) => {
       const forumUnread = name === 'forum' && Object.values(items).some(arr => arr[2] === 'unread');
+      const icon = name === 'competitions' ?
+        'glass' :
+        name === 'forum' ?
+          'comment':
+          name === 'help' ?
+            'help' :
+            name === 'settings' ?
+            'cog' :
+            null;
       return (
         <Popover
           key={name}
           content={
             <Menu className="main-menu-submenu">
-              {this.getSubmenu({name, items})}
+              {this.getSubmenu({name, items, icon})}
               {forumUnread && 
                 <Fragment>
                   <MenuDivider />
@@ -53,7 +62,7 @@ class MainMenu extends Component {
           popoverClassName="main-menu-submenu"
         >
           <Button className="main-menu-item">
-            <svg className={forumUnread ? "main-menu-icon warning" : "main-menu-icon"}>
+            <svg className={forumUnread ? 'main-menu-icon warning' : 'main-menu-icon'}>
               <use xlinkHref={`images/icons.svg#${name}`}></use>
             </svg>
           </Button>
@@ -63,36 +72,39 @@ class MainMenu extends Component {
     
   };
 
-  getSubmenuItem({name, value}) {
-    if (value.substr) {
-      // string to link
-      return <MenuItem text={name} href={value} key={name} icon="dot" />;
-    } else if (Array.isArray(value)) {
-      // array to link with additional info
-      const [href, alert] = value;
-      return (
-        <MenuItem text={name} href={href} key={name} icon="dot"
-          labelElement={alert && <Icon icon="comment" color={Colors.ORANGE5} />}
-        />
-      );
-    }
-    // object to submenu
-    return (
-      <MenuItem text={name} key={name} icon="dot">
-        {this.getSubmenu({name, items: value})}
-      </MenuItem>
-    );
-  };
-
-  getSubmenu({name, items}) {
+  getSubmenu({name, items, icon}) {
     const submenuItems = Object.entries(items).map(([name, value]) => {
-      return this.getSubmenuItem({name, value});
+      return this.getSubmenuItem({name, value, icon});
     });
     return (
       <Fragment>
         <MenuDivider title={name} />
         {submenuItems}
       </Fragment>
+    );
+  };
+
+  getSubmenuItem({name, value, icon}) {
+    if (value.substr) {
+      // string to link
+      return <MenuItem text={name} href={value} key={name} icon={icon || "dot"} />;
+    } else if (Array.isArray(value)) {
+      // array to link with additional info
+      const [href, alert] = value;
+      return (
+        <MenuItem
+          text={name}
+          href={href}
+          key={name}
+          icon={<Icon icon={icon || "dot"} intent={alert && "warning"} />}
+        />
+      );
+    }
+    // object to submenu
+    return (
+      <MenuItem text={name} key={name} icon={icon || "dot"}>
+        {this.getSubmenu({name, items: value, icon})}
+      </MenuItem>
     );
   };
 

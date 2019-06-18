@@ -54,7 +54,7 @@ class Infobar extends Component {
             {user &&
               <Fragment>
                 <Button href="#" icon="feed" intent="warning" minimal />
-                <Popover content={this.getClubsMenu()} position="bottom-left" minimal>
+                <Popover content={this.getClubsMenu()} position="bottom-left" interactionKind="hover" minimal>
                   <Button href={currentClub.id} text={currentClub.name} rightIcon="caret-down" />
                 </Popover>
                 <Navbar.Divider />

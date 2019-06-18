@@ -9,7 +9,7 @@ import {
   Button,
 } from "@blueprintjs/core";
 
-import './style.sass';
+import './style.scss';
 
 const mapStateToProps = ({competitions, forums}) => {
   return {competitions, forums};
@@ -72,7 +72,7 @@ class MainMenu extends Component {
               }
             </Menu>
           } 
-          position="top-right"
+          position="right-top"
           interactionKind="hover"
           minimal
           autoFocus={false}

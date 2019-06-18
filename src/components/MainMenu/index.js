@@ -21,7 +21,7 @@ class MainMenu extends Component {
   state = {
     items: {
       squad: {
-        players: ['#', false, 'people'],
+        'senior players': ['#', false, 'people'],
         training: ['#', false, 'walk'],
         prospects: ['#', false, 'new-person'],
         statistics: ['#', false, 'timeline-bar-chart'],
@@ -38,7 +38,7 @@ class MainMenu extends Component {
       competitions: this.props.competitions,
       forum: this.props.forums,
       help: {
-        manual: '{}',
+        manual: ['', null, null, '_blank'],
         'origin UI tours': {
           'club page': ['', null, null, '_blank'],
           'player page': ['', null, null, '_blank']

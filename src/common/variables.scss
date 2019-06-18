@@ -1,0 +1,24 @@
+@import "~@blueprintjs/core/lib/scss/variables";
+
+// app
+$app-width: 992px;
+
+// colors
+$light-text: $light-gray1;
+$light-text-hover: $light-gray3;
+$dark-text: $dark-gray1;
+$dark-text-hover: $dark-gray3;
+$intent-warning: $orange3;
+$intent-warning-hover: $orange5;
+
+// text-shadows
+$light-text-shadow: 0 0 0.2px $light-text-hover, 0 0 0.2px $light-text-hover;
+$dark-text-shadow: 0 0 0.2px $dark-text-hover, 0 0 0.2px $dark-text-hover;
+
+// info-bar
+$infobar-height: 42px;
+
+// main-menu
+$main-menu-width: 42px;
+$main-menu-item-height: $infobar-height + 4px;
+$submenu-width: 175px;

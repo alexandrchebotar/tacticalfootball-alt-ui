@@ -1,56 +1,55 @@
-@import "~@blueprintjs/core/lib/scss/variables";
-
-$infobarHeight: 44px
-$appWidth: 992px
+@import "../../common/variables.scss";
 
 .infobar-container
   width: 100%
-  min-width: $appWidth 
+  min-width: $app-width 
   background-color: black
   position: fixed
   top: 0
 
   .infobar
-    width: $appWidth
-    height: $infobarHeight
+    width: $app-width
+    height: $infobar-height
     background-color: inherit
-    color: $light-gray1
+    color: $light-text
     padding-left: 0
 
     .bp3-navbar-group
-      height: $infobarHeight
+      height: $infobar-height
 
     .bp3-button:not([class*="bp3-intent-"])
       padding: 0 5px
-      color: $light-gray1
+      color: $light-text
       background-color: inherit
       background-image: none
 
       .bp3-icon
-          color: $light-gray1
+          color: $light-text
 
       &:hover
         background-color: inherit
-        color: $gray3  
+        color: $light-text-hover 
+        text-shadow: $light-text-shadow
 
         .bp3-icon
-          color: $gray3
+          color: $light-text-hover
 
     .bp3-button.bp3-minimal.bp3-intent-warning:hover
       background: inherit
-      color: $orange4
+      color: $intent-warning-hover
 
     h1
       font-size: 1.75em
-      line-height: $infobarHeight
+      line-height: $infobar-height
       margin: 0
-      color: $light-gray1
+      color: $light-text
       font-variant: small-caps
       &:hover
-        color: $gray3 
+        color: $light-text-hover 
+        text-shadow: $light-text-shadow
 
     .bp3-navbar-divider
-      border-left: 1px solid rgba($light-gray1, 0.5)
+      border-left: 1px solid rgba($light-text, 0.5)
 
     // &-items
     //   float: right

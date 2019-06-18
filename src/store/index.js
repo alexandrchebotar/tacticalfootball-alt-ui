@@ -1,6 +1,6 @@
 import {
   GET_INIT_DATA,
-} from '../constants';
+} from 'common/constants';
 import {combineReducers, createStore, applyMiddleware, compose} from 'redux'; 
 import {handleActions, combineActions} from 'redux-actions';
 import thunk from 'redux-thunk';

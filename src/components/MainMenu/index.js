@@ -20,11 +20,11 @@ const mapStateToProps = ({competitions, forums}) => {
 class MainMenu extends Component {
   state = {
     items: {
-      squad: {senior: '{}', youth: '{}', training: '{}'},
-      office: {finances: '{}', personal: '{}', buildings: '{}', calendar: '{}'},
+      squad: {players: '', training: '{}', prospects: '{}', statistics: '', tactics: ''},
+      office: {news: '', calendar: '{}', transfers: '', finances: '{}', trophies: '', scouting: ''},
       competitions: this.props.competitions,
       forum: this.props.forums,
-      help: {manual: '{}', tour: '{}'},
+      help: {manual: '{}', 'origin UI tours': {'club page': '', 'player page': ''}},
       settings: {'alternate UI': '', user: '', club: ''},
     },
   };

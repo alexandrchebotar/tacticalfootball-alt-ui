@@ -50,7 +50,7 @@ const defaultState = {
     general: ['#', false, null, '_blank'], 
     national: ['#', true, null, '_blank'],
   },
-  user:  {
+  user: {
     id: 409,
     name: 'ArmagedOFF',
     clubs: [

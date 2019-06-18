@@ -9,7 +9,7 @@ import {
 import ClubsMenu from './ClubsMenu';
 import UserMenu from './UserMenu';
 
-import './style.sass';
+import './style.scss';
 
 const mapStateToProps = ({user, currentClub}) => {
   return {user, currentClub};

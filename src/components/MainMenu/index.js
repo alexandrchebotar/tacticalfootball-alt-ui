@@ -5,10 +5,8 @@ import {
   MenuItem,
   MenuDivider,
   Popover,
-  Position,
   Icon,
   Button,
-  Colors,
 } from "@blueprintjs/core";
 
 import './style.sass';
@@ -74,7 +72,7 @@ class MainMenu extends Component {
               }
             </Menu>
           } 
-          position={Position.RIGHT_TOP}
+          position="top-right"
           interactionKind="hover"
           minimal
           autoFocus={false}

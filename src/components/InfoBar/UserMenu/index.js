@@ -6,8 +6,7 @@ import {
   Button,
 } from "@blueprintjs/core";
 
-
-const UserMenu = (user) => {
+const UserMenu = ({user}) => {
   return (
     <Fragment>
       {user ?

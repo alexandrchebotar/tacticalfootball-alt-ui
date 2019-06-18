@@ -21,7 +21,7 @@ const ClubsMenu = ({user, currentClub}) => {
 
   return (
     <Fragment>
-      {clubWithNews &&
+      {firstClubWithNews &&
         <Button href={firstClubWithNews.id} icon="feed" intent="warning" minimal />
       }
       <Popover

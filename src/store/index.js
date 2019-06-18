@@ -47,8 +47,8 @@ const defaultState = {
     },
   },
   forums: {
-    general: [0, '', ''], 
-    national: ['name', 'href', 'unread'],
+    general: ['#', false, null, '_blank'], 
+    national: ['#', true, null, '_blank'],
   },
   user:  {
     id: 409,

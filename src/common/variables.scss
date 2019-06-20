@@ -22,3 +22,8 @@ $infobar-height: 42px;
 $main-menu-width: 42px;
 $main-menu-item-height: $infobar-height + 4px;
 $submenu-width: 175px;
+
+// page
+$page-container-min-height: calc(100vh - #{$infobar-height});
+$page-menu-height: 32px;
+$page-content-min-height: calc(100vh - #{$infobar-height} - #{$page-menu-height});

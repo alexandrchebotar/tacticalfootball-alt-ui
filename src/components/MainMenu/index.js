@@ -80,7 +80,7 @@ class MainMenu extends Component {
         >
           <Button className="main-menu-item">
             <svg className={warning ? 'main-menu-icon warning' : 'main-menu-icon'}>
-              <use xlinkHref={`images/icons.svg#${name}`}></use>
+              <use xlinkHref={`/images/icons.svg#${name}`}></use>
             </svg>
           </Button>
         </Popover>

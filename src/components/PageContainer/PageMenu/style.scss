@@ -1,0 +1,63 @@
+@import "common/variables.scss";
+
+.header {
+  width: 950px;
+  height: 32px;
+  background-color: rgba($forest3, 0.75);
+  // z-index: -1;
+
+  .bp3-navbar,
+  .bp3-navbar.bp3-dark {
+    height: 32px;
+    background-color: transparent;
+    color: $light-text;
+
+    &-group {
+      height: 32px;
+    }
+
+    &-heading {
+      text-shadow: $light-text-shadow;
+    }
+  }
+
+  .bp3-tab, .bp3-control {
+    color: $light-text;
+    &:not([aria-disabled="true"]):hover {
+      color: $light-text-hover;
+      text-shadow: $light-text-shadow;
+    }
+    &[aria-selected="true"] {
+      color: $light-text;
+      text-shadow: $light-text-shadow;
+    }
+  }
+
+  .bp3-tab-indicator-wrapper {
+    .bp3-tab-indicator {
+      background-color: $light-text;
+    }
+  }
+
+  .bp3-control.bp3-switch {
+    margin-bottom: 2px;
+    margin-right: 0px;
+    &:hover {
+      & input ~ .bp3-control-indicator {
+        background: rgba($light-gray3, 0.5);
+  
+      }
+      & input:checked ~ .bp3-control-indicator {
+        background: rgba($dark-gray3, 0.5);
+      }
+    }
+
+    & input ~ .bp3-control-indicator {
+      background: rgba($dark-gray3, 0.5);
+
+    }
+    & input:checked ~ .bp3-control-indicator {
+      background: rgba($light-gray3, 0.5);
+    }
+  }
+}

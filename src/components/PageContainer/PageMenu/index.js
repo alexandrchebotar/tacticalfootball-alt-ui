@@ -1,72 +1,46 @@
-import React, {Component, Fragment} from 'react';
-import { connect } from 'react-redux';
+import React, {Fragment} from 'react';
 import {
-  Alignment,
-  Button,
   Navbar,
   Switch,
-  Breadcrumbs,
-  Breadcrumb,
-  Icon,
-  CollapsibleList,
-  MenuItem,
-  Classes,
+  Tabs,
+  Tab,
 } from "@blueprintjs/core";
 
 import './style.scss';
 
-const BREADCRUMBS = [
-  { href: "/users", icon: "folder-close", text: "Users" },
-  { href: "/users/janet", icon: "folder-close", text: "Janet" },
-  { icon: "document", text: "image.jpg" },
-];
-
-const PageMenu = () => {
-  const renderBreadcrumb = (props) => {
-    if (props.href != null) {
-        return <a className={Classes.BREADCRUMB}>{props.text}</a>;
-    } else {
-        return <span className={Classes.BREADCRUMB + ' ' + Classes.BREADCRUMB_CURRENT}>{props.text}</span>;
-    }
-  };
-
-  const renderCurrentBreadcrumb = ({ text, ...restProps }) => {
-    // customize rendering of last breadcrumb
-    return <Breadcrumb {...restProps}>{text} <Icon icon="star" /></Breadcrumb>;
-  };
-
+const PageMenu = ({pageName, results, handleTabChange, activeTabId}) => {
   return (
     <div className="header">
       <Navbar className="bp3-dark">
-        <Navbar.Group align={Alignment.LEFT}>
-          {/* <Breadcrumbs
-              currentBreadcrumbRenderer={this.renderCurrentBreadcrumb}
-              items={BREADCRUMBS}
-            /> */}
-          <CollapsibleList
-              // {...this.state}
-              className={Classes.BREADCRUMBS}
-              dropdownTarget={<span className={Classes.BREADCRUMBS_COLLAPSED} />}
-              visibleItemRenderer={renderBreadcrumb}
+        <Navbar.Group align="left">
+          <Navbar.Heading>{pageName}</Navbar.Heading>
+        </Navbar.Group>
+        <Navbar.Group align="right">
+          <Tabs
+            animate
+            id="pageMenu"
+            selectedTabId={activeTabId}
+            onChange={handleTabChange}
           >
-            <MenuItem icon="folder-close" text="Squad" href="#" />
-            <MenuItem icon="folder-close" text="Senior" href="#" />
-            <MenuItem icon="document" text="Traning" />
-          </CollapsibleList>
+            <Tab id="players" title="Senior Players" />
+            <Tab id="traning" title="Traning" />
+            <Tab id="tactics" title="Tactics" />
+          </Tabs>
+          {results &&
+            <Fragment>
+              <Navbar.Divider />
+              <Switch label="Show results" inline/>
+            </Fragment>
+          }
         </Navbar.Group>
-        <Navbar.Group align={Alignment.RIGHT}>
-            <Switch label="Show results" inline/>
-        </Navbar.Group>
-        <Navbar.Group align={Alignment.RIGHT}>
-            <Navbar.Heading>Blueprint</Navbar.Heading>
-            <Navbar.Divider />
-            <Button className="bp3-minimal" icon="home" text="Home" />
-            <Button className="bp3-minimal" icon="document" text="Files" />
-        </Navbar.Group>
-
       </Navbar>
     </div>
-  )
+  );
 };
+
+PageMenu.defaultProps = {
+  pageName: 'Squad',
+  results: true,
+}
 
 export default PageMenu;

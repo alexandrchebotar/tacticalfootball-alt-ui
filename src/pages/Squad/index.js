@@ -3,11 +3,18 @@ import PageContainer from '../../components/PageContainer';
 
 import './style.scss';
 
-const Squad = () => {
+const Squad = ({match}) => {
   return (
-    <PageContainer>
-      <div className="content">
-      $$content!!
+    <PageContainer activeTabId={match.params.activeTabId}>
+      <Content />
+    </PageContainer>
+  );
+}
+
+const Content = ({activeTabId}) => {
+  return (
+    <div className="content">
+      {activeTabId}
       <table>
             <thead>
                 <tr>
@@ -182,8 +189,7 @@ const Squad = () => {
                 </tr>
             </tbody>
         </table>
-    </div>
-    </PageContainer>
+    </div> 
   );
 }
 

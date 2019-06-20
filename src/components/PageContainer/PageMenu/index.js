@@ -11,7 +11,9 @@ import './style.scss';
 const PageMenu = ({pageName, results, handleTabChange, activeTabId}) => {
   return (
     <div className="header">
-      <Navbar className="bp3-dark">
+      <Navbar 
+      // className="bp3-dark"
+      >
         <Navbar.Group align="left">
           <Navbar.Heading>{pageName}</Navbar.Heading>
         </Navbar.Group>

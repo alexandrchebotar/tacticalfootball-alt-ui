@@ -39,4 +39,13 @@
   .bp3-menu {
     min-width: 150px;
   }
+
+  a {
+    color: $light-text;
+    text-decoration: none;
+    &:hover {
+      color: $light-text-hover;
+      text-decoration: none;
+    }
+  }
 }

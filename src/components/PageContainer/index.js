@@ -13,6 +13,9 @@ class PageContainer extends Component {
     activeTabId: this.props.activeTabId,
   };
 
+  static getDerivedStateFromProps(props){
+   return {activeTabId: props.activeTabId};
+  };
   handleTabChange = (tabId) => {
     this.setState({activeTabId: tabId});
   };

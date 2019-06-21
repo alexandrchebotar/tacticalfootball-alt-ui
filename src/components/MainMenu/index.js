@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   Menu,
@@ -8,6 +9,7 @@ import {
   Icon,
   Button,
 } from "@blueprintjs/core";
+import SubMenu from './SubMenu';
 
 import './style.scss';
 
@@ -17,114 +19,204 @@ const mapStateToProps = ({competitions, forums}) => {
 
 class MainMenu extends Component {
   state = {
-    items: {
-      squad: {
-        'senior players': ['#', false, 'people'],
-        training: ['#', false, 'walk'],
-        prospects: ['#', false, 'new-person'],
-        statistics: ['#', false, 'timeline-bar-chart'],
-        tactics: ['#', false, 'layout-group-by'],
+    items: [
+      {
+        id: 'squad',
+        subMenu: [
+          {id: 'players', icon: 'people'},
+          {id: 'training', icon: 'walk'},
+          {id: 'prospects', icon: 'new-person'},
+          {id: 'statistics', icon: 'timeline-bar-chart'},
+          {id: 'tactics', icon: 'layout-group-by'},
+        ],
       },
-      office: {
-        news: ['#', true, 'feed'],
-        calendar: ['#', false, 'calendar'],
-        transfers: ['#', false, 'shopping-cart'],
-        finances: ['#', false, 'dollar'],
-        trophies: ['#', false, 'glass'],
-        scouting: ['#', false, 'new-person'],
+      {
+        id: 'office',
+        alert: true,
+        subMenu: [
+          {id: 'news', icon: 'feed', alert: true},
+          {id: 'calendar', icon: 'calendar'},
+          {id: 'transfers', icon: 'shopping-cart'},
+          {id: 'finances', icon: 'dollar'},
+          {id: 'trophies', icon: 'glass'},
+          {id: 'scouting', icon: 'new-person'},
+        ],
       },
-      competitions: this.props.competitions,
-      forum: this.props.forums,
-      help: {
-        manual: ['', null, null, '_blank'],
-        'origin UI tours': {
-          'club page': ['', null, null, '_blank'],
-          'player page': ['', null, null, '_blank']
-        }
+      {
+        id: 'competitions',
+        subMenu: [
+          {
+            id: 'leagues',
+            subMenu: [
+              {id: 'SuperLeague'},
+              {
+                id: 'Premiership',
+                subMenu: [
+                  {id: 'PremiershipA'},
+                  {id: 'PremiershipB'},
+                ],
+              },
+              {
+                id: 'Division1',
+                subMenu: [
+                  {id: 'Division1A'},
+                  {id: 'Division1B'},
+                  {id: 'Division1C'},
+                  {id: 'Division1D'},
+                ],
+              },
+              {
+                id: 'Division2',
+                subMenu: [
+                  {
+                    id: 'Division2fromAtoB',
+                    subMenu: [
+                      {id: 'Division2A'},
+                      {id: 'Division2B'},
+                    ],
+                  },
+                  {
+                    id: 'Division2fromCtoD',
+                    subMenu: [
+                      {id: 'Division2C'},
+                      {id: 'Division2D'},
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: 'cups',
+            subMenu: [
+              {id: 'InternationalCup'},
+              {id: 'ShadowCup'},
+            ],
+          },
+          {
+            id: 'nationat',
+            subMenu: [
+              {id: 'WorldCup'},
+              {id: 'WorldLeague'},
+            ],
+          },
+        ],
       },
-      settings: {'alternate UI': '', user: '', club: ''},
-    },
+      {
+        id: 'forum',
+        alert: true,
+        subMenu: [
+          {
+            id: 'gameNews',
+            href: 'https://tacticalfootball.com/forums/5/overview',
+            alert: false,
+          },
+          {
+            id: 'general',
+            href: 'https://tacticalfootball.com/forums/1/overview',
+            alert: true,
+          },
+          {
+            id: 'national',
+            href: 'https://tacticalfootball.com/forums/8/overview',
+            alert: true,
+          },
+        ],
+
+      },
+      {
+        id: 'help',
+        subMenu: [
+          {
+            id: 'gameManual',
+            href: 'https://tacticalfootball.com/rules/0',
+          },
+          {
+            id: 'originalUITours',
+            subMenu: [
+              {
+                id: 'clubPage',
+                href: 'https://tacticalfootball.com/tours/1?tour_id=club_overview',
+              },
+              {
+                id: 'playerPage',
+                href: 'https://tacticalfootball.com/tours/1?tour_id=player_overview',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'settings',
+        subMenu: [
+          {id: 'alternateUI'},
+          {id: 'user'},
+          {id: 'club'},
+        ],
+      },
+    ],
+    activeMenuId: null,
+  };
+
+  closeMenu = (id) => {
+    if (this.state.activeMenuId === id) {
+      this.setState({activeMenuId: null});
+    }
   };
 
   getMainMenuItems = () => {
-    return Object.entries(this.state.items).map(([name, items]) => {
-      const warning = Object.values(items).some(item => Array.isArray(item) && item[1]);
-      const icon = name === 'competitions' ?
-        'glass' :
-        name === 'forum' ?
-          'comment':
-          name === 'help' ?
-            'help' :
-            name === 'settings' ?
-            'cog' :
-            null;
+    return this.state.items.map(({id, icon, alert, subMenu}) => {
+      const categoryIcon = icon ?
+        icon :
+        (id === 'competitions') ?
+          'glass' :
+          (id === 'forum') ?
+            'comment':
+            (id === 'help') ?
+              'help' :
+              (id === 'settings') ?
+                'cog' :
+                'dot';
       return (
         <Popover
-          key={name}
+          key={id}
           content={
             <Menu className="main-menu-submenu">
-              {this.getSubmenu({name, items, icon})}
-              {warning && name === 'forum' &&
+              <SubMenu id={id} categoryIcon={categoryIcon} subMenu={subMenu} handleItemClick={() => this.closeMenu(id)} />
+              {alert && id === 'forum' &&
                 <Fragment>
                   <MenuDivider />
-                  <MenuItem text="mark all read" labelElement={alert && <Icon icon="eye-on" />} />
+                  <MenuItem text="mark all read" labelElement={<Icon icon="eye-on" />} />
                 </Fragment>
               }
             </Menu>
-          } 
+          }
           position="right-top"
           interactionKind="hover"
           minimal
           autoFocus={false}
           popoverClassName="main-menu-submenu"
+          isOpen={this.state.activeMenuId === id}
+          onInteraction={(state)=>{
+            if (state) {
+              this.setState({activeMenuId: id});
+            } else {
+              this.closeMenu(id);
+            }
+          }}
         >
-          <Button className="main-menu-item">
-            <svg className={warning ? 'main-menu-icon warning' : 'main-menu-icon'}>
-              <use xlinkHref={`/images/icons.svg#${name}`}></use>
-            </svg>
+          <Button
+            className={'main-menu-item'}
+          >
+            <Link to={`/${id}`} onClick={() => this.closeMenu(id)}>
+              <svg className={alert ? 'main-menu-icon warning' : 'main-menu-icon'}>
+                <use xlinkHref={`/images/icons.svg#${id}`}></use>
+              </svg>
+            </Link>
           </Button>
         </Popover>
       );
     });
-    
-  };
-
-  getSubmenu({name, items, icon}) {
-    const submenuItems = Object.entries(items).map(([name, value]) => {
-      return this.getSubmenuItem({name, value, icon});
-    });
-    return (
-      <Fragment>
-        <MenuDivider title={name} />
-        {submenuItems}
-      </Fragment>
-    );
-  };
-
-  getSubmenuItem({name, value, icon}) {
-    if (value.substr) {
-      // string to link
-      return <MenuItem text={name} href={value} key={name} icon={icon || "dot"} />;
-    } else if (Array.isArray(value)) {
-      // array to link with additional info
-      const [href, alert, customIcon, target] = value;
-      return (
-        <MenuItem
-          text={name}
-          href={href}
-          target={target}
-          key={name}
-          icon={<Icon icon={customIcon || icon || "dot"} intent={alert ? "warning" : null} />}
-          labelElement={target ? <Icon icon="share" /> : null}
-        />
-      );
-    }
-    // object to submenu
-    return (
-      <MenuItem text={name} key={name} icon={icon || "dot"}>
-        {this.getSubmenu({name, items: value, icon})}
-      </MenuItem>
-    );
   };
 
   render() {

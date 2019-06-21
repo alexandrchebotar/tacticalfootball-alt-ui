@@ -52,7 +52,7 @@ const defaultState = {
   },
   user: {
     id: 409,
-    name: 'ArmagedOFF',
+    name: 'UserName',
     clubs: [
       {name: 'SKIF', id: 225, news: true},
       {name: 'England', id: 102, news: false}, 

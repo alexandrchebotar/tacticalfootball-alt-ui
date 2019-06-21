@@ -182,7 +182,7 @@ class MainMenu extends Component {
           key={id}
           content={
             <Menu className="main-menu-submenu">
-              <SubMenu id={id} categoryIcon={categoryIcon} subMenu={subMenu} />
+              <SubMenu id={id} categoryIcon={categoryIcon} subMenu={subMenu} handleItemClick={() => this.closeMenu(id)} />
               {alert && id === 'forum' &&
                 <Fragment>
                   <MenuDivider />

@@ -2,11 +2,11 @@ import React from 'react';
 
 // import './App.css';
 
-function App() {
+function Footer() {
   return (
     <div className="footer">
     </div>
   );
 }
 
-export default App;
+export default Footer;

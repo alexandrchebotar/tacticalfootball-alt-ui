@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {
   Menu,
@@ -7,6 +8,7 @@ import {
   Popover,
   Icon,
   Button,
+  Classes,
 } from "@blueprintjs/core";
 
 import './style.scss';
@@ -44,6 +46,7 @@ class MainMenu extends Component {
       },
       settings: {'alternate UI': '', user: '', club: ''},
     },
+    activeMenu: null,
   };
 
   getMainMenuItems = () => {
@@ -77,11 +80,15 @@ class MainMenu extends Component {
           minimal
           autoFocus={false}
           popoverClassName="main-menu-submenu"
+          isOpen={this.state.activeMenu === name}
+          onInteraction={(state)=>{if (state) {this.setState({activeMenu: name})}}}
         >
-          <Button className="main-menu-item">
-            <svg className={warning ? 'main-menu-icon warning' : 'main-menu-icon'}>
-              <use xlinkHref={`images/icons.svg#${name}`}></use>
-            </svg>
+          <Button className={'main-menu-item'} onClick={() => {this.setState({activeMenu: null})}} >
+            <Link to={`/${name}`}>
+              <svg className={warning ? 'main-menu-icon warning' : 'main-menu-icon'}>
+                <use xlinkHref={`/images/icons.svg#${name}`}></use>
+              </svg>
+            </Link>
           </Button>
         </Popover>
       );

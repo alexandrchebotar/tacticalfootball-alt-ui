@@ -81,9 +81,18 @@ class MainMenu extends Component {
           autoFocus={false}
           popoverClassName="main-menu-submenu"
           isOpen={this.state.activeMenu === name}
-          onInteraction={(state)=>{if (state) {this.setState({activeMenu: name})}}}
+          onInteraction={(state)=>{
+            if (state) {
+              this.setState({activeMenu: name});
+            } else {
+              this.setState({activeMenu: null});
+            }
+          }}
         >
-          <Button className={'main-menu-item'} onClick={() => {this.setState({activeMenu: null})}} >
+          <Button
+            className={'main-menu-item'}
+            onClick={() => {this.setState({activeMenu: null})}}
+          >
             <Link to={`/${name}`}>
               <svg className={warning ? 'main-menu-icon warning' : 'main-menu-icon'}>
                 <use xlinkHref={`/images/icons.svg#${name}`}></use>

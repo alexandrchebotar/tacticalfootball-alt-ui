@@ -11,9 +11,7 @@ import './style.scss';
 const PageMenu = ({pageName, results, handleTabChange, activeTabId}) => {
   return (
     <div className="header">
-      <Navbar 
-      // className="bp3-dark"
-      >
+      <Navbar>
         <Navbar.Group align="left">
           <Navbar.Heading>{pageName}</Navbar.Heading>
         </Navbar.Group>
@@ -25,7 +23,7 @@ const PageMenu = ({pageName, results, handleTabChange, activeTabId}) => {
             onChange={handleTabChange}
           >
             <Tab id="players" title="Senior Players" />
-            <Tab id="traning" title="Traning" />
+            <Tab id="training" title="Training" />
             <Tab id="tactics" title="Tactics" />
           </Tabs>
           {results &&

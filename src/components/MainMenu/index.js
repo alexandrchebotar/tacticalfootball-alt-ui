@@ -9,56 +9,12 @@ import {
   Icon,
   Button,
 } from "@blueprintjs/core";
+import SubMenu from './SubMenu';
 
 import './style.scss';
 
 const mapStateToProps = ({competitions, forums}) => {
   return {competitions, forums};
-};
-
-const SubMenu = ({id, path, categoryIcon, subMenu}) => {
-  const submenuItems = subMenu.map((item) => {
-    return <SubmenuItem {...item} key={item.id} categoryIcon={categoryIcon} path={path ? `${path}/${id}` : `/${id}`}  />;
-  });
-  return (
-    <Fragment>
-      <MenuDivider title={id} />
-      {submenuItems}
-    </Fragment>
-  );
-};
-
-const SubmenuItem = ({id, href, path, icon, categoryIcon, alert, subMenu}) => {
-  const itemIcon = icon || categoryIcon;
-  if (subMenu) {
-    return (
-      <MenuItem text={id} icon={itemIcon}>
-        <SubMenu id={id} path={path} categoryIcon={categoryIcon} subMenu={subMenu} />
-      </MenuItem>
-    );
-  } else {
-    return (
-      <Fragment>
-        {href ?
-          <MenuItem
-            text={id}
-            href={href}
-            target="_blank"
-            icon={<Icon icon={itemIcon} intent={alert ? "warning" : null} />}
-            labelElement={<Icon icon="share" />}
-          />
-        :
-          <Link to={`${path}/${id}`}>
-            <MenuItem
-              tagName="span"
-              text={id}
-              icon={<Icon icon={itemIcon} intent={alert ? "warning" : null} />}
-            />
-          </Link>
-        }
-      </Fragment>
-    );
-  };
 };
 
 class MainMenu extends Component {
@@ -199,18 +155,17 @@ class MainMenu extends Component {
         ],
       },
     ],
-    activeMenu: null,
+    activeMenuId: null,
   };
 
   closeMenu = (id) => {
-    if (this.state.activeMenu === id) {
-      this.setState({activeMenu: null});
+    if (this.state.activeMenuId === id) {
+      this.setState({activeMenuId: null});
     }
   };
 
   getMainMenuItems = () => {
     return this.state.items.map(({id, icon, alert, subMenu}) => {
-      // const alert = Object.values(items).some(item => Array.isArray(item) && item[1]);
       const categoryIcon = icon ?
         icon :
         (id === 'competitions') ?

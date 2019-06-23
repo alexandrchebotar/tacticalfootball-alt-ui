@@ -1,0 +1,95 @@
+@import "../../common/variables.scss";
+
+.tabulator-cell {
+  font-weight: 600;
+
+  .denom1 {
+    color: rgb(216, 102, 102);
+  }
+  .denom2 {
+    color: rgb(241, 150, 76);
+  }
+  .denom3 {
+    color: rgb(212, 189, 58);
+  }
+  .denom4 {
+    color: rgb(144, 177, 82);
+  }
+  .denom5 {
+    color: rgb(40, 165, 78);
+  }
+  .denom6 {
+    color: rgb(74, 163, 204);
+  }
+  .denom7 {
+    color: rgb(122, 107, 206);
+  }
+  .denom8 {
+    color: rgb(188, 105, 226);
+  }
+  .denom9 {
+    color: violet;
+  }
+  .arrow-up,
+  .arrow-down {
+    display: inline-block;
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+  }
+  .arrow-down {
+    border-top: 6px solid $red3;
+  }
+  .arrow-up {
+    border-bottom: 6px solid $green3;
+  }
+}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-arrow {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: none;
+  border-top: none;
+  top: 11px;
+  right: 3px;
+}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=desc] .tabulator-col-content .tabulator-arrow {
+  border-top: 4px solid $gray1;
+  border-bottom: none;
+}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=asc] .tabulator-col-content .tabulator-arrow {
+  border-top: none;
+  border-bottom: 4px solid $gray1;
+}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=none] .tabulator-col-content .tabulator-arrow {
+  border-top: none;
+  border-bottom: none;
+}
+
+.tabulator {
+  background-color: transparent;
+}
+
+.tabulator .tabulator-tableHolder .tabulator-table {
+  background-color: transparent;
+}
+
+.tabulator-row {
+  background-color: rgba($light-gray5, 0.3);
+}
+
+.tabulator-row.tabulator-row-even {
+  background-color: rgba($gray3, 0.1);
+}
+
+.tabulator-row.tabulator-selectable:hover {
+  background-color: rgba($orange5, 0.3);
+}
+
+.tabulator-row.tabulator-selected {
+  background-color: rgba($forest5, 0.3);
+}

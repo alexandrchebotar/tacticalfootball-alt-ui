@@ -60,7 +60,6 @@ class Content extends Component {
     const {denomFormatter} = this;
     return (
       <div className="content">
-        {this.props.activeTabId} => {this.state.activeTabId}
         <Tabs
             animate
             id="playersTable"

@@ -1,1 +1,24 @@
 @import "../../common/variables.scss";
+
+.content {
+  .bp3-tab-panel {
+    margin-top: 5px;
+  }
+
+  .bp3-tab {
+    color: $gray1;
+    font-weight: 600;
+
+    &[aria-selected="true"], &:not([aria-disabled="true"]):hover, &:focus {
+      color: $gray1;
+      text-shadow: $text-shadow;
+      outline: none;
+    }
+  }
+
+  .bp3-tab-indicator-wrapper {
+    .bp3-tab-indicator {
+      background-color: $gray1;
+    }
+  }
+}

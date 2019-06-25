@@ -13,8 +13,12 @@ class PlayersTable extends Component {
       (filter === 'midlefielders') ?
         this.props.data.filter(({position}) => ['LW','OM','RW','LM','CM','RM','LWB','DM','RWB'].includes(position)) :
         (filter === 'defenders') ?
-        this.props.data.filter(({position}) => position === 'CB') :
-          this.props.data;
+          this.props.data.filter(({position}) => position === 'CB') :
+          (filter === 'outfielders') ?
+            this.props.data.filter(({position}) => position !== 'GK') :
+            (filter === 'goalkeepers') ?
+              this.props.data.filter(({position}) => position === 'GK') :
+                this.props.data;
   };
 
   denomFormatter(cell, {type, value = cell.getValue()}) {
@@ -117,50 +121,71 @@ class PlayersTable extends Component {
     return `<span class="${className}">${value}${arrow}</span>`;
   };
 
-  // experianceFormatter(cell) {
-  //   const row = cell.getData();
-  //   let {experience, experience_team: teamExperience} = row;
-  //   experience = this.denomFormatter(null, {value: experience});
-  //   teamExperience = this.denomFormatter(null, {value: teamExperience});
-  //   return `${teamExperience} / ${experience}`;
-  // };
+  nationFormatter(cell) {
+    const {nation_id, url} = cell.getValue();
+    return `<a href="https://tacticalfootball.com/nations/${nation_id}/clubs" target="_blank"><img class="flag" src="https://tacticalfootball.com/${url}"></a>`;
+  };
 
   render() {
-    const {denomFormatter, props: {filter}} = this;
+    const {nationFormatter, denomFormatter, props: {filter}} = this;
+    const baseColumnSettings = {
+      align: 'center',
+      headerSortStartingDir: 'desc',
+    }
+    const skillsColumnSettings = {
+      formatter: denomFormatter,
+      width: 35,
+    }
+    const commonColumns = [
+      {rowHandle:true, formatter: 'handle', headerSort:false, frozen:true, width:30},
+      {title: 'N', headerTooltip: 'Nation',field: 'country_info', formatter: nationFormatter, tooltip: cell => cell.getValue().title, headerSort: false, width: 33},
+      {title: 'Name', headerTooltip: 'Name', field: 'name', align: 'left', headerSortStartingDir: 'asc', widthGrow: 10},
+      {title: 'Age', headerTooltip: 'Age', field: 'age', formatter: denomFormatter, formatterParams: {type: 'age'}, width: 43},
+      {title: 'Pos', headerTooltip: 'Position', field: 'position', width: 40},
+      {title: 'Fit', headerTooltip: 'Fitness', field: 'skills.Fit', formatter: denomFormatter, width: 35},
+      {title: 'Ex', headerTooltip: 'Experiance', field: 'experience', formatter: denomFormatter, width: 35},
+      {title: 'Tx', headerTooltip: 'Team Experiance', field: 'experience_team', formatter: denomFormatter, width: 35},
+      {title: 'Form', headerTooltip: 'Form', field: 'form_mid', align: 'left', formatter: denomFormatter, formatterParams: {type: 'form'}, width: 65},
+      {title: 'R', headerTooltip: 'Rating', field: 'current_rating', formatter: denomFormatter, formatterParams: {type: 'rating'}, width: 28},
+      {title: 'P', headerTooltip: 'Potential', field: 'rating', formatter: denomFormatter, formatterParams: {type: 'rating'}, width: 28},
+    ];
+    const outfieldersSkills = [
+      {title: 'SC', headerTooltip: 'Score', field: 'skills.SC'},
+      {title: 'OP', headerTooltip: 'Offencive Position', field: 'skills.OP'},
+      {title: 'BC', headerTooltip: 'Ball Control', field: 'skills.BC'},
+      {title: 'PA', headerTooltip: 'Passes', field: 'skills.PA'},
+      {title: 'AE', headerTooltip: 'Aerial', field: 'skills.AE'},
+      {title: 'CO', headerTooltip: 'Constitution', field: 'skills.CO'},
+      {title: 'TA', headerTooltip: 'Tackles', field: 'skills.TA'},
+      {title: 'DP', headerTooltip: 'Defence Position', field: 'skills.DP'},
+    ];
+    const goalkeepersSkills = [
+      {title: 'RE', headerTooltip: 'Reflexes', field: 'skills.RE'},
+      {title: 'GP', headerTooltip: 'Offencive Position', field: 'skills.GP'},
+      {title: 'IN', headerTooltip: 'Ball Control', field: 'skills.IN'},
+      {title: 'CT', headerTooltip: 'Passes', field: 'skills.CT'},
+      {title: 'OR', headerTooltip: 'Aerial', field: 'skills.OR'},
+      {title: 'CO', headerTooltip: 'Constitution', field: 'skills.CO'},
+    ];
+    const skillsColumns = filter === 'goalkeepers' ? goalkeepersSkills : outfieldersSkills;
+    const columns = [
+      ...commonColumns,
+      ...skillsColumns.map(columnSettings => ({...skillsColumnSettings, ...columnSettings}))
+    ].map(columnSettings => ({...baseColumnSettings, ...columnSettings}));
+
     return (
       <ReactTabulator
-        columns={[
-          {rowHandle:true, formatter:"handle", headerSort:false, resizable:false, frozen:true, width:30},
-          {field:"flag", headerSort: false, resizable:false, formatter:"image", formatterParams:{width:"24px",height:"16px"}, tooltip: (cell) => cell.getData().nation, width: 33},
-          {title:"Name", headerTooltip: true, field:"name", widthGrow:10},
-          {title:"Age", headerTooltip: "Age", field:"age", formatter:denomFormatter, formatterParams:{type:"age"}, width: 43},
-          {title:"Pos", headerTooltip:"Position", field:"position", width: 45},
-          {title:"Fit", headerTooltip:"Fitness", field:"Fit", formatter:denomFormatter, headerSortStartingDir:"desc",  width: 35},
-          {title:"Ex", headerTooltip:"Experiance", field:"experience", formatter:denomFormatter, headerSortStartingDir:"desc",  width: 35},
-          {title:"Tx", headerTooltip:"Team Experiance", field:"experience_team", formatter:denomFormatter, headerSortStartingDir:"desc",  width: 35},
-          {title:"Form", headerTooltip:"Form", field:"form", formatter:denomFormatter, headerSortStartingDir:"desc",  formatterParams:{type:"form"}, width: 65},
-          {title:"R", headerTooltip:"Rating", field:"rating", formatter:denomFormatter, headerSortStartingDir:"desc",  formatterParams:{type:"rating"}, width:28},
-          {title:"P", headerTooltip:"Potential", field:"potential", formatter:denomFormatter, headerSortStartingDir:"desc",  formatterParams:{type:"rating"}, width:28},
-          {title:"SC", headerTooltip:"Score", field:"SC", formatter:denomFormatter, headerSortStartingDir:"desc",  width: 35},
-          {title:"OP", headerTooltip:"Offencive Position", field:"OP", formatter:denomFormatter, headerSortStartingDir:"desc",  width: 35},
-          {title:"BC", headerTooltip:"Ball Control", field:"BC", formatter:denomFormatter, headerSortStartingDir:"desc",  width: 35},
-          {title:"PA", headerTooltip:"Passes", field:"PA", formatter:denomFormatter, headerSortStartingDir:"desc",  width: 35},
-          {title:"AE", headerTooltip:"Aerial", field:"AE", formatter:denomFormatter, headerSortStartingDir:"desc",  width: 35},
-          {title:"CO", headerTooltip:"Constitution", field:"CO", formatter:denomFormatter, headerSortStartingDir:"desc",  width: 35},
-          {title:"TA", headerTooltip:"Tackles", field:"TA", formatter:denomFormatter, headerSortStartingDir:"desc",  width: 35, align: "center"},
-          {title:"DP", headerTooltip:"Defence Position" ,field:"DP", formatter:denomFormatter, headerSortStartingDir:"desc", width: 35, align: "right"},
-        ]}
+        columns={columns}
         data={this.getfilteredPlayers(filter)}
         options={{
-          // height:  500,
           layout: "fitColumns",
           movableRows: true,
           columnMinWidth: 25,
           pagination:"local",
           paginationSize: 15,
           paginationSizeSelector:[5, 10, 15, 20, 25, 50, 100],
-          // sortOrderReverse: true,
           selectable: true,
+          resizableColumns: false,
         }}
       />
     );

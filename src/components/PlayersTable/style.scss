@@ -100,6 +100,10 @@
   color: $dark-gray5;
   background-color: rgba($gray3, 0.1);
 }
+.tabulator .tabulator-footer {
+  color: $dark-gray5;
+  background-color: rgba($gray3, 0.1);
+}
 
 .tabulator .tabulator-header .tabulator-col {
   background-color: rgba($gray3, 0.1);;
@@ -111,4 +115,9 @@
 
 .tabulator .tabulator-header .tabulator-col.tabulator-sortable .tabulator-col-title {
   padding-right: 10px;
+}
+
+.flag {
+  width: 24px;
+  height: 16px;
 }

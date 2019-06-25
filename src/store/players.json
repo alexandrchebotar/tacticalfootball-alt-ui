@@ -321,7 +321,7 @@
 }, {
   "id": 272130,
   "position": "OM",
-  "name": "Jónás Lajos",
+  "name": "Jónás Lajos and my looooooong name",
   "is_gk": false,
   "skills": {
     "AE": 33,
@@ -416,18 +416,18 @@
     "width": 50,
     "height": "auto"
   },
-  "card_nation": null,
-  "card": null,
+  "card_nation": true,
+  "card": true,
   "current_team_player": null,
   "deadline": null,
-  "auction_date": null,
+  "auction_date": true,
   "bid_count": null,
   "bidders": null,
   "watchers": null,
   "auction_value": null,
-  "stabilising": false,
-  "training_form": false,
-  "injury": null
+  "stabilising": true,
+  "training_form": true,
+  "injury": true
 }, {
   "id": 294959,
   "position": "RWB",
@@ -537,7 +537,7 @@
   "auction_value": null,
   "stabilising": false,
   "training_form": false,
-  "injury": null
+  "injury": true
 }, {
   "id": 344989,
   "position": "RW",

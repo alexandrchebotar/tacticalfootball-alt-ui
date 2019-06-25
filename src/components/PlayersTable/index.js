@@ -121,13 +121,47 @@ class PlayersTable extends Component {
     return `<span class="${className}">${value}${arrow}</span>`;
   };
 
+  statusFormatter(cell) {
+    const value = cell.getValue();
+    const {
+      national_club_id,
+      national_prospect_id,
+      card_nation,
+      card,
+      auction_date,
+      stabilising,
+      training_form,
+      injury
+    } = cell.getData();
+    const statuses = [
+      {status: 'national-player', value: national_club_id},
+      {status: 'national-prospect', value: national_club_id ? null : national_prospect_id},
+      {status: 'card-nation', value: card_nation},
+      {status: 'card', value: card},
+      {status: 'auction', value: auction_date},
+      {status: 'stabilising', value: stabilising},
+      {status: 'trainin-form', value: training_form},
+      {status: 'injury', value: injury},
+    ];
+    const statusIcons = statuses.map(({status, value}) => value ? 
+    `<svg class="status-icon">
+      <use xlink:href="/images/status.svg#${status}"></use>
+    </svg>` :
+    '').join('');
+    return `
+      <div class="name-container">
+        <span class="player-name">${value}</span>
+        <div class="status-container">${statusIcons}</div>
+      </div>`;
+  };
+
   nationFormatter(cell) {
     const {nation_id, url} = cell.getData().country_info;
     return `<a href="https://tacticalfootball.com/nations/${nation_id}/clubs" target="_blank"><img class="flag" src="https://tacticalfootball.com/${url}"></a>`;
   };
 
   render() {
-    const {nationFormatter, denomFormatter, props: {filter}} = this;
+    const {statusFormatter, nationFormatter, denomFormatter, props: {filter}} = this;
     const baseColumnSettings = {
       align: 'center',
       headerSortStartingDir: 'desc',
@@ -138,8 +172,8 @@ class PlayersTable extends Component {
     }
     const commonColumns = [
       {rowHandle:true, formatter: 'handle', headerSort:false, frozen:true, width:30},
-      {title: 'N', headerTooltip: 'Nation',field: 'country_info.title', formatter: nationFormatter, tooltip: true, width: 33},
-      {title: 'Name', headerTooltip: 'Name', field: 'name', align: 'left', headerSortStartingDir: 'asc', widthGrow: 10},
+      {title: 'C', headerTooltip: 'Country',field: 'country_info.title', formatter: nationFormatter, tooltip: true, width: 33},
+      {title: 'Name', headerTooltip: 'Name', field: 'name', formatter: statusFormatter, tooltip: true, align: 'left', headerSortStartingDir: 'asc', widthGrow: 10},
       {title: 'Age', headerTooltip: 'Age', field: 'age', formatter: denomFormatter, formatterParams: {type: 'age'}, width: 43},
       {title: 'Pos', headerTooltip: 'Position', field: 'position', width: 40},
       {title: 'Fit', headerTooltip: 'Fitness', field: 'skills.Fit', formatter: denomFormatter, width: 35},
@@ -148,6 +182,7 @@ class PlayersTable extends Component {
       {title: 'Form', headerTooltip: 'Form', field: 'form_mid', align: 'left', formatter: denomFormatter, formatterParams: {type: 'form'}, width: 65},
       {title: 'R', headerTooltip: 'Rating', field: 'current_rating', formatter: denomFormatter, formatterParams: {type: 'rating'}, width: 28},
       {title: 'P', headerTooltip: 'Potential', field: 'rating', formatter: denomFormatter, formatterParams: {type: 'rating'}, width: 28},
+      {title: 'F', headerTooltip: 'Foot', field: 'foot', width: 28},
     ];
     const outfieldersSkills = [
       {title: 'SC', headerTooltip: 'Score', field: 'skills.SC'},

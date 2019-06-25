@@ -122,7 +122,7 @@ class PlayersTable extends Component {
   };
 
   nationFormatter(cell) {
-    const {nation_id, url} = cell.getValue();
+    const {nation_id, url} = cell.getData().country_info;
     return `<a href="https://tacticalfootball.com/nations/${nation_id}/clubs" target="_blank"><img class="flag" src="https://tacticalfootball.com/${url}"></a>`;
   };
 
@@ -138,7 +138,7 @@ class PlayersTable extends Component {
     }
     const commonColumns = [
       {rowHandle:true, formatter: 'handle', headerSort:false, frozen:true, width:30},
-      {title: 'N', headerTooltip: 'Nation',field: 'country_info', formatter: nationFormatter, tooltip: cell => cell.getValue().title, headerSort: false, width: 33},
+      {title: 'N', headerTooltip: 'Nation',field: 'country_info.title', formatter: nationFormatter, tooltip: true, width: 33},
       {title: 'Name', headerTooltip: 'Name', field: 'name', align: 'left', headerSortStartingDir: 'asc', widthGrow: 10},
       {title: 'Age', headerTooltip: 'Age', field: 'age', formatter: denomFormatter, formatterParams: {type: 'age'}, width: 43},
       {title: 'Pos', headerTooltip: 'Position', field: 'position', width: 40},

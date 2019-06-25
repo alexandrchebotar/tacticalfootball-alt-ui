@@ -1,0 +1,150 @@
+@import "../../common/variables.scss";
+
+.tabulator-cell {
+  font-weight: 600;
+
+  .denom1 {
+    color: rgb(216, 102, 102);
+  }
+  .denom2 {
+    color: rgb(241, 150, 76);
+  }
+  .denom3 {
+    color: rgb(207, 180, 25);
+  }
+  .denom4 {
+    color: rgb(144, 177, 82);
+  }
+  .denom5 {
+    color: rgb(40, 165, 78);
+  }
+  .denom6 {
+    color: rgb(66, 167, 214);
+  }
+  .denom7 {
+    color: rgb(93, 113, 206);
+  }
+  .denom8 {
+    color: rgb(175, 87, 216);
+  }
+  .denom9 {
+    color: violet;
+  }
+  .arrow-up,
+  .arrow-down {
+    display: inline-block;
+    position: absolute;
+    top: 11px;
+    right: 8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+  .arrow-down {
+    border-top: 7px solid $red3;
+  }
+  .arrow-up {
+    border-bottom: 7px solid $green3;
+  }
+}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-arrow {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: none;
+  border-top: none;
+  top: 11px;
+  right: 3px;
+}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=desc] .tabulator-col-content .tabulator-arrow {
+  border-top: 4px solid $gray1;
+  border-bottom: none;
+}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=asc] .tabulator-col-content .tabulator-arrow {
+  border-top: none;
+  border-bottom: 4px solid $gray1;
+}
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=none] .tabulator-col-content .tabulator-arrow {
+  border-top: none;
+  border-bottom: none;
+}
+
+.tabulator {
+  background-color: transparent;
+  font-size: 0.9em;
+}
+
+.tabulator .tabulator-tableHolder .tabulator-table {
+  background-color: transparent;
+  color: $dark-gray5;
+}
+
+.tabulator-row {
+  background-color: rgba($light-gray5, 0.3);
+
+  .tabulator-cell:last-child {
+    border-right: none;
+  }
+}
+
+.tabulator-row.tabulator-row-even {
+  background-color: rgba($gray3, 0.1);
+}
+
+.tabulator-row.tabulator-selectable:hover {
+  background-color: rgba($orange5, 0.3);
+}
+
+.tabulator-row.tabulator-selected {
+  background-color: rgba($forest5, 0.3);
+}
+
+.tabulator .tabulator-header {
+  color: $dark-gray5;
+  background-color: rgba($gray3, 0.1);
+}
+.tabulator .tabulator-footer {
+  color: $dark-gray5;
+  background-color: rgba($gray3, 0.1);
+}
+
+.tabulator .tabulator-header .tabulator-col {
+  background-color: rgba($gray3, 0.1);
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title {
+  text-overflow: clip;
+}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable .tabulator-col-title {
+  padding-right: 10px;
+}
+
+.flag {
+  width: 24px;
+  height: 16px;
+  position: relative;
+  top: 1px;
+}
+
+.status-container {
+  .status-icon {
+    margin-right: 3px; 
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.player-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.name-container {
+  display: flex;
+  justify-content: space-between;
+}

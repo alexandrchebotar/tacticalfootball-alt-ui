@@ -82,6 +82,10 @@
 
 .tabulator-row {
   background-color: rgba($light-gray5, 0.3);
+
+  .tabulator-cell:last-child {
+    border-right: none;
+  }
 }
 
 .tabulator-row.tabulator-row-even {
@@ -106,7 +110,10 @@
 }
 
 .tabulator .tabulator-header .tabulator-col {
-  background-color: rgba($gray3, 0.1);;
+  background-color: rgba($gray3, 0.1);
+  &:last-child {
+    border-right: none;
+  }
 }
 
 .tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-col-title {

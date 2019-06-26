@@ -191,9 +191,9 @@ class PlayersTable extends Component {
     }
     const commonColumns = [
       {rowHandle:true, formatter: 'handle', headerSort:false, frozen:true, width:30},
-      {title: 'C', headerTooltip: 'Country',field: 'country_info.title', formatter: nationFormatter, tooltip: true, width: 33},
+      {title: 'C', headerTooltip: 'Country',field: 'country_info.title', tooltip: true, formatter: nationFormatter, width: 33},
       {title: 'Name', headerTooltip: 'Name', field: 'name', formatter: statusFormatter, tooltip: true, align: 'left', headerSortStartingDir: 'asc', widthGrow: 10},
-      {title: 'Age', headerTooltip: 'Age', field: 'age', formatter: denomFormatter, formatterParams: {type: 'age'}, width: 43},
+      {title: 'Age', headerTooltip: 'Age', field: 'age', tooltip: cell => cell.getData().age_long, formatter: denomFormatter, formatterParams: {type: 'age'}, width: 43},
       {title: 'Pos', headerTooltip: 'Position', field: 'position', width: 40},
       {title: 'Fit', headerTooltip: 'Fitness', field: 'skills.Fit', formatter: denomFormatter, width: 35},
       {title: 'Ex', headerTooltip: 'Experiance', field: 'experience', formatter: denomFormatter, width: 35},

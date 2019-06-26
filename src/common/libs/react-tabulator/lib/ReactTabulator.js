@@ -101,11 +101,28 @@ var default_1 = /** @class */ (function (_super) {
     };
     // componentDidUpdate(prevProps, prevState)
     default_1.prototype.componentDidUpdate = function (prevProps, prevState) {
+        let sorters = this.table.getSorters().map(({field, dir}) => ({column: field, dir}));
         if (!Utils_1.isSameArray(this.state.columns, prevState.columns)) {
             this.table.setColumns(this.state.columns);
         }
         if (!Utils_1.isSameArray(this.state.data, prevState.data)) {
             this.table.setData(this.state.data);
+            this.table.setSort(sorters);
+        } else {
+            const prevColumns = Object.entries(prevState.columns);
+            const columns = Object.entries(this.state.columns);
+            if (sorters.some(({column}) => {
+                if (
+                    columns[column] === undefined ||
+                    JSON.stringify(columns[column].sorterParams) !== JSON.stringify(prevColumns[column].sorterParams) ||
+                    columns[column].sorter.toString() !== prevColumns[column].sorter.toString()
+                ) {
+                    return true;
+                }
+            })) {
+                sorters.filter(({column}) => columns[column]);
+                this.table.setSort(sorters);
+            }
         }
     };
     default_1.prototype.render = function () {

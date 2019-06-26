@@ -7,6 +7,16 @@ import 'react-tabulator/lib/css/tabulator.min.css';
 import './style.scss';
 
 class PlayersTable extends Component {
+  state = {
+    sorters: [{column: 'CO', dir: 'desc'}],
+  };
+
+  saveSortersToState = (sorters) => {
+    // return;
+    this.setState({sorters: sorters.map(({field, dir}) => ({column: field, dir}))});
+    return;
+
+  };
 
   getfilteredPlayers(filter) {
     return (filter === 'forwards') ?
@@ -171,7 +181,9 @@ class PlayersTable extends Component {
         data.potentials[skill] :
         (skillsMode === 'match') ?
           Math.round(data.skills_match.with_fitness[skill] * 10) / 10 :
-          {current: data.skills[skill], potential: data.potentials[skill]};
+          (skillsMode === 'combined') ?
+            {current: data.skills[skill], potential: data.potentials[skill]}:
+            null;
     const formatedValue = value.current ?
       `<span class="skill-current">${this.denomFormatter(null, {value: value.current})}</span>
       <span class="skill-potential">${this.denomFormatter(null, {value: value.potential})}</span>` :
@@ -179,14 +191,41 @@ class PlayersTable extends Component {
     return formatedValue;
   };
 
+  skillsSorter = (a, b, aRow, bRow, column, dir, sorterParams) => {
+    const {skillsMode} = this.props;
+    const {sortByPotential} = sorterParams;
+    const aData = aRow.getData();
+    const bData = bRow.getData();
+    const skill = column.getField();
+    const sortResult = (skillsMode === 'current' || (skillsMode === 'combined' && !sortByPotential)) ?
+      aData.skills[skill] - bData.skills[skill] :
+        (skillsMode === 'potential' || (skillsMode === 'combined' && sortByPotential)) ?
+        aData.potentials[skill] - bData.potentials[skill] :
+          (skillsMode === 'match') ?
+          aData.skills_match.with_fitness[skill] - bData.skills_match.with_fitness[skill] :
+            null;
+    return sortResult;
+
+  };
+
   render() {
-    const {skillsFormatter, statusFormatter, nationFormatter, denomFormatter, props: {filter, skillsMode}} = this;
+    const {
+      props: {filter, skillsMode, sortByPotential},
+      skillsSorter,
+      skillsFormatter,
+      statusFormatter,
+      nationFormatter,
+      denomFormatter,
+      saveSortersToState,
+    } = this;
     const baseColumnSettings = {
       align: 'center',
       headerSortStartingDir: 'desc',
     }
     const skillsColumnSettings = {
       formatter: skillsFormatter,
+      sorter: skillsSorter,
+      sorterParams: {sortByPotential},
       width: skillsMode === 'combined' || skillsMode === 'match' ? 45 : 35,
     }
     const commonColumns = [
@@ -232,14 +271,25 @@ class PlayersTable extends Component {
         columns={columns}
         data={this.getfilteredPlayers(filter)}
         options={{
-          layout: "fitColumns",
+          layout: 'fitColumns',
           movableRows: true,
           columnMinWidth: 25,
-          pagination:"local",
+          pagination: 'local',
           paginationSize: 15,
-          paginationSizeSelector:[5, 10, 15, 20, 25, 50, 100],
+          paginationSizeSelector: [5, 10, 15, 20, 25, 50, 100],
           selectable: true,
           resizableColumns: false,
+          persistenceMode: 'local',
+          // persistentLayout: true,
+          // persistentSort: true,
+          // dataSorting: function(sorters) {
+          //   // debugger;
+          //   sorters = sorters.map(({field, dir}) => ({column: field, dir}));
+          //   saveSortersToState(sorters);
+            // this.setSort(sorters);
+          // },
+          // initialSort: [{column: 'CO', dir: 'desc'}, {column: 'SC', dir: 'desc'}],
+          // initialSort: this.state.sorters,
         }}
       />
     );

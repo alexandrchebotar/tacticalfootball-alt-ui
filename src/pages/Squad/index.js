@@ -4,7 +4,8 @@ import PlayersTable from '../../components/PlayersTable';
 import {
   Tabs,
   Tab,
-  Switch,
+  Text,
+  HTMLSelect,
 } from "@blueprintjs/core";
 
 import players from '../../store/players.json';
@@ -22,13 +23,19 @@ const Squad = ({match}) => {
 class Content extends Component {
   state = {
     activeTabId: 'forvards',
+    skillsMode: 'combined',
   };
 
   handleTabChange = (id) => {
     this.setState({activeTabId: id});
   };
 
+  handleSkillsModeChange = (event) => {
+    this.setState({skillsMode: event.currentTarget.value});
+  };
+
   render() {
+    const {activeTabId, skillsMode} = this.state;
     const players = this.props.players
       .sort(({potential:A},{potential:B})=>B-A)
       .sort(({rating:A},{rating:B})=>B-A)
@@ -38,17 +45,43 @@ class Content extends Component {
         <Tabs
           animate
           id="playersTable"
-          selectedTabId={this.state.activeTabId}
+          selectedTabId={activeTabId}
           onChange={this.handleTabChange}
           renderActiveTabPanelOnly
         >
-          <Tab id="outfielders" title="All Outfielders" panel={<PlayersTable data={players} filter="outfielders" />} />
-          <Tab id="forvards" title="Forvards" panel={<PlayersTable data={players} filter="forwards" />} />
-          <Tab id="midlefielders" title="Midlefielders" panel={<PlayersTable data={players} filter="midlefielders" />} />
-          <Tab id="defenders" title="Defenders" panel={<PlayersTable data={players} filter="defenders" />} />
-          <Tab id="goalkeepers" title="Goalkeepers" panel={<PlayersTable data={players} filter="goalkeepers" />} />
+          <Tab
+            id="outfielders"
+            title="All Outfielders"
+            panel={<PlayersTable data={players} filter="outfielders" skillsMode={skillsMode} />}
+          />
+          <Tab
+            id="forvards"
+            title="Forvards"
+            panel={<PlayersTable data={players} filter="forwards" skillsMode={skillsMode} />}
+          />
+          <Tab
+            id="midlefielders"
+            title="Midlefielders"
+            panel={<PlayersTable data={players} filter="midlefielders" skillsMode={skillsMode} />}
+          />
+          <Tab
+            id="defenders"
+            title="Defenders"
+            panel={<PlayersTable data={players} filter="defenders" skillsMode={skillsMode} />}
+          />
+          <Tab
+            id="goalkeepers"
+            title="Goalkeepers"
+            panel={<PlayersTable data={players} filter="goalkeepers" skillsMode={skillsMode} />}
+          />
           <Tabs.Expander />
-          <Switch label="Sort by potentials" inline/>
+          <Text>Skills mode: </Text>
+          <HTMLSelect 
+            options={['current', 'potential', 'match', 'combined']}
+            value={skillsMode}
+            onChange={this.handleSkillsModeChange}
+            minimal
+          />
         </Tabs>
       </div> 
     );

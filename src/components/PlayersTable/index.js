@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { ReactTabulator } from 'react-tabulator';
+// import { ReactTabulator } from 'react-tabulator';
+import { ReactTabulator } from '../../common/libs/react-tabulator/lib';
 
 import 'react-tabulator/lib/styles.css';
 import 'react-tabulator/lib/css/tabulator.min.css';
@@ -160,15 +161,33 @@ class PlayersTable extends Component {
     return `<a href="https://tacticalfootball.com/nations/${nation_id}/clubs" target="_blank"><img class="flag" src="https://tacticalfootball.com/${url}"></a>`;
   };
 
+  skillsFormatter = (cell) => {
+    const {skillsMode} = this.props;
+    const data = cell.getData();
+    const skill = cell.getField();
+    const value = (skillsMode === 'current') ?
+      data.skills[skill] :
+      (skillsMode === 'potential') ?
+        data.potentials[skill] :
+        (skillsMode === 'match') ?
+          Math.round(data.skills_match.with_fitness[skill] * 10) / 10 :
+          {current: data.skills[skill], potential: data.potentials[skill]};
+    const formatedValue = value.current ?
+      `<span class="skill-current">${this.denomFormatter(null, {value: value.current})}</span>
+      <span class="skill-potential">${this.denomFormatter(null, {value: value.potential})}</span>` :
+      this.denomFormatter(null, {value});
+    return formatedValue;
+  };
+
   render() {
-    const {statusFormatter, nationFormatter, denomFormatter, props: {filter}} = this;
+    const {skillsFormatter, statusFormatter, nationFormatter, denomFormatter, props: {filter, skillsMode}} = this;
     const baseColumnSettings = {
       align: 'center',
       headerSortStartingDir: 'desc',
     }
     const skillsColumnSettings = {
-      formatter: denomFormatter,
-      width: 35,
+      formatter: skillsFormatter,
+      width: skillsMode === 'combined' || skillsMode === 'match' ? 45 : 35,
     }
     const commonColumns = [
       {rowHandle:true, formatter: 'handle', headerSort:false, frozen:true, width:30},
@@ -179,28 +198,28 @@ class PlayersTable extends Component {
       {title: 'Fit', headerTooltip: 'Fitness', field: 'skills.Fit', formatter: denomFormatter, width: 35},
       {title: 'Ex', headerTooltip: 'Experiance', field: 'experience', formatter: denomFormatter, width: 35},
       {title: 'Tx', headerTooltip: 'Team Experiance', field: 'experience_team', formatter: denomFormatter, width: 35},
-      {title: 'Form', headerTooltip: 'Form', field: 'form_mid', align: 'left', formatter: denomFormatter, formatterParams: {type: 'form'}, width: 65},
+      {title: 'Form', headerTooltip: 'Form', field: 'form_mid', align: 'left', formatter: denomFormatter, formatterParams: {type: 'form'}, width: 60},
       {title: 'R', headerTooltip: 'Rating', field: 'current_rating', formatter: denomFormatter, formatterParams: {type: 'rating'}, width: 28},
       {title: 'P', headerTooltip: 'Potential', field: 'rating', formatter: denomFormatter, formatterParams: {type: 'rating'}, width: 28},
       {title: 'F', headerTooltip: 'Foot', field: 'foot', width: 28},
     ];
     const outfieldersSkills = [
-      {title: 'SC', headerTooltip: 'Score', field: 'skills.SC'},
-      {title: 'OP', headerTooltip: 'Offencive Position', field: 'skills.OP'},
-      {title: 'BC', headerTooltip: 'Ball Control', field: 'skills.BC'},
-      {title: 'PA', headerTooltip: 'Passes', field: 'skills.PA'},
-      {title: 'AE', headerTooltip: 'Aerial', field: 'skills.AE'},
-      {title: 'CO', headerTooltip: 'Constitution', field: 'skills.CO'},
-      {title: 'TA', headerTooltip: 'Tackles', field: 'skills.TA'},
-      {title: 'DP', headerTooltip: 'Defence Position', field: 'skills.DP'},
+      {title: 'SC', headerTooltip: 'Score', field: 'SC'},
+      {title: 'OP', headerTooltip: 'Offencive Position', field: 'OP'},
+      {title: 'BC', headerTooltip: 'Ball Control', field: 'BC'},
+      {title: 'PA', headerTooltip: 'Passes', field: 'PA'},
+      {title: 'AE', headerTooltip: 'Aerial', field: 'AE'},
+      {title: 'CO', headerTooltip: 'Constitution', field: 'CO'},
+      {title: 'TA', headerTooltip: 'Tackles', field: 'TA'},
+      {title: 'DP', headerTooltip: 'Defence Position', field: 'DP'},
     ];
     const goalkeepersSkills = [
-      {title: 'RE', headerTooltip: 'Reflexes', field: 'skills.RE'},
-      {title: 'GP', headerTooltip: 'Offencive Position', field: 'skills.GP'},
-      {title: 'IN', headerTooltip: 'Ball Control', field: 'skills.IN'},
-      {title: 'CT', headerTooltip: 'Passes', field: 'skills.CT'},
-      {title: 'OR', headerTooltip: 'Aerial', field: 'skills.OR'},
-      {title: 'CO', headerTooltip: 'Constitution', field: 'skills.CO'},
+      {title: 'RE', headerTooltip: 'Reflexes', field: 'RE'},
+      {title: 'GP', headerTooltip: 'Offencive Position', field: 'GP'},
+      {title: 'IN', headerTooltip: 'Ball Control', field: 'IN'},
+      {title: 'CT', headerTooltip: 'Passes', field: 'CT'},
+      {title: 'OR', headerTooltip: 'Aerial', field: 'OR'},
+      {title: 'CO', headerTooltip: 'Constitution', field: 'CO'},
     ];
     const skillsColumns = filter === 'goalkeepers' ? goalkeepersSkills : outfieldersSkills;
     const columns = [

@@ -44,7 +44,7 @@ class Content extends Component {
     const {skillsMode, sortByPotential} = this.state;
     return (
       <PlayersTable 
-        data={players}
+        players={players}
         filter={filter}
         skillsMode={skillsMode}
         sortByPotential={sortByPotential}
@@ -80,15 +80,15 @@ class Content extends Component {
           <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable('goalkeepers')} />
           <Tabs.Expander />
           {skillsMode === 'combined' &&
-            <Checkbox
+            <Checkbox  className="bp3-tab"
               disabled={skillsMode !== 'combined'}
               checked={sortByPotential}
               onChange={setSortByPotential}
               label="sort by potential"
             />
           }
-          <Text>Skills mode: </Text>
-          <HTMLSelect 
+          <Text className="bp3-tab">Skills mode:</Text>
+          <HTMLSelect  className="bp3-tab"
             options={['current', 'potential', 'match', 'combined']}
             value={skillsMode}
             onChange={handleSkillsModeChange}

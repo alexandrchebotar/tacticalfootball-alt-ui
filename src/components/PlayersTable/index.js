@@ -35,7 +35,7 @@ class PlayersTable extends Component {
       const skillsColumnSettings = {
         formatter: skillsFormatter,
         sorter: skillsSorter,
-        sorterParams: {sortByPotential},
+        sorterParams: {sortByPotential, skillsMode},
         width: skillsMode === 'combined' || skillsMode === 'match' ? 45 : 35,
       }
       const commonColumns = [
@@ -232,7 +232,7 @@ class PlayersTable extends Component {
       return formatedValue;
     };
     const skillsSorter = (a, b, aRow, bRow, column, dir, sorterParams) => {
-      const {sortByPotential} = sorterParams;
+      const {sortByPotential, skillsMode} = sorterParams;
       const aData = aRow.getData();
       const bData = bRow.getData();
       const skill = column.getField();

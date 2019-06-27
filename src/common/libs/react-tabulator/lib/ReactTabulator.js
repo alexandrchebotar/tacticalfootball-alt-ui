@@ -36,7 +36,8 @@ var default_1 = /** @class */ (function (_super) {
     function default_1() {
         var _this = (_super !== null && _super.apply(this, arguments)) || this;
         _this.state = {
-            data: []
+            data: [],
+            columns: [],
         };
         _this.ref = null;
         _this.htmlProps = null;
@@ -109,18 +110,33 @@ var default_1 = /** @class */ (function (_super) {
             this.table.setData(this.state.data);
             this.table.setSort(sorters);
         } else {
-            const prevColumns = Object.entries(prevState.columns);
-            const columns = Object.entries(this.state.columns);
-            if (sorters.some(({column}) => {
-                if (
-                    columns[column] === undefined ||
-                    JSON.stringify(columns[column].sorterParams) !== JSON.stringify(prevColumns[column].sorterParams) ||
-                    columns[column].sorter.toString() !== prevColumns[column].sorter.toString()
-                ) {
+            const getColumnsSorters = (columnsSorters, {field, sorter, sorterParams}) => {
+                columnsSorters[field] = {sorter, sorterParams};
+                return columnsSorters;
+            };
+            // ({
+            //     ...columnsSorters,
+            //     [field]: {sorter, sorterParams},
+            // });
+            const prevColumns = prevState.columns.reduce(getColumnsSorters, {});
+            const nextColumns = this.state.columns.reduce(getColumnsSorters, {});
+            sorters = sorters.filter(({column}) => {
+                if (!nextColumns[column]) {
                     return true;
                 }
-            })) {
-                sorters.filter(({column}) => columns[column]);
+                const prevSorterParams = JSON.stringify(prevColumns[column].sorterParams);
+                const nextSorterParams = JSON.stringify(nextColumns[column].sorterParams);
+                if (prevSorterParams !== nextSorterParams) {
+                    return true;
+                }
+                const prevSorter = prevColumns[column].sorter && prevColumns[column].sorter.toString();
+                const nextSorter = nextColumns[column].sorter && nextColumns[column].sorter.toString();
+                if (prevSorter !== nextSorter) {
+                    return true;
+                }
+                return false;
+            });
+            if (sorters.length) {
                 this.table.setSort(sorters);
             }
         }

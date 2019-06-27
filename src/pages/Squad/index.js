@@ -87,7 +87,7 @@ class Content extends Component {
               label="sort by potential"
             />
           }
-          <Text className="bp3-tab">Skills mode:</Text>
+          <Text className="bp3-tab-text">Skills mode:</Text>
           <HTMLSelect  className="bp3-tab"
             options={['current', 'potential', 'match', 'combined']}
             value={skillsMode}

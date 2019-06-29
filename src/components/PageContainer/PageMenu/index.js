@@ -1,4 +1,6 @@
-import React, {Fragment} from 'react';
+import React from 'react';
+import { withRouter } from "react-router";
+import { Link } from 'react-router-dom'
 import {
   Navbar,
   Switch,
@@ -6,32 +8,60 @@ import {
   Tab,
 } from "@blueprintjs/core";
 
+
 import './style.scss';
 
-const PageMenu = ({pageName, results, handleTabChange, activeTabId}) => {
+const PageMenu = ({match, page}) => {
+  const tabs = {
+    squad: [
+      {id: "players", title: "Senior Players"},
+      {id: "training", title: "Training"},
+      {id: "prospects", title: "Prospects"},
+      {id: "statistics", title: "Statistics"},
+      {id: "tactics", title: "Tactics"},
+    ],
+    office: [
+      {id: "news", title: "News"},
+      {id: "calendar", title: "Calendar"},
+      {id: "transfers", title: "Transfers"},
+      {id: "finances", title: "Finances"},
+      {id: "trophies", title: "Trophies"},
+      {id: "scouting", title: "Scouting"},
+    ],
+    competitions: [],
+    clubs: [],
+    players: [],
+    settings: [],
+    user: [],
+    [404]: [],
+  };
+  const getTabs = () => tabs[page].map(({id, title}) => (
+    <Tab key={id} id={id}>
+      <Link to={`/${page}/${id}`}>{title}</Link>
+    </Tab>
+  ));
+
   return (
     <div className="header">
       <Navbar>
         <Navbar.Group align="left">
-          <Navbar.Heading>{pageName}</Navbar.Heading>
+          <Navbar.Heading>{page}</Navbar.Heading>
         </Navbar.Group>
         <Navbar.Group align="right">
           <Tabs
             animate
             id="pageMenu"
-            selectedTabId={activeTabId}
-            onChange={handleTabChange}
+            selectedTabId={match.params.activeTabId}
+            // onChange={handleTabChange}
           >
-            <Tab id="players" title="Senior Players" />
-            <Tab id="training" title="Training" />
-            <Tab id="tactics" title="Tactics" />
+          {getTabs(page)}
           </Tabs>
-          {results &&
+          {/* {results &&
             <Fragment>
               <Navbar.Divider />
               <Switch label="Show results" inline/>
             </Fragment>
-          }
+          } */}
         </Navbar.Group>
       </Navbar>
     </div>
@@ -43,4 +73,4 @@ PageMenu.defaultProps = {
   results: true,
 }
 
-export default PageMenu;
+export default withRouter(PageMenu);

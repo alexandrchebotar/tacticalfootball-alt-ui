@@ -15,7 +15,7 @@ import './style.scss';
 class Squad extends Component {
   state = {
     activeTabId: 'forvards',
-    skillsMode: 'training',
+    skillsMode: 'combined',
     sortByPotential: false,
   };
 

@@ -1,0 +1,63 @@
+@import "../../common/variables.scss";
+
+.content {
+  .bp3-tab-panel {
+    margin-top: 5px;
+  }
+
+  .bp3-tab-list > *:nth-last-child(2) {
+    margin-right: 0;
+  }
+
+  .bp3-tab {
+    color: $gray1;
+    font-weight: 600;
+
+    &[aria-selected="true"], &:not([aria-disabled="true"]):hover, &:focus {
+      color: $gray1;
+      text-shadow: $text-shadow;
+      outline: none;
+    }
+  }
+
+  .bp3-tab-text {
+    color: $gray1;
+    font-weight: 600;
+    line-height: 30px;
+  }
+
+  .bp3-control{
+    &.bp3-tab {
+      margin-bottom: 0;
+    }
+
+    & input:checked ~ .bp3-control-indicator {
+      background-color: $forest4;
+    }
+
+    &:hover input:checked ~ .bp3-control-indicator {
+      background-color: $forest3;
+    }
+
+    input:not(:disabled):active:checked ~ .bp3-control-indicator {
+      background-color: $forest2;
+    }
+  }
+  
+  .bp3-html-select.bp3-minimal select {
+    color: $gray1;
+    font-weight: 600;
+    &:hover, &:focus {
+      color: $gray1;
+      text-shadow: $text-shadow;
+      background: none;
+      outline: none;
+    }
+  }
+
+  .bp3-tab-indicator-wrapper {
+    .bp3-tab-indicator {
+      background-color: $gray1;
+    }
+  }
+}

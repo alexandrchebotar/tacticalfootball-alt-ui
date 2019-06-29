@@ -10,12 +10,36 @@ import {
 
 import './style.scss';
 
-const PageMenu = ({match, title}) => {
+const PageMenu = ({match, page}) => {
+  const tabs = {
+    squad: [
+      {id: "players", title: "Senior Players"},
+      {id: "training", title: "Training"},
+      {id: "prospects", title: "Prospects"},
+      {id: "statistics", title: "Statistics"},
+      {id: "tactics", title: "Tactics"},
+    ],
+    office: [
+      {id: "news", title: "News"},
+      {id: "calendar", title: "Calendar"},
+      {id: "transfers", title: "Transfers"},
+      {id: "finances", title: "FinancRees"},
+      {id: "trophies", title: "Trophies"},
+      {id: "scouting", title: "Scouting"},
+    ],
+    competitions: [],
+    clubs: [],
+    players: [],
+    settings: [],
+    user: [],
+  };
+  const getTabs = () => tabs[page].map(({id, title}) => <Tab id={id} title={title} />);
+
   return (
     <div className="header">
       <Navbar>
         <Navbar.Group align="left">
-          <Navbar.Heading>{title}</Navbar.Heading>
+          <Navbar.Heading>{page}</Navbar.Heading>
         </Navbar.Group>
         <Navbar.Group align="right">
           <Tabs
@@ -24,9 +48,7 @@ const PageMenu = ({match, title}) => {
             selectedTabId={match.params.activeTabId}
             // onChange={handleTabChange}
           >
-            <Tab id="players" title="Senior Players" />
-            <Tab id="training" title="Training" />
-            <Tab id="tactics" title="Tactics" />
+          {getTabs(page)}
           </Tabs>
           {/* {results &&
             <Fragment>

@@ -9,7 +9,7 @@ const PageContainer = ({page}) => {
   return (
     <div className="page-container">
       <div className="header">
-        <PageMenu className="bp3-dark" title={page} />
+        <PageMenu className="bp3-dark" page={page} />
       </div>
       <div className="page-content">
         <Switch>

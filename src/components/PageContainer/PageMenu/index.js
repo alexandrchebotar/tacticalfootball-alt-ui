@@ -33,6 +33,7 @@ const PageMenu = ({match, page}) => {
     players: [],
     settings: [],
     user: [],
+    [404]: [],
   };
   const getTabs = () => tabs[page].map(({id, title}) => (
     <Tab key={id} id={id}>

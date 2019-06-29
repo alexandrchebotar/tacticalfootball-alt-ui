@@ -1,5 +1,6 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import { withRouter } from "react-router";
+import { Link } from 'react-router-dom'
 import {
   Navbar,
   Switch,
@@ -23,7 +24,7 @@ const PageMenu = ({match, page}) => {
       {id: "news", title: "News"},
       {id: "calendar", title: "Calendar"},
       {id: "transfers", title: "Transfers"},
-      {id: "finances", title: "FinancRees"},
+      {id: "finances", title: "Finances"},
       {id: "trophies", title: "Trophies"},
       {id: "scouting", title: "Scouting"},
     ],
@@ -33,7 +34,11 @@ const PageMenu = ({match, page}) => {
     settings: [],
     user: [],
   };
-  const getTabs = () => tabs[page].map(({id, title}) => <Tab id={id} title={title} />);
+  const getTabs = () => tabs[page].map(({id, title}) => (
+    <Tab key={id} id={id}>
+      <Link to={`/${page}/${id}`}>{title}</Link>
+    </Tab>
+  ));
 
   return (
     <div className="header">

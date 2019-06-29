@@ -3,8 +3,6 @@ import PlayersTable from '../../components/PlayersTable';
 import {
   Tabs,
   Tab,
-  Text,
-  HTMLSelect,
   Checkbox,
 } from "@blueprintjs/core";
 
@@ -61,11 +59,11 @@ class Training extends Component {
           <Tab id="defenders" title="Defenders" panel={getPlayersTable({players, filter: 'defenders'})} />
           <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable({players, filter: 'goalkeepers'})} />
           <Tabs.Expander />
-            <Checkbox  className="bp3-tab"
-              checked={sortByPotential}
-              onChange={setSortByPotential}
-              label="sort by potential"
-            />
+          <Checkbox  className="bp3-tab"
+            checked={sortByPotential}
+            onChange={setSortByPotential}
+            label="sort by potential"
+          />
         </Tabs>
       </div> 
     );

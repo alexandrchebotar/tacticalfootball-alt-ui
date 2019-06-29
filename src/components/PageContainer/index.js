@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import PageMenu from './PageMenu';
 import Squad from '../../pages/Squad';
+import Training from '../../pages/Training';
 
 import './style.scss';
 
@@ -13,6 +14,8 @@ const PageContainer = ({page}) => {
       </div>
       <div className="page-content">
         <Switch>
+          <Route path='/squad/players' component={Squad} exact />
+          <Route path='/squad/training' component={Training} exact />
           <Route path='/squad/:activeTabId' component={Squad} exact />
           <Route path='/office/:activeTabId' component={Squad} exact />
           <Route path='/competitions/:competitionsId/:activeTabId' component={Squad} exact />

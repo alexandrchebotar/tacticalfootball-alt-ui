@@ -24,7 +24,7 @@ const Squad = ({match}) => {
 class Content extends Component {
   state = {
     activeTabId: 'forvards',
-    skillsMode: 'combined',
+    skillsMode: 'training',
     sortByPotential: false,
   };
 
@@ -79,9 +79,9 @@ class Content extends Component {
           <Tab id="defenders" title="Defenders" panel={getPlayersTable('defenders')} />
           <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable('goalkeepers')} />
           <Tabs.Expander />
-          {skillsMode === 'combined' &&
+          {['combined', 'training'].includes(skillsMode) &&
             <Checkbox  className="bp3-tab"
-              disabled={skillsMode !== 'combined'}
+              // disabled={skillsMode !== 'combined'}
               checked={sortByPotential}
               onChange={setSortByPotential}
               label="sort by potential"
@@ -89,7 +89,7 @@ class Content extends Component {
           }
           <Text className="bp3-tab-text">Skills mode:</Text>
           <HTMLSelect  className="bp3-tab"
-            options={['current', 'potential', 'match', 'combined']}
+            options={['current', 'potential', 'match', 'combined', 'training']}
             value={skillsMode}
             onChange={handleSkillsModeChange}
             minimal

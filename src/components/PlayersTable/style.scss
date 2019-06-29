@@ -157,4 +157,21 @@
   vertical-align: super;
   font-size: 0.68em;
   font-weight: normal;
+  position: relative;
+  left: 2px;
+}
+
+.skill-age {
+  vertical-align: sub;
+  font-size: 0.78em;
+  font-weight: bold;
+
+  &.skill-age-negative {
+    color: $red1;
+  }
+}
+
+.skill-training {
+  border-radius: 2px;
+  box-shadow: 0 0 0 2px rgba($forest3, 0.5);
 }

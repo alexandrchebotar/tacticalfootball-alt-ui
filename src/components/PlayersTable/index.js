@@ -1,10 +1,39 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
+import ReactDOMServer from 'react-dom/server';
 // import { ReactTabulator } from 'react-tabulator';
 import { ReactTabulator } from '../../common/libs/react-tabulator/lib';
 
 import 'react-tabulator/lib/styles.css';
 import 'react-tabulator/lib/css/tabulator.min.css';
 import './style.scss';
+
+const CombinedSkill = ({value: {current, potential, train, age}, denomFormatter}) => {
+  const getDenomClassName = (value) => { return (value < 15) ?
+      'denom1' :
+      (value < 30) ?
+        'denom2':
+        (value < 40) ?
+          'denom3':
+          (value < 50) ?
+            'denom4':
+            (value < 60) ?
+              'denom5':
+              (value < 70) ?
+                'denom6':
+                (value < 80) ?
+                  'denom7':
+                  (value < 90) ?
+                    'denom8':
+                    'denom9';
+  }
+  return (
+    <div className={train ? 'skill-training' : ''}>
+      <span className={'skill-current ' + getDenomClassName(current)}>{current}</span>
+      <span className={'skill-potential ' + getDenomClassName(potential)}>{potential}</span>
+      <span className={age < 0 ? 'skill-age skill-age-negative' : 'skill-age'}>{age}</span>
+    </div>
+  );
+};
 
 class PlayersTable extends Component {
   state = {
@@ -33,21 +62,32 @@ class PlayersTable extends Component {
         headerSortStartingDir: 'desc',
       }
       const skillsColumnSettings = {
+        ...baseColumnSettings,
         formatter: skillsFormatter,
         sorter: skillsSorter,
         sorterParams: {sortByPotential, skillsMode},
-        width: skillsMode === 'combined' || skillsMode === 'match' ? 45 : 35,
+        width: (skillsMode === 'training') ? 65 :
+          (skillsMode === 'combined' || skillsMode === 'match') ? 45 : 35,
+        cellClick: (skillsMode === 'training') ? 
+          (e, cell) => {
+            e.stopPropagation();
+            console.log('playerId: ' + cell.getData().id + ', ' + cell.getField());
+          } : '',
       }
-      const commonColumns = [
+      const baseColumns1 = [
         {rowHandle:true, formatter: 'handle', headerSort:false, frozen:true, width:30},
         {title: 'C', headerTooltip: 'Country',field: 'country_info.title', tooltip: true, formatter: nationFormatter, width: 33},
         {title: 'Name', headerTooltip: 'Name', field: 'name', formatter: statusFormatter, tooltip: true, align: 'left', headerSortStartingDir: 'asc', widthGrow: 10},
         {title: 'Age', headerTooltip: 'Age', field: 'age', tooltip: cell => cell.getData().age_long, formatter: denomFormatter, formatterParams: {type: 'age'}, sorter: ageSorter, width: 43},
         {title: 'Pos', headerTooltip: 'Position', field: 'position', width: 40},
+      ];
+      const baseColumns2 = [
         {title: 'Fit', headerTooltip: 'Fitness', field: 'skills.Fit', formatter: denomFormatter, width: 35},
         {title: 'Ex', headerTooltip: 'Experiance', field: 'experience', formatter: denomFormatter, width: 35},
         {title: 'Tx', headerTooltip: 'Team Experiance', field: 'experience_team', formatter: denomFormatter, width: 35},
         {title: 'Form', headerTooltip: 'Form', field: 'form_mid', align: 'left', formatter: denomFormatter, formatterParams: {type: 'form'}, width: 60},
+      ];
+      const baseColumns3 = [
         {title: 'R', headerTooltip: 'Rating', field: 'current_rating', formatter: denomFormatter, formatterParams: {type: 'rating'}, width: 28},
         {title: 'P', headerTooltip: 'Potential', field: 'rating', formatter: denomFormatter, formatterParams: {type: 'rating'}, width: 28},
         {title: 'F', headerTooltip: 'Foot', field: 'foot', width: 28},
@@ -64,18 +104,20 @@ class PlayersTable extends Component {
       ];
       const goalkeepersSkills = [
         {title: 'RE', headerTooltip: 'Reflexes', field: 'RE'},
-        {title: 'GP', headerTooltip: 'Offencive Position', field: 'GP'},
-        {title: 'IN', headerTooltip: 'Ball Control', field: 'IN'},
-        {title: 'CT', headerTooltip: 'Passes', field: 'CT'},
-        {title: 'OR', headerTooltip: 'Aerial', field: 'OR'},
+        {title: 'GP', headerTooltip: 'Goalkeeper Position', field: 'GP'},
+        {title: 'IN', headerTooltip: 'Interceptions', field: 'IN'},
+        {title: 'CT', headerTooltip: 'Control', field: 'CT'},
+        {title: 'OR', headerTooltip: 'Organisation', field: 'OR'},
         {title: 'CO', headerTooltip: 'Constitution', field: 'CO'},
       ];
-      const skillsColumns = filter === 'goalkeepers' ? goalkeepersSkills : outfieldersSkills;
-      const columns = [
-        ...commonColumns,
-        ...skillsColumns.map(columnSettings => ({...skillsColumnSettings, ...columnSettings}))
-      ].map(columnSettings => ({...baseColumnSettings, ...columnSettings}));
-      return columns;
+      const baseColumns = skillsMode === 'training' ?
+        [...baseColumns1, ...baseColumns3] :
+        [...baseColumns1, ...baseColumns2, ...baseColumns3];
+      const skillsColumns = (filter === 'goalkeepers' ? goalkeepersSkills : outfieldersSkills);
+      return [
+        ...baseColumns.map(columnSettings => ({...baseColumnSettings, ...columnSettings})),
+        ...skillsColumns.map(columnSettings => ({...skillsColumnSettings, ...columnSettings})),
+      ];
     };
     const denomFormatter = (cell, {type, value = cell.getValue()}) => {
       let className = '';
@@ -224,11 +266,25 @@ class PlayersTable extends Component {
             Math.round(data.skills_match.with_fitness[skill] * 10) / 10 :
             (skillsMode === 'combined') ?
               {current: data.skills[skill], potential: data.potentials[skill]}:
-              null;
-      const formatedValue = value.current ?
-        `<span class="skill-current">${denomFormatter(null, {value: value.current})}</span>
-        <span class="skill-potential">${denomFormatter(null, {value: value.potential})}</span>` :
-        denomFormatter(null, {value});
+              (skillsMode === 'training') ?
+                {
+                  current: data.skills[skill],
+                  potential: data.potentials[skill],
+                  age: data.skills_age ? data.skills_age[skill] : '',
+                  train: data.skills_train ? data.skills_train[skill] : false,
+                }:
+                null;
+      const formatedValue = (skillsMode === 'combined') ?
+        ReactDOMServer.renderToString(<CombinedSkill value={value} denomFormatter={denomFormatter} />) :
+        (skillsMode === 'training') ?
+          // `<input type="checkbox" checked=${value.train} />
+          // `<div class="skill-container">
+          //   <span class="skill-current">${denomFormatter(null, {value: value.current})}</span>
+          //   <span class="skill-potential">${denomFormatter(null, {value: value.potential})}</span>
+          //   <span class="skill-age">${value.age}</span>
+          // </div>` :
+          ReactDOMServer.renderToString(<CombinedSkill value={value} denomFormatter={denomFormatter} />) :
+          denomFormatter(null, {value});
       return formatedValue;
     };
     const ageSorter = (a, b, aRow, bRow, column, dir, sorterParams) => {
@@ -241,9 +297,9 @@ class PlayersTable extends Component {
       const aData = aRow.getData();
       const bData = bRow.getData();
       const skill = column.getField();
-      const sortResult = (skillsMode === 'current' || (skillsMode === 'combined' && !sortByPotential)) ?
+      const sortResult = (skillsMode === 'current' || (['combined','training'].includes(skillsMode) && !sortByPotential)) ?
         aData.skills[skill] - bData.skills[skill] :
-          (skillsMode === 'potential' || (skillsMode === 'combined' && sortByPotential)) ?
+          (skillsMode === 'potential' || (['combined', 'training'].includes(skillsMode) && sortByPotential)) ?
           aData.potentials[skill] - bData.potentials[skill] :
             (skillsMode === 'match') ?
             aData.skills_match.with_fitness[skill] - bData.skills_match.with_fitness[skill] :

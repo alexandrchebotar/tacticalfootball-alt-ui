@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PageContainer from '../../components/PageContainer';
 import PlayersTable from '../../components/PlayersTable';
 import {
   Tabs,
@@ -9,19 +8,11 @@ import {
   Checkbox,
 } from "@blueprintjs/core";
 
-import players from '../../store/players.json';
+import playersData from '../../store/players.json';
 
 import './style.scss';
 
-const Squad = ({match}) => {
-  return (
-    <PageContainer activeTabId={match.params.activeTabId}>
-      <Content players={players} />
-    </PageContainer>
-  );
-}
-
-class Content extends Component {
+class Squad extends Component {
   state = {
     activeTabId: 'forvards',
     skillsMode: 'training',
@@ -40,7 +31,7 @@ class Content extends Component {
     this.setState({skillsMode: event.currentTarget.value});
   };
 
-  getPlayersTable = (filter) => {
+  getPlayersTable = ({players, filter}) => {
     const {skillsMode, sortByPotential} = this.state;
     return (
       <PlayersTable 
@@ -60,10 +51,8 @@ class Content extends Component {
       handleTabChange,
       setSortByPotential,
     } = this;
-    const players = this.props.players
-      .sort(({potential:A},{potential:B})=>B-A)
-      .sort(({rating:A},{rating:B})=>B-A)
-      .sort(({age:A},{age:B})=>B-A);;
+    // const players = this.props.players
+    const players = playersData.sort(({potential:A},{potential:B})=>B-A).sort(({rating:A},{rating:B})=>B-A).sort(({age:A},{age:B})=>B-A);
     return (
       <div className="content">
         <Tabs
@@ -73,15 +62,14 @@ class Content extends Component {
           onChange={handleTabChange}
           renderActiveTabPanelOnly
         >
-          <Tab id="outfielders" title="All Outfielders" panel={getPlayersTable('outfielders')} />
-          <Tab id="forvards" title="Forvards" panel={getPlayersTable('forwards')} />
-          <Tab id="midlefielders" title="Midlefielders" panel={getPlayersTable('midlefielders')} />
-          <Tab id="defenders" title="Defenders" panel={getPlayersTable('defenders')} />
-          <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable('goalkeepers')} />
+          <Tab id="outfielders" title="All Outfielders" panel={getPlayersTable({players, filter: 'outfielders'})} />
+          <Tab id="forvards" title="Forvards" panel={getPlayersTable({players, filter: 'forwards'})} />
+          <Tab id="midlefielders" title="Midlefielders" panel={getPlayersTable({players, filter: 'midlefielders'})} />
+          <Tab id="defenders" title="Defenders" panel={getPlayersTable({players, filter: 'defenders'})} />
+          <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable({players, filter: 'goalkeepers'})} />
           <Tabs.Expander />
           {['combined', 'training'].includes(skillsMode) &&
             <Checkbox  className="bp3-tab"
-              // disabled={skillsMode !== 'combined'}
               checked={sortByPotential}
               onChange={setSortByPotential}
               label="sort by potential"

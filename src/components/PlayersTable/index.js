@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import ReactDOMServer from 'react-dom/server';
 // import { ReactTabulator } from 'react-tabulator';
 import { ReactTabulator } from '../../common/libs/react-tabulator/lib';
+import { withRouter } from "react-router";
 
 import 'react-tabulator/lib/styles.css';
 import 'react-tabulator/lib/css/tabulator.min.css';
@@ -350,4 +351,4 @@ class PlayersTable extends Component {
   };
 };
 
-export default PlayersTable;
+export default withRouter(PlayersTable);

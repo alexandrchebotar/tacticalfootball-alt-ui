@@ -1,4 +1,5 @@
 import React, {Fragment} from 'react';
+import { withRouter } from "react-router";
 import {
   Navbar,
   Switch,
@@ -6,32 +7,33 @@ import {
   Tab,
 } from "@blueprintjs/core";
 
+
 import './style.scss';
 
-const PageMenu = ({pageName, results, handleTabChange, activeTabId}) => {
+const PageMenu = ({match, title}) => {
   return (
     <div className="header">
       <Navbar>
         <Navbar.Group align="left">
-          <Navbar.Heading>{pageName}</Navbar.Heading>
+          <Navbar.Heading>{title}</Navbar.Heading>
         </Navbar.Group>
         <Navbar.Group align="right">
           <Tabs
             animate
             id="pageMenu"
-            selectedTabId={activeTabId}
-            onChange={handleTabChange}
+            selectedTabId={match.params.activeTabId}
+            // onChange={handleTabChange}
           >
             <Tab id="players" title="Senior Players" />
             <Tab id="training" title="Training" />
             <Tab id="tactics" title="Tactics" />
           </Tabs>
-          {results &&
+          {/* {results &&
             <Fragment>
               <Navbar.Divider />
               <Switch label="Show results" inline/>
             </Fragment>
-          }
+          } */}
         </Navbar.Group>
       </Navbar>
     </div>
@@ -43,4 +45,4 @@ PageMenu.defaultProps = {
   results: true,
 }
 
-export default PageMenu;
+export default withRouter(PageMenu);

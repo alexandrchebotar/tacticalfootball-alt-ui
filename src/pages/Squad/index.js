@@ -77,7 +77,7 @@ class Squad extends Component {
           }
           <Text className="bp3-tab-text">Skills mode:</Text>
           <HTMLSelect  className="bp3-tab"
-            options={['current', 'potential', 'match', 'combined', 'training']}
+            options={['current', 'potential', 'match', 'combined']}
             value={skillsMode}
             onChange={handleSkillsModeChange}
             minimal

@@ -3,38 +3,12 @@ import ReactDOMServer from 'react-dom/server';
 // import { ReactTabulator } from 'react-tabulator';
 import { ReactTabulator } from '../../common/libs/react-tabulator/lib';
 import { withRouter } from "react-router";
+import CombinedSkill from './CombinedSkill';
+import StatusIcons from './StatusIcons';
 
 import 'react-tabulator/lib/styles.css';
 import 'react-tabulator/lib/css/tabulator.min.css';
 import './style.scss';
-
-const CombinedSkill = ({value: {current, potential, train, age}, denomFormatter}) => {
-  const getDenomClassName = (value) => { return (value < 15) ?
-      'denom1' :
-      (value < 30) ?
-        'denom2':
-        (value < 40) ?
-          'denom3':
-          (value < 50) ?
-            'denom4':
-            (value < 60) ?
-              'denom5':
-              (value < 70) ?
-                'denom6':
-                (value < 80) ?
-                  'denom7':
-                  (value < 90) ?
-                    'denom8':
-                    'denom9';
-  }
-  return (
-    <div className={train ? 'skill-training' : ''}>
-      <span className={'skill-current ' + getDenomClassName(current)}>{current}</span>
-      <span className={'skill-potential ' + getDenomClassName(potential)}>{potential}</span>
-      <span className={age < 0 ? 'skill-age skill-age-negative' : 'skill-age'}>{age}</span>
-    </div>
-  );
-};
 
 class PlayersTable extends Component {
   state = {
@@ -220,36 +194,11 @@ class PlayersTable extends Component {
     };
     const statusFormatter = (cell) => {
       const value = cell.getValue();
-      const {
-        national_club_id,
-        national_prospect_id,
-        card_nation,
-        card,
-        auction_date,
-        stabilising,
-        training_form,
-        injury
-      } = cell.getData();
-      const statuses = [
-        {status: 'national-player', value: national_club_id},
-        {status: 'national-prospect', value: national_club_id ? null : national_prospect_id},
-        {status: 'card-nation', value: card_nation},
-        {status: 'card', value: card},
-        {status: 'auction', value: auction_date},
-        {status: 'stabilising', value: stabilising},
-        {status: 'trainin-form', value: training_form},
-        {status: 'injury', value: injury},
-      ];
-      const statusIcons = statuses.map(({status, value}) => value ? 
-        `<svg class="status-icon">
-          <use xlink:href="/images/status.svg#${status}"></use>
-        </svg>` :
-        ''
-        ).join('');
+      const data = cell.getData();
       return `
         <div class="name-container">
           <span class="player-name">${value}</span>
-          <div class="status-container">${statusIcons}</div>
+          ${ReactDOMServer.renderToString(<StatusIcons {...data} />)}
         </div>`;
     };
     const nationFormatter = (cell) => {
@@ -278,12 +227,6 @@ class PlayersTable extends Component {
       const formatedValue = (skillsMode === 'combined') ?
         ReactDOMServer.renderToString(<CombinedSkill value={value} denomFormatter={denomFormatter} />) :
         (skillsMode === 'training') ?
-          // `<input type="checkbox" checked=${value.train} />
-          // `<div class="skill-container">
-          //   <span class="skill-current">${denomFormatter(null, {value: value.current})}</span>
-          //   <span class="skill-potential">${denomFormatter(null, {value: value.potential})}</span>
-          //   <span class="skill-age">${value.age}</span>
-          // </div>` :
           ReactDOMServer.renderToString(<CombinedSkill value={value} denomFormatter={denomFormatter} />) :
           denomFormatter(null, {value});
       return formatedValue;
@@ -335,16 +278,6 @@ class PlayersTable extends Component {
           resizableColumns: false,
           sortOrderReverse: false,
           persistenceMode: 'local',
-          // persistentLayout: true,
-          // persistentSort: true,
-          // dataSorted: function(sorters) {
-          //   sorters = sorters.map(({field, dir}) => ({column: field, dir}));
-          //   saveSortersToState(sorters);
-          //   // this.setSort(sorters);
-
-          // },
-          // initialSort: [{column: 'CO', dir: 'desc'}, {column: 'SC', dir: 'desc'}],
-          // initialSort: this.state.sorters,
         }}
       />
     );

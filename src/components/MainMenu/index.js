@@ -10,6 +10,12 @@ import {
   Button,
 } from "@blueprintjs/core";
 import SubMenu from './SubMenu';
+import { ReactComponent as SquadIcon } from '../../assets/squad.svg';
+import { ReactComponent as OfficeIcon } from '../../assets/office.svg';
+import { ReactComponent as CompetitionsIcon } from '../../assets/competitions.svg';
+import { ReactComponent as ForumIcon } from '../../assets/forum.svg';
+import { ReactComponent as HelpIcon } from '../../assets/help.svg';
+import { ReactComponent as SettingsIcon } from '../../assets/settings.svg';
 
 import './style.scss';
 
@@ -165,7 +171,16 @@ class MainMenu extends Component {
   };
 
   getMainMenuItems = () => {
+    const icons = {
+      squad: SquadIcon,
+      office: OfficeIcon,
+      competitions: CompetitionsIcon,
+      forum: ForumIcon,
+      help: HelpIcon,
+      settings: SettingsIcon,
+    };
     return this.state.items.map(({id, icon, alert, subMenu}) => {
+      const MenuIcon = icons[id];
       const categoryIcon = icon ?
         icon :
         (id === 'competitions') ?
@@ -209,9 +224,7 @@ class MainMenu extends Component {
             className={'main-menu-item'}
           >
             <Link to={`/${id}`} onClick={() => this.closeMenu(id)}>
-              <svg className={alert ? 'main-menu-icon warning' : 'main-menu-icon'}>
-                <use xlinkHref={`/images/icons.svg#${id}`}></use>
-              </svg>
+              <MenuIcon className={alert ? 'main-menu-icon warning' : 'main-menu-icon'} />
             </Link>
           </Button>
         </Popover>

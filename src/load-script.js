@@ -33,6 +33,19 @@ document.addEventListener = addEventListener;
 const removeAllEventListeners = function() {
   _listeners.forEach(({target, type, listener}) => target.removeEventListener(type, listener));
 };
+let _console = [];
+window._console = _console;
+window.console.logBase = window.console.log;
+window.console.log = function() {
+  _console.push(arguments);
+  window.console.logBase.apply(window.console, arguments);
+};
+const getSubmenu = () => {
+  document.querySelector('.rb-nav_arrow').parentNode.click();
+  navbarMenu = _console.find(item => item[0].sub_menu && item[0].sub_menu.find(item => item.sub_menu && item.sub_menu[0].text==='Current'))[0].sub_menu;
+  window._competitionsMenu = navbarMenu[5].sub_menu;
+  window._forumsMenu = navbarMenu[6].sub_menu;
+};
 
 window.onload = () => {
   const menuItem = document.createElement('li');
@@ -66,6 +79,7 @@ window.onload = () => {
   function loadAltUI() {
     removeAllEventListeners();
     removeAllTimers();
+    getSubmenu();
     const html = document.querySelector('html');
     const {head, body} = document;
     html.removeAttribute('ng-app');

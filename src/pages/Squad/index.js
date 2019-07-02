@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import PlayersTable from '../../components/PlayersTable';
 import {
   Tabs,
@@ -7,10 +8,21 @@ import {
   HTMLSelect,
   Checkbox,
 } from "@blueprintjs/core";
-
-import playersData from '../../store/players.json';
+import {getPlayers, clearPlayers, startFetchPlayers} from '../../store/actions';
 
 import './style.scss';
+
+const mapStateToProps = ({currentClub: {id, players}}) => {
+  return {clubId: id, players};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {    
+    getPlayers: ({clubId}) => dispatch(getPlayers({clubId})),
+    clearPlayers: () => dispatch(clearPlayers()),
+    startFetchPlayers: () => dispatch(startFetchPlayers()),
+  }
+};
 
 class Squad extends Component {
   state = {
@@ -33,6 +45,7 @@ class Squad extends Component {
 
   getPlayersTable = ({players, filter}) => {
     const {skillsMode, sortByPotential} = this.state;
+    debugger;
     return (
       <PlayersTable 
         players={players}
@@ -43,16 +56,26 @@ class Squad extends Component {
     );
   };
 
+  componentDidMount() {
+    const {clubId, getPlayers} = this.props;
+    getPlayers({clubId});
+  };
+  componentWillUnmount() {
+    this.props.clearPlayers();
+  }
+
   render() {
     const {
       state: {activeTabId, skillsMode, sortByPotential},
+      props: {players},
       getPlayersTable,
       handleSkillsModeChange,
       handleTabChange,
       setSortByPotential,
     } = this;
     // const players = this.props.players
-    const players = playersData.sort(({potential:A},{potential:B})=>B-A).sort(({rating:A},{rating:B})=>B-A).sort(({age:A},{age:B})=>B-A);
+    players.sort(({potential:A},{potential:B})=>B-A).sort(({rating:A},{rating:B})=>B-A).sort(({age:A},{age:B})=>B-A);
+    debugger;
     return (
       <div className="content">
         <Tabs
@@ -88,4 +111,4 @@ class Squad extends Component {
   };
 };
 
-export default Squad;
+export default connect(mapStateToProps, mapDispatchToProps)(Squad);

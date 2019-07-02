@@ -250,14 +250,19 @@ class PlayersTable extends Component {
               null;
       return sortResult;
     };
-    if ( skillsMode === state.skillsMode && sortByPotential === state.sortByPotential ) {
+    if ( 
+      players === state.prevPropsPlayers &&
+      skillsMode === state.prevPropsSkillsMode &&
+      sortByPotential === state.prevPropsSortByPotential
+    ) {
       return null;
     }
     return {
       columns: getColumns(),
       players: getPlayers(),
-      skillsMode,
-      sortByPotential,
+      prevPropsPlayers: players,
+      prevPropsSkillsMode: skillsMode,
+      prevPropsSortByPotential: sortByPotential,
     };
   };
 
@@ -278,6 +283,7 @@ class PlayersTable extends Component {
           resizableColumns: false,
           sortOrderReverse: false,
           persistenceMode: 'local',
+          placeholder: 'loading...',
         }}
       />
     );

@@ -1,1 +1,5 @@
 export const GET_INIT_DATA = ' GET_INIT_DATA';
+
+export const START_FETCH_PLAYERS = ' START_FETCH_PLAYERS';
+export const END_FETCH_PLAYERS = ' END_FETCH_PLAYERS';
+export const CLEAR_PLAYERS = ' CLEAR_PLAYERS';

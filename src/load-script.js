@@ -106,21 +106,21 @@ window.onload = () => {
     // load CSS
     const css1 = document.createElement('link');
     css1.rel = 'stylesheet';
-    css1.href = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@gh-pages/static/css/2.f5d5d3a0.chunk.css';
+    css1.href = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui/static/css/1.css';
     head.appendChild(css1);
     const css2 = document.createElement('link');
     css2.rel = 'stylesheet';
-    css2.href = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@gh-pages/static/css/main.63f034f0.chunk.css';
+    css2.href = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui/static/css/2.css';
     head.appendChild(css2);
     // load JS
     const js1 = document.createElement('script');
-    js1.src = 'http://localhost:5000/static/js/_1.js';
+    js1.src = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui/static/js/1.js';
     body.appendChild(js1);
     const js2 = document.createElement('script');
-    js2.src = 'http://localhost:5000/static/js/2.js';
+    js2.src = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui/static/js/2.js';
     body.appendChild(js2);
     const js3 = document.createElement('script');
-    js3.src = 'http://localhost:5000/static/js/3.js';
+    js3.src = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui/static/js/3.js';
     body.appendChild(js3);
   }
 };

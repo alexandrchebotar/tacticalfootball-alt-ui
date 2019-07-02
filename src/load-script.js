@@ -6,7 +6,9 @@
 // ==/UserScript==
 debugger;
 // load AltUI if location contains hash
+let originHash = null;
 if (window.location.hash) {
+  originHash = window.location.hash;
   clearTacticalFootballApp()
 }
 // redefining setInterval & setTimeout
@@ -94,7 +96,6 @@ function clearTacticalFootballApp() {
 }
 
 function loadAltUI() {
-  debugger;
   // get competitions and forums menus
   if (!window.location.hash) {
     getMenus();
@@ -121,6 +122,9 @@ function loadAltUI() {
   const bodyContent = '<div id="root"></div>';
   body.innerHTML = bodyContent;
   history.pushState(null, "TF Alt UI", "/");
+  if (originHash) {
+    history.pushState(null, "TF Alt UI", originHash);
+  }
   // load CSS
   const css1 = document.createElement('link');
   css1.rel = 'stylesheet';

@@ -19,6 +19,11 @@
     &-heading {
       text-shadow: $light-text-shadow;
       text-transform: capitalize;
+      margin-right: 0;
+    }
+
+    &-divider {
+      border-left: 2px solid rgba($light-text, 0.5);
     }
   }
 

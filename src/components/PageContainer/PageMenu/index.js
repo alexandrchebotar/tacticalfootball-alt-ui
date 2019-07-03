@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
 import {
   Navbar,
   Switch,
@@ -11,7 +12,11 @@ import {
 
 import './style.scss';
 
-const PageMenu = ({match, page}) => {
+const mapStateToProps = ({currentClub: {name}}) => {
+  return {clubName: name};
+};
+
+const PageMenu = ({match, page, clubName}) => {
   const tabs = {
     squad: [
       {id: "players", title: "Senior Players"},
@@ -41,12 +46,24 @@ const PageMenu = ({match, page}) => {
     </Tab>
   ));
 
+  const PageTitle = () => (
+    <Navbar.Group align="left">
+      {['squad','office'].includes(page) ?
+        <Fragment>
+          <Navbar.Heading>{clubName}</Navbar.Heading>
+          <Navbar.Divider />
+          <Navbar.Heading>{page}</Navbar.Heading>
+        </Fragment>
+      :
+        <Navbar.Heading>{page}</Navbar.Heading>
+      }
+    </Navbar.Group>
+  );
+
   return (
     <div className="header">
       <Navbar>
-        <Navbar.Group align="left">
-          <Navbar.Heading>{page}</Navbar.Heading>
-        </Navbar.Group>
+        <PageTitle />
         <Navbar.Group align="right">
           <Tabs
             animate
@@ -73,4 +90,4 @@ PageMenu.defaultProps = {
   results: true,
 }
 
-export default withRouter(PageMenu);
+export default connect(mapStateToProps)(withRouter(PageMenu));

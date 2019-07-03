@@ -17,7 +17,7 @@ class PlayersTable extends Component {
   };
 
   static getDerivedStateFromProps(props, state) {
-    const {players, filter, skillsMode, sortByPotential} = props;
+    const {players, filter, skillsMode, sortByPotential, setTraining} = props;
     const getPlayers = () => {
       return (filter === 'outfielders') ?
         players.filter(({position}) => position !== 'GK') :
@@ -46,7 +46,11 @@ class PlayersTable extends Component {
         cellClick: (skillsMode === 'training') ? 
           (e, cell) => {
             e.stopPropagation();
-            console.log('playerId: ' + cell.getData().id + ', ' + cell.getField());
+            const {id: playerId, skills_train} =  cell.getData();
+            const skill = cell.getField();
+            const value = skills_train[skill] ? !skills_train[skill] : true;
+            console.log('setTraining -> playerId: ' + playerId + ', skill: ' + skill + ', value: ' + value);
+            setTraining({playerId, skill, value});
           } : '',
       }
       const baseColumns1 = [
@@ -284,6 +288,7 @@ class PlayersTable extends Component {
           sortOrderReverse: false,
           persistenceMode: 'local',
           placeholder: 'loading...',
+          initialSort: [{column: "age", dir: "desc"}],
         }}
       />
     );

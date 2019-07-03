@@ -1,14 +1,26 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import PlayersTable from '../../components/PlayersTable';
 import {
   Tabs,
   Tab,
   Checkbox,
 } from "@blueprintjs/core";
-
-import playersData from '../../store/players.json';
+import {getTraining, clearPlayers, setTraining} from '../../store/actions';
 
 import './style.scss';
+
+const mapStateToProps = ({currentClub: {id, players}}) => {
+  return {clubId: id, players};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getTraining: () => dispatch(getTraining()),
+    clearPlayers: () => dispatch(clearPlayers()),
+    setTraining: ({playerId, skill, value}) => dispatch(setTraining({playerId, skill, value})),
+  }
+};
 
 class Training extends Component {
   state = {
@@ -25,25 +37,32 @@ class Training extends Component {
   };
 
   getPlayersTable = ({players, filter}) => {
-    const {skillsMode, sortByPotential} = this.state;
     return (
       <PlayersTable 
         players={players}
         filter={filter}
         skillsMode="training"
-        sortByPotential={sortByPotential}
+        sortByPotential={this.state.sortByPotential}
+        setTraining={this.props.setTraining}
       />
     );
+  };
+
+  componentDidMount() {
+    this.props.getTraining();
+  };
+  componentWillUnmount() {
+    this.props.clearPlayers();
   };
 
   render() {
     const {
       state: {activeTabId, sortByPotential},
+      props: {players},
       getPlayersTable,
       handleTabChange,
       setSortByPotential,
     } = this;
-    const players = playersData.sort(({potential:A},{potential:B})=>B-A).sort(({rating:A},{rating:B})=>B-A).sort(({age:A},{age:B})=>B-A);
     return (
       <div className="content">
         <Tabs
@@ -70,4 +89,4 @@ class Training extends Component {
   };
 };
 
-export default Training;
+export default connect(mapStateToProps, mapDispatchToProps)(Training);

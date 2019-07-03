@@ -3,6 +3,8 @@ import {
   START_FETCH_PLAYERS,
   END_FETCH_PLAYERS,
   CLEAR_PLAYERS,
+  START_SET_TRAINING,
+  END_SET_TRAINING,
 } from 'common/constants';
 import {combineReducers, createStore, applyMiddleware, compose} from 'redux'; 
 import {handleActions, combineActions} from 'redux-actions';
@@ -72,6 +74,7 @@ const defaultState = {
   },
   loading: {
     players: false,
+    trainings: [],
   },
 };
 
@@ -115,6 +118,8 @@ const currentClub = handleActions(
       GET_INIT_DATA,
       END_FETCH_PLAYERS,
       CLEAR_PLAYERS,
+      START_SET_TRAINING,
+      END_SET_TRAINING,
     )]: (state, action) => ({
       ...state, 
       ...action.payload.currentClub,
@@ -128,6 +133,8 @@ const loading = handleActions(
       GET_INIT_DATA,
       START_FETCH_PLAYERS,
       END_FETCH_PLAYERS,
+      START_SET_TRAINING,
+      END_SET_TRAINING,
     )]: (state, action) => ({
       ...state, 
       ...action.payload.loading,

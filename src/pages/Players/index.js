@@ -8,7 +8,7 @@ import {
   HTMLSelect,
   Checkbox,
 } from "@blueprintjs/core";
-import {getPlayers, clearPlayers, startFetchPlayers} from '../../store/actions';
+import {getPlayers, clearPlayers} from '../../store/actions';
 
 import './style.scss';
 
@@ -18,13 +18,12 @@ const mapStateToProps = ({currentClub: {id, players}}) => {
 
 const mapDispatchToProps = dispatch => {
   return {    
-    getPlayers: ({clubId}) => dispatch(getPlayers({clubId})),
+    getPlayers: () => dispatch(getPlayers()),
     clearPlayers: () => dispatch(clearPlayers()),
-    startFetchPlayers: () => dispatch(startFetchPlayers()),
   }
 };
 
-class Squad extends Component {
+class Players extends Component {
   state = {
     activeTabId: 'forvards',
     skillsMode: 'combined',
@@ -45,7 +44,6 @@ class Squad extends Component {
 
   getPlayersTable = ({players, filter}) => {
     const {skillsMode, sortByPotential} = this.state;
-    debugger;
     return (
       <PlayersTable 
         players={players}
@@ -57,12 +55,11 @@ class Squad extends Component {
   };
 
   componentDidMount() {
-    const {clubId, getPlayers} = this.props;
-    getPlayers({clubId});
+    this.props.getPlayers();
   };
   componentWillUnmount() {
     this.props.clearPlayers();
-  }
+  };
 
   render() {
     const {
@@ -73,9 +70,6 @@ class Squad extends Component {
       handleTabChange,
       setSortByPotential,
     } = this;
-    // const players = this.props.players
-    players.sort(({potential:A},{potential:B})=>B-A).sort(({rating:A},{rating:B})=>B-A).sort(({age:A},{age:B})=>B-A);
-    debugger;
     return (
       <div className="content">
         <Tabs
@@ -111,4 +105,4 @@ class Squad extends Component {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Squad);
+export default connect(mapStateToProps, mapDispatchToProps)(Players);

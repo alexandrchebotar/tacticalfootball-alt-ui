@@ -16,9 +16,9 @@ const PageMenu = ({match, page}) => {
     squad: [
       {id: "players", title: "Senior Players"},
       {id: "training", title: "Training"},
-      {id: "prospects", title: "Prospects"},
-      {id: "statistics", title: "Statistics"},
-      {id: "tactics", title: "Tactics"},
+      {id: "prospects", title: "Prospects", disabled: true},
+      {id: "statistics", title: "Statistics", disabled: true},
+      {id: "tactics", title: "Tactics", disabled: true},
     ],
     office: [
       {id: "news", title: "News"},
@@ -35,8 +35,8 @@ const PageMenu = ({match, page}) => {
     user: [],
     [404]: [],
   };
-  const getTabs = () => tabs[page].map(({id, title}) => (
-    <Tab key={id} id={id}>
+  const getTabs = () => tabs[page].map(({id, title, disabled}) => (
+    <Tab key={id} id={id} disabled={disabled}>
       <Link to={`/${page}/${id}`}>{title}</Link>
     </Tab>
   ));

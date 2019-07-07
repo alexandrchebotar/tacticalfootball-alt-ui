@@ -161,6 +161,18 @@
   left: 2px;
 }
 
+.rating-current {
+  font-size: 0.95em;
+}
+
+.rating-potential {
+  vertical-align: super;
+  font-size: 0.8em;
+  font-weight: normal;
+  position: relative;
+  left: 0px;
+}
+
 .skill-age {
   vertical-align: sub;
   font-size: 0.78em;
@@ -174,4 +186,8 @@
 .skill-training {
   border-radius: 2px;
   box-shadow: 0 0 0 2px rgba($forest3, 0.5);
+}
+
+.tabulator-cell.player-value {
+  font-size: 0.9em;
 }

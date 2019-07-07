@@ -3,6 +3,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import PageMenu from './PageMenu';
 import Players from '../../pages/Players';
 import Training from '../../pages/Training';
+import Transfers from '../../pages/Transfers';
+import Search from '../../pages/Search';
 
 import './style.scss';
 
@@ -21,6 +23,8 @@ const PageContainer = ({page}) => {
           <Route path='/squad/players' component={Players} exact />
           <Route path='/squad/training' component={Training} exact />
           <Route path='/squad/:activeTabId' component={Page404} exact />
+          <Route path='/office/transfers' component={Transfers} exact />
+          <Route path='/office/search' component={Search} exact />
           <Route path='/office/:activeTabId' component={Page404} exact />
           <Route path='/competitions/:competitionsId/:activeTabId' component={Page404} exact />
           <Route path='/clubs/:clubId/:activeTabId' component={Page404} exact />

@@ -5,12 +5,16 @@ import {
   CLEAR_PLAYERS,
   START_SET_TRAINING,
   END_SET_TRAINING,
+  START_SEARCH_PLAYERS,
+  END_SEARCH_PLAYERS,
+  CLEAR_SEARCH,
 } from '../common/constants';
 import {createAction} from 'redux-actions';
 import axios from 'axios';
 
 import playersJSON from './players.json';
 import trainingJSON from './training.json';
+import transfersJSON from './transfers.json';
 
 export const getInitData = createAction(GET_INIT_DATA);
 export const startFetchPlayers = createAction(START_FETCH_PLAYERS, () => ({
@@ -30,10 +34,21 @@ export const endSetTraining = createAction(END_SET_TRAINING, ({trainings, player
   currentClub: {players},
   loading: {trainings},
 }));
+export const startSearchPlayers = createAction(START_SEARCH_PLAYERS, () => ({
+  loading: {search: true},
+}));
+export const endSearchPlayers = createAction(END_SEARCH_PLAYERS, ({players}) => ({
+  search: {players},
+  loading: {transfers: false},
+}));
+export const clearSearch = createAction(CLEAR_SEARCH, () => ({
+  search: {clubs: [], players: []},
+}));
 
 
 export const getPlayers = () => {
   return (dispatch, getState) => {
+    // thunk getPlayers
     // startFetchAction
     dispatch(startFetchPlayers());
 
@@ -64,6 +79,7 @@ export const getPlayers = () => {
 
 export const getTraining = () => {
   return (dispatch, getState) => {
+    // thunk getTraining
     // startFetchAction
     dispatch(startFetchPlayers());
 
@@ -106,6 +122,7 @@ export const getTraining = () => {
 
 export const setTraining = ({playerId, skill, value}) => {
   return (dispatch, getState) => {
+    // thunk setTraining
     let {trainings} = getState().loading;
     if (trainings.some(({playerId: _playerId, skill: _skill}) => _playerId === playerId && _skill === skill)) {
       return;
@@ -152,6 +169,38 @@ export const setTraining = ({playerId, skill, value}) => {
     players = [...players.filter(({id}) => id !== playerId), player];
     trainings = trainings.filter(({playerId: _playerId, skill: _skill}) => !(_playerId === playerId && _skill === skill));
     dispatch(endSetTraining({trainings, players}));
+/************************************************/
+  };
+};
+
+export const searchPlayers = (filter) => {
+  return (dispatch, getState) => {
+    // thunk searchPlayers
+    // startFetchAction
+    dispatch(startSearchPlayers());
+
+/******* enable after CORS resolve **************/
+  // const clubId = getState().currentClub.id;
+  // Promise.all()
+  //   axios.get(`https://tacticalfootball.com/api/clubs/${clubId}?serialiser=ClubTransfermarket`)
+  //   .then(res => {
+  //     if (res.status !== 200) {
+  //       throw new Error(res.statusText);
+  //     }
+  //     const players = res.data.search_players;
+  //     dispatch(endSearchPlayers({players}));
+  //   })
+  //   .catch(err => {
+  //     dispatch(endSearchPlayers({}));
+  //     console.log('searchPlayers error: ' + err);
+  //   });
+/************************************************/
+
+/******* remove after CORS resolve **************/
+    const players = transfersJSON.search_players;
+
+    // endFetch action
+    dispatch(endSearchPlayers({players}));
 /************************************************/
   };
 };

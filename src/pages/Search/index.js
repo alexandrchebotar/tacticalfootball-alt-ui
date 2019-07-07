@@ -6,23 +6,22 @@ import {
   Tab,
   Checkbox,
 } from "@blueprintjs/core";
-import {getTraining, clearPlayers, setTraining} from '../../store/actions';
+import {clearSearch, searchPlayers} from '../../store/actions';
 
 import './style.scss';
 
-const mapStateToProps = ({currentClub: {id, players}}) => {
-  return {clubId: id, players};
+const mapStateToProps = ({search: {players, clubs}}) => {
+  return {players, clubs};
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getTraining: () => dispatch(getTraining()),
-    clearPlayers: () => dispatch(clearPlayers()),
-    setTraining: ({playerId, skill, value}) => dispatch(setTraining({playerId, skill, value})),
+    searchPlayers: (filter) => dispatch(searchPlayers(filter)),
+    clearSearch: () => dispatch(clearSearch()),
   }
 };
 
-class Training extends Component {
+class Search extends Component {
   state = {
     activeTabId: 'forvards',
     sortByPotential: false,
@@ -41,19 +40,18 @@ class Training extends Component {
       <PlayersTable 
         players={players}
         filter={filter}
-        type="training"
+        type="transfers"
         skillsMode="combined"
         sortByPotential={this.state.sortByPotential}
-        setTraining={this.props.setTraining}
       />
     );
   };
 
   componentDidMount() {
-    this.props.getTraining();
+    this.props.searchPlayers();
   };
   componentWillUnmount() {
-    this.props.clearPlayers();
+    this.props.clearSearch();
   };
 
   render() {
@@ -68,7 +66,7 @@ class Training extends Component {
       <div className="content">
         <Tabs
           animate
-          id="playersTable"
+          id="searchPlayersTable"
           selectedTabId={activeTabId}
           onChange={handleTabChange}
           renderActiveTabPanelOnly
@@ -90,4 +88,4 @@ class Training extends Component {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Training);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

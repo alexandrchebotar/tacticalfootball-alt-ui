@@ -43,6 +43,7 @@ class MainMenu extends Component {
           {id: 'news', icon: 'feed', alert: true},
           {id: 'calendar', icon: 'calendar'},
           {id: 'transfers', icon: 'shopping-cart'},
+          {id: 'search', icon: 'search'},
           {id: 'finances', icon: 'dollar'},
           {id: 'trophies', icon: 'glass'},
           {id: 'scouting', icon: 'new-person'},

@@ -63,7 +63,7 @@ class PlayersTable extends Component {
           } : '',
       }
       const baseColumns1 = [
-        {rowHandle: true, formatter: 'handle', headerSort: false, frozen: true, width:30},
+        {rowHandle: true, formatter: 'handle', headerSort: false, frozen: true, width:25},
         {title: 'C', headerTooltip: 'Country',field: 'country_info.title', tooltip: true, formatter: nationFormatter, width: 33},
         {title: 'Name', headerTooltip: 'Name', field: 'name', formatter: statusFormatter, tooltip: true, align: 'left', headerSortStartingDir: 'asc', widthGrow: 10},
         {title: 'Age', headerTooltip: 'Age', field: 'age', tooltip: cell => cell.getData().age_long, formatter: denomFormatter, formatterParams: {type: 'age'}, sorter: ageSorter, width: 43},
@@ -83,6 +83,8 @@ class PlayersTable extends Component {
       ];
       const financeColumns1 = [
         {title: 'Value', headerTooltip: 'Value', field: 'value',  align: 'right', formatter:"money", formatterParams:{ thousand: ',', symbol: '$', precision: 0}, width: 70, cssClass: 'player-value'},
+        {title: 'B', headerTooltip: 'Bids', field: 'bidders', width: 28},
+        {title: 'W', headerTooltip: 'Watchers', field: 'watchers', width: 28},
       ];
       const outfieldersSkills = [
         {title: 'SC', headerTooltip: 'Score', field: 'SC'},
@@ -132,24 +134,6 @@ class PlayersTable extends Component {
                   (value < 35) ?
                     'denom2' :
                     'denom1';
-      } else if (type === 'rating') {
-        className = (value === 1) ?
-        'denom1' :
-        (value === 2) ?
-          'denom2':
-          (value === 3) ?
-            'denom3':
-            (value === 4) ?
-              'denom4':
-              (value === 5) ?
-                'denom5':
-                (value === 6) ?
-                  'denom6':
-                  (value === 7) ?
-                    'denom7':
-                    (value === 8) ?
-                      'denom8':
-                      'denom9';
       } else if (type === 'short') {
         className = (value === 'awf') ?
         'denom1' :
@@ -218,23 +202,25 @@ class PlayersTable extends Component {
     const ratingFormatter = cell => {
       const {rating: potential, current_rating: current} = cell.getData();
       const getClassName = (value) => {
-        return (value === 1) ?
+        return (value === 0) ?
           'denom1' :
-          (value === 2) ?
-            'denom2':
-            (value === 3) ?
-              'denom3':
-              (value === 4) ?
-                'denom4':
-                (value === 5) ?
-                  'denom5':
-                  (value === 6) ?
-                    'denom6':
-                    (value === 7) ?
-                      'denom7':
-                      (value === 8) ?
-                        'denom8':
-                        'denom9';
+          (value === 1) ?
+            'denom1':
+            (value === 2) ?
+              'denom2':
+              (value === 3) ?
+                'denom3':
+                (value === 4) ?
+                  'denom4':
+                  (value === 5) ?
+                    'denom5':
+                    (value === 6) ?
+                      'denom6':
+                      (value === 7) ?
+                        'denom7':
+                        (value === 8) ?
+                          'denom8':
+                          'denom9';
       };
       return `
         <span class="rating-current ${getClassName(current)}">${current}</span>

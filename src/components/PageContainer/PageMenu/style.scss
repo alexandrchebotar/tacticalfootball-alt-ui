@@ -1,19 +1,19 @@
 @import "common/variables.scss";
 
 .header {
-  width: 950px;
-  height: 32px;
+  width: $page-menu-width;
+  height: $page-menu-height;
   background-color: rgba($forest3, 0.75);
   // z-index: -1;
 
   .bp3-navbar,
   .bp3-navbar.bp3-dark {
-    height: 32px;
+    height: $page-menu-height;
     background-color: transparent;
     color: $light-text;
 
     &-group {
-      height: 32px;
+      height: $page-menu-height;
     }
 
     &-heading {

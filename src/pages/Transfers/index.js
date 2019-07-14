@@ -1,41 +1,31 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import PlayersTable from '../../components/PlayersTable';
 import {
   Tabs,
   Tab,
   Checkbox,
-  Button,
-  ButtonGroup,
-  FormGroup,
-  InputGroup,
-  ControlGroup,
-  NumericInput,
-  HTMLSelect,
-  Switch,
-  HTMLTable,
 } from "@blueprintjs/core";
-import {clearSearch, searchPlayers} from '../../store/actions';
-import PlayersTable from '../../components/PlayersTable';
-import SearchFilter from '../../components/SearchFilter';
+import {getTraining, clearPlayers, setTraining} from '../../store/actions';
 
 import './style.scss';
 
-const mapStateToProps = ({search: {players, clubs}}) => {
-  return {players, clubs};
+const mapStateToProps = ({currentClub: {id, players}}) => {
+  return {clubId: id, players};
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    searchPlayers: (filter) => dispatch(searchPlayers(filter)),
-    clearSearch: () => dispatch(clearSearch()),
+    getTraining: () => dispatch(getTraining()),
+    clearPlayers: () => dispatch(clearPlayers()),
+    setTraining: ({playerId, skill, value}) => dispatch(setTraining({playerId, skill, value})),
   }
 };
 
-class Search extends Component {
+class Training extends Component {
   state = {
     activeTabId: 'forvards',
     sortByPotential: false,
-    filterVisible: false,
   };
 
   setSortByPotential = (event) => {
@@ -51,23 +41,23 @@ class Search extends Component {
       <PlayersTable 
         players={players}
         filter={filter}
-        type="transfers"
-        skillsMode="combined"
+        skillsMode="training"
         sortByPotential={this.state.sortByPotential}
+        setTraining={this.props.setTraining}
       />
     );
   };
 
   componentDidMount() {
-    this.props.searchPlayers();
+    this.props.getTraining();
   };
   componentWillUnmount() {
-    this.props.clearSearch();
+    this.props.clearPlayers();
   };
 
   render() {
     const {
-      state: {activeTabId, sortByPotential, filterVisible},
+      state: {activeTabId, sortByPotential},
       props: {players},
       getPlayersTable,
       handleTabChange,
@@ -75,30 +65,9 @@ class Search extends Component {
     } = this;
     return (
       <div className="content">
-        <ButtonGroup minimal={true}>
-          <Button 
-            text="Transfer Market"
-            onClick={() => {this.setState({filterVisible: false})}}
-          />  
-          <Button 
-            text="Recent Transfers"
-            onClick={() => {this.setState({filterVisible: false})}}
-          />
-          <Button 
-            icon="filter"
-            text="Custom Filter"
-            onClick={() => {this.setState((state) => ({filterVisible: !state.filterVisible}))}}
-          />
-          <HTMLSelect options={['Saved filters', 'opt1', 'opt2', 'opt3']} minimal disabled/>
-        </ButtonGroup>
-
-        {filterVisible &&
-          <SearchFilter />
-        }
-
         <Tabs
           animate
-          id="searchPlayersTable"
+          id="playersTable"
           selectedTabId={activeTabId}
           onChange={handleTabChange}
           renderActiveTabPanelOnly
@@ -120,4 +89,4 @@ class Search extends Component {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Training);

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import PlayersTable from '../../components/PlayersTable';
 import {
   Tabs,
@@ -7,12 +8,22 @@ import {
   HTMLSelect,
   Checkbox,
 } from "@blueprintjs/core";
-
-import playersData from '../../store/players.json';
+import {getPlayers, clearPlayers} from '../../store/actions';
 
 import './style.scss';
 
-class Squad extends Component {
+const mapStateToProps = ({currentClub: {id, players}}) => {
+  return {clubId: id, players};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {    
+    getPlayers: () => dispatch(getPlayers()),
+    clearPlayers: () => dispatch(clearPlayers()),
+  }
+};
+
+class Players extends Component {
   state = {
     activeTabId: 'forvards',
     skillsMode: 'combined',
@@ -43,16 +54,22 @@ class Squad extends Component {
     );
   };
 
+  componentDidMount() {
+    this.props.getPlayers();
+  };
+  componentWillUnmount() {
+    this.props.clearPlayers();
+  };
+
   render() {
     const {
       state: {activeTabId, skillsMode, sortByPotential},
+      props: {players},
       getPlayersTable,
       handleSkillsModeChange,
       handleTabChange,
       setSortByPotential,
     } = this;
-    // const players = this.props.players
-    const players = playersData.sort(({potential:A},{potential:B})=>B-A).sort(({rating:A},{rating:B})=>B-A).sort(({age:A},{age:B})=>B-A);
     return (
       <div className="content">
         <Tabs
@@ -88,4 +105,4 @@ class Squad extends Component {
   };
 };
 
-export default Squad;
+export default connect(mapStateToProps, mapDispatchToProps)(Players);

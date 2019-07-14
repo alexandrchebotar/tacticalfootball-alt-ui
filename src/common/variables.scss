@@ -1,7 +1,7 @@
 @import "~@blueprintjs/core/lib/scss/variables";
 
 // app
-$app-width: 992px;
+$app-width: 1000px;
 
 // colors
 $light-text: $light-gray1;
@@ -27,6 +27,7 @@ $submenu-width: 175px;
 // page
 $page-container-min-height: calc(100vh - #{$infobar-height});
 $page-menu-height: 32px;
+$page-menu-width: $app-width - $main-menu-width;
 $page-content-min-height: calc(100vh - #{$infobar-height} - #{$page-menu-height});
 
 // footer

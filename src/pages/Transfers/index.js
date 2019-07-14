@@ -41,8 +41,7 @@ class Training extends Component {
       <PlayersTable 
         players={players}
         filter={filter}
-        type="training"
-        skillsMode="combined"
+        skillsMode="training"
         sortByPotential={this.state.sortByPotential}
         setTraining={this.props.setTraining}
       />

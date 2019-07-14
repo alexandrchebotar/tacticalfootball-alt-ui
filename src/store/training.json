@@ -49,8 +49,18 @@
   "form_rising": true,
   "surname": "Yeliashkevych",
   "value": 1754400,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "GP": "1",
+    "RE": "1"
+  },
+  "skills_age": {
+    "CO": 3.6,
+    "CT": 2.2,
+    "GP": 3.5,
+    "IN": 2.2,
+    "OR": 2.5,
+    "RE": 23.5
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -58,7 +68,7 @@
   },
   "experience": 12,
   "experience_team": 3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -150,8 +160,22 @@
   "form_rising": false,
   "surname": "Gülpinar",
   "value": 3282624,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1",
+    "CO": "1",
+    "OP": "1",
+    "SC": "1"
+  },
+  "skills_age": {
+    "AE": 0.8,
+    "BC": 1,
+    "CO": 4.2,
+    "DP": -3,
+    "OP": 7.6,
+    "PA": -6.6,
+    "SC": 0.5,
+    "TA": -1.8
+  },
   "country_info": {
     "url": "/assets/flags/tr-df1c13c6ff91cb2b5eef29417dae42ef.png",
     "title": "Turkey",
@@ -159,7 +183,7 @@
   },
   "experience": 100,
   "experience_team": 100,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -167,21 +191,21 @@
       "AE": 101.91230959242486,
       "BC": 88.17064832594113,
       "CO": 65.40208738347052,
-      "DP": 1.0,
+      "DP": 1,
       "OP": 100.50398165927443,
-      "PA": 1.0,
+      "PA": 1,
       "SC": 99.52026571072993,
-      "TA": 1.0
+      "TA": 1
     },
     "with_fitness": {
       "AE": 101.91230959242486,
       "BC": 88.17064832594113,
       "CO": 62.068754050137215,
-      "DP": 1.0,
+      "DP": 1,
       "OP": 100.50398165927443,
-      "PA": 1.0,
+      "PA": 1,
       "SC": 99.52026571072993,
-      "TA": 1.0
+      "TA": 1
     }
   },
   "display_rating": 9,
@@ -260,8 +284,20 @@
   "form_rising": true,
   "surname": "Jóhannson",
   "value": 525888,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1",
+    "OP": "1"
+  },
+  "skills_age": {
+    "AE": 10.1,
+    "BC": 5.3,
+    "CO": 1.7,
+    "DP": 5.2,
+    "OP": 0.9,
+    "PA": 1.2,
+    "SC": 1.4,
+    "TA": 1.8
+  },
   "country_info": {
     "url": "/assets/flags/is-5821ce0f958da8fb736f17bc6724d50c.png",
     "title": "Iceland",
@@ -269,7 +305,7 @@
   },
   "experience": 19,
   "experience_team": 4,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -365,8 +401,19 @@
   "form_rising": false,
   "surname": "Riegler",
   "value": 1595616,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "PA": "1"
+  },
+  "skills_age": {
+    "AE": 1.2,
+    "BC": 2.2,
+    "CO": 1.6,
+    "DP": 1.2,
+    "OP": 1.1,
+    "PA": 4.7,
+    "SC": 2.6,
+    "TA": 1.8
+  },
   "country_info": {
     "url": "/assets/flags/at-88cc9fa3a18fb8197d75f3eb3df0823d.png",
     "title": "Austria",
@@ -374,7 +421,7 @@
   },
   "experience": 16,
   "experience_team": 4,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -470,8 +517,20 @@
   "form_rising": false,
   "surname": "Tsvyk",
   "value": 1620768,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1",
+    "PA": "1"
+  },
+  "skills_age": {
+    "AE": 18.9,
+    "BC": 7.7,
+    "CO": 4.8,
+    "DP": 3.9,
+    "OP": 4.3,
+    "PA": 1.7,
+    "SC": 4.1,
+    "TA": 2.7
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -479,7 +538,7 @@
   },
   "experience": 6,
   "experience_team": -1,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -580,8 +639,19 @@
   "form_rising": false,
   "surname": "Johnston",
   "value": 2397024,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "CO": "1"
+  },
+  "skills_age": {
+    "AE": 2.6,
+    "BC": 1.5,
+    "CO": 6.6,
+    "DP": 1.9,
+    "OP": 2.6,
+    "PA": 6.8,
+    "SC": 2.3,
+    "TA": 1.2
+  },
   "country_info": {
     "url": "/assets/flags/gb-46b14142a13484d6bb8fda0ad5ffb6a4.png",
     "title": "United Kingdom",
@@ -589,7 +659,7 @@
   },
   "experience": 21,
   "experience_team": 20,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -686,8 +756,19 @@
   "form_rising": false,
   "surname": "Marchetti",
   "value": 2027328,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "IN": "1",
+    "OR": "1",
+    "RE": "1"
+  },
+  "skills_age": {
+    "CO": 0.2,
+    "CT": -3.4,
+    "GP": 5.4,
+    "IN": -0.2,
+    "OR": -1.1,
+    "RE": 5.2
+  },
   "country_info": {
     "url": "/assets/flags/it-3ab3c50484ee2201be98861cb02dd4ed.png",
     "title": "Italy",
@@ -792,8 +873,20 @@
   "form_rising": false,
   "surname": "Nalyvaiko",
   "value": 1064736,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1",
+    "DP": "1"
+  },
+  "skills_age": {
+    "AE": 4.2,
+    "BC": 3,
+    "CO": 3.2,
+    "DP": 24.1,
+    "OP": 4.1,
+    "PA": 3.7,
+    "SC": 3.4,
+    "TA": 2.7
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -801,7 +894,7 @@
   },
   "experience": 6,
   "experience_team": -3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -893,8 +986,17 @@
   "form_rising": true,
   "surname": "Dobryivechir",
   "value": 2841120,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "RE": "1"
+  },
+  "skills_age": {
+    "CO": 5.5,
+    "CT": 8.5,
+    "GP": 6,
+    "IN": 4.3,
+    "OR": 2.6,
+    "RE": 1.6
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -902,7 +1004,7 @@
   },
   "experience": 13,
   "experience_team": 15,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -999,8 +1101,20 @@
   "form_rising": false,
   "surname": "Barıin",
   "value": 2786496,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1",
+    "BC": "1"
+  },
+  "skills_age": {
+    "AE": 8,
+    "BC": 0.5,
+    "CO": 4,
+    "DP": -0.8,
+    "OP": 1.7,
+    "PA": -3.1,
+    "SC": 1.8,
+    "TA": -0.8
+  },
   "country_info": {
     "url": "/assets/flags/tr-df1c13c6ff91cb2b5eef29417dae42ef.png",
     "title": "Turkey",
@@ -1016,21 +1130,21 @@
       "AE": 86.30460508356728,
       "BC": 88.13793841690062,
       "CO": 74.22189777821112,
-      "DP": 1.0,
+      "DP": 1,
       "OP": 99.77402928071292,
       "PA": 37.64793185214075,
       "SC": 99.32208784213876,
-      "TA": 1.0
+      "TA": 1
     },
     "with_fitness": {
       "AE": 86.30460508356728,
       "BC": 88.13793841690062,
       "CO": 64.88856444487782,
-      "DP": 1.0,
+      "DP": 1,
       "OP": 99.77402928071292,
       "PA": 37.64793185214075,
       "SC": 99.32208784213876,
-      "TA": 1.0
+      "TA": 1
     }
   },
   "display_rating": 9,
@@ -1109,8 +1223,19 @@
   "form_rising": false,
   "surname": "Saenger",
   "value": 954336,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "PA": "1"
+  },
+  "skills_age": {
+    "AE": 2.1,
+    "BC": 3.1,
+    "CO": 3,
+    "DP": 2,
+    "OP": 1.8,
+    "PA": 23.7,
+    "SC": 2.4,
+    "TA": 2.7
+  },
   "country_info": {
     "url": "/assets/flags/be-54209561f089815e1f12ecdf232aecdc.png",
     "title": "Belgium",
@@ -1118,7 +1243,7 @@
   },
   "experience": 12,
   "experience_team": 3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -1214,8 +1339,19 @@
   "form_rising": false,
   "surname": "Dominguez",
   "value": 2148000,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "BC": "1"
+  },
+  "skills_age": {
+    "AE": 2.5,
+    "BC": 20.1,
+    "CO": 3.1,
+    "DP": 3.7,
+    "OP": 10.2,
+    "PA": 3.7,
+    "SC": 4.8,
+    "TA": 3.1
+  },
   "country_info": {
     "url": "/assets/flags/ar-813214d4220224846d1daad3750659be.png",
     "title": "Argentina",
@@ -1223,7 +1359,7 @@
   },
   "experience": 6,
   "experience_team": 1,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -1319,8 +1455,21 @@
   "form_rising": true,
   "surname": "Davidsen",
   "value": 2883936,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1",
+    "CO": "1",
+    "SC": "1"
+  },
+  "skills_age": {
+    "AE": 19.6,
+    "BC": 1.7,
+    "CO": 2.4,
+    "DP": -0.8,
+    "OP": 1.8,
+    "PA": -4.6,
+    "SC": 2.2,
+    "TA": -0.8
+  },
   "country_info": {
     "url": "/assets/flags/dk-5ed774a9c6acbc3ceed240d2b3ca599a.png",
     "title": "Denmark",
@@ -1328,7 +1477,7 @@
   },
   "experience": 98,
   "experience_team": 100,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -1336,21 +1485,21 @@
       "AE": 89.61837930844136,
       "BC": 87.28504597510796,
       "CO": 64.25622884074187,
-      "DP": 1.0,
+      "DP": 1,
       "OP": 100.40913885741148,
       "PA": 20.281930338272353,
       "SC": 101.22741657223443,
-      "TA": 1.0
+      "TA": 1
     },
     "with_fitness": {
       "AE": 89.61837930844136,
       "BC": 87.28504597510796,
       "CO": 64.25622884074187,
-      "DP": 1.0,
+      "DP": 1,
       "OP": 100.40913885741148,
       "PA": 20.281930338272353,
       "SC": 101.22741657223443,
-      "TA": 1.0
+      "TA": 1
     }
   },
   "display_rating": 9,
@@ -1429,8 +1578,20 @@
   "form_rising": false,
   "surname": "Əhadov",
   "value": 1982304,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "DP": "1",
+    "TA": "1"
+  },
+  "skills_age": {
+    "AE": 0.4,
+    "BC": -1.1,
+    "CO": 2,
+    "DP": 2.5,
+    "OP": -1.1,
+    "PA": -1,
+    "SC": -1.1,
+    "TA": 1.5
+  },
   "country_info": {
     "url": "/assets/flags/az-2c22df9b72e3449eaf478b3ae79af91c.png",
     "title": "Azerbaijan",
@@ -1444,22 +1605,22 @@
   "skills_match": {
     "no_fitness": {
       "AE": 98.64874726343955,
-      "BC": 1.0,
+      "BC": 1,
       "CO": 76.05269612621856,
       "DP": 95.94624179031865,
-      "OP": 1.0,
+      "OP": 1,
       "PA": 36.38710514639948,
-      "SC": 1.0,
+      "SC": 1,
       "TA": 98.64874726343955
     },
     "with_fitness": {
       "AE": 98.64874726343955,
-      "BC": 1.0,
+      "BC": 1,
       "CO": 76.05269612621856,
       "DP": 95.94624179031865,
-      "OP": 1.0,
+      "OP": 1,
       "PA": 36.38710514639948,
-      "SC": 1.0,
+      "SC": 1,
       "TA": 98.64874726343955
     }
   },
@@ -1539,8 +1700,21 @@
   "form_rising": false,
   "surname": "Constantin",
   "value": 2126976,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "BC": "1",
+    "CO": "1",
+    "SC": "1"
+  },
+  "skills_age": {
+    "AE": 1.3,
+    "BC": 2.4,
+    "CO": 12.6,
+    "DP": 10.8,
+    "OP": 3.7,
+    "PA": 2.9,
+    "SC": 2.4,
+    "TA": 10.6
+  },
   "country_info": {
     "url": "/assets/flags/md-2ee7e090858f3199ed6e7fa0f5da81c3.png",
     "title": "Moldova",
@@ -1548,7 +1722,7 @@
   },
   "experience": 14,
   "experience_team": 23,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -1644,8 +1818,21 @@
   "form_rising": true,
   "surname": "Tomenko ",
   "value": 3570240,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "BC": "1",
+    "CO": "1",
+    "OP": "1"
+  },
+  "skills_age": {
+    "AE": 2.7,
+    "BC": 9,
+    "CO": 14,
+    "DP": -0.4,
+    "OP": 2.3,
+    "PA": 4.2,
+    "SC": 5.2,
+    "TA": -3
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -1653,7 +1840,7 @@
   },
   "experience": 25,
   "experience_team": 53,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -1754,8 +1941,20 @@
   "form_rising": false,
   "surname": "Fedotenko ",
   "value": 1278528,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "OP": "1",
+    "SC": "1"
+  },
+  "skills_age": {
+    "AE": 4.3,
+    "BC": 5,
+    "CO": 3.8,
+    "DP": 3.8,
+    "OP": 5.4,
+    "PA": 4.5,
+    "SC": 10.7,
+    "TA": 4.6
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -1763,7 +1962,7 @@
   },
   "experience": 5,
   "experience_team": -4,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -1859,8 +2058,20 @@
   "form_rising": false,
   "surname": "Cashcov",
   "value": 868128,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "OP": "1",
+    "SC": "1"
+  },
+  "skills_age": {
+    "AE": 3.9,
+    "BC": 3.5,
+    "CO": 4.4,
+    "DP": 4.3,
+    "OP": 21.1,
+    "PA": 4.8,
+    "SC": 2.7,
+    "TA": 3.3
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -1868,7 +2079,7 @@
   },
   "experience": 6,
   "experience_team": -3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -1964,8 +2175,20 @@
   "form_rising": true,
   "surname": "Minyaylyuk ",
   "value": 1786560,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "OP": "1",
+    "SC": "1"
+  },
+  "skills_age": {
+    "AE": 4.1,
+    "BC": 3.8,
+    "CO": 3.3,
+    "DP": 4.2,
+    "OP": 13.4,
+    "PA": 3.1,
+    "SC": 31.6,
+    "TA": 4
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -1973,7 +2196,7 @@
   },
   "experience": 6,
   "experience_team": -3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -2069,8 +2292,19 @@
   "form_rising": true,
   "surname": "Purice",
   "value": 617280,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "PA": "1"
+  },
+  "skills_age": {
+    "AE": 3.8,
+    "BC": 2.8,
+    "CO": 3.2,
+    "DP": 3.5,
+    "OP": 2.5,
+    "PA": 14.2,
+    "SC": 3.1,
+    "TA": 3.7
+  },
   "country_info": {
     "url": "/assets/flags/ro-e0039fcbc64fc73d68e4ff5cc2b86ee1.png",
     "title": "Romania",
@@ -2078,7 +2312,7 @@
   },
   "experience": 15,
   "experience_team": 3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -2174,8 +2408,19 @@
   "form_rising": false,
   "surname": "Lau",
   "value": 1854624,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "CO": "1"
+  },
+  "skills_age": {
+    "AE": 2.1,
+    "BC": 3.4,
+    "CO": 28.1,
+    "DP": 4.6,
+    "OP": 3.6,
+    "PA": 2.7,
+    "SC": 3,
+    "TA": 4.5
+  },
   "country_info": {
     "url": "/assets/flags/hk-49eefef9ceb5ce688674015d71aa39c3.png",
     "title": "Hong Kong",
@@ -2183,7 +2428,7 @@
   },
   "experience": 18,
   "experience_team": 4,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -2279,8 +2524,22 @@
   "form_rising": true,
   "surname": "Clague",
   "value": 2517216,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "DP": "1",
+    "PA": "1",
+    "SC": "1",
+    "TA": "1"
+  },
+  "skills_age": {
+    "AE": 2.3,
+    "BC": 1.8,
+    "CO": 1.2,
+    "DP": 21.3,
+    "OP": 4,
+    "PA": 21.3,
+    "SC": 2.3,
+    "TA": 2.3
+  },
   "country_info": {
     "url": "/assets/flags/im-f8f67f666253321e81b79cc1ebe12ac4.png",
     "title": "Isle of Man",
@@ -2288,7 +2547,7 @@
   },
   "experience": 34,
   "experience_team": 64,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -2389,8 +2648,21 @@
   "form_rising": false,
   "surname": "Kaspersen",
   "value": 3562752,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1",
+    "OP": "1",
+    "SC": "1"
+  },
+  "skills_age": {
+    "AE": -0.4,
+    "BC": 0.3,
+    "CO": 0.5,
+    "DP": -1.6,
+    "OP": 1.8,
+    "PA": 1.3,
+    "SC": 0.9,
+    "TA": -4.6
+  },
   "country_info": {
     "url": "/assets/flags/no-245484b339d8a791f62879079d2372f1.png",
     "title": "Norway",
@@ -2409,7 +2681,7 @@
       "DP": 57.8768930734054,
       "OP": 87.44566111677943,
       "PA": 104.47459626056964,
-      "SC": 100.0,
+      "SC": 100,
       "TA": 67.43575175091557
     },
     "with_fitness": {
@@ -2419,7 +2691,7 @@
       "DP": 57.8768930734054,
       "OP": 87.44566111677943,
       "PA": 104.47459626056964,
-      "SC": 100.0,
+      "SC": 100,
       "TA": 67.43575175091557
     }
   },
@@ -2499,8 +2771,19 @@
   "form_rising": true,
   "surname": "Bianchi",
   "value": 2223456,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "PA": "1"
+  },
+  "skills_age": {
+    "AE": 3.9,
+    "BC": 3.7,
+    "CO": 4.2,
+    "DP": 4.1,
+    "OP": 2.7,
+    "PA": 4.8,
+    "SC": 4.4,
+    "TA": 3.5
+  },
   "country_info": {
     "url": "/assets/flags/ca-745b24106c69bb3a83456bc7b71b6edc.png",
     "title": "Canada",
@@ -2508,7 +2791,7 @@
   },
   "experience": 6,
   "experience_team": -3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -2604,8 +2887,19 @@
   "form_rising": false,
   "surname": "van Wilgenburg",
   "value": 1240032,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "DP": "1"
+  },
+  "skills_age": {
+    "AE": 2.3,
+    "BC": 2.5,
+    "CO": 1.6,
+    "DP": 9.5,
+    "OP": 3.1,
+    "PA": 3,
+    "SC": 1.5,
+    "TA": 2.8
+  },
   "country_info": {
     "url": "/assets/flags/za-5e7950e323fdb498ea83ace66bbd7486.png",
     "title": "South Africa",
@@ -2613,7 +2907,7 @@
   },
   "experience": 15,
   "experience_team": 3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -2709,8 +3003,19 @@
   "form_rising": false,
   "surname": "Lindberg",
   "value": 2503200,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "OP": "1"
+  },
+  "skills_age": {
+    "AE": 3,
+    "BC": 2.5,
+    "CO": 3.3,
+    "DP": 1.8,
+    "OP": 12.2,
+    "PA": 2.2,
+    "SC": 4.2,
+    "TA": 2.9
+  },
   "country_info": {
     "url": "/assets/flags/no-245484b339d8a791f62879079d2372f1.png",
     "title": "Norway",
@@ -2718,7 +3023,7 @@
   },
   "experience": 6,
   "experience_team": 0,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -2814,8 +3119,21 @@
   "form_rising": false,
   "surname": "van Aalst",
   "value": 3617376,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1",
+    "CO": "1",
+    "TA": "1"
+  },
+  "skills_age": {
+    "AE": 2,
+    "BC": -0.6,
+    "CO": 2.5,
+    "DP": -8.4,
+    "OP": -0.6,
+    "PA": 0.3,
+    "SC": 1,
+    "TA": 1.8
+  },
   "country_info": {
     "url": "/assets/flags/nl-c38e28657c3092e31163443407a817e5.png",
     "title": "Netherlands",
@@ -2834,7 +3152,7 @@
       "DP": 52.80627329437241,
       "OP": 77.38250073271274,
       "PA": 100.84015103838892,
-      "SC": 100.0,
+      "SC": 100,
       "TA": 48.60149290853558
     },
     "with_fitness": {
@@ -2844,7 +3162,7 @@
       "DP": 52.80627329437241,
       "OP": 77.38250073271274,
       "PA": 100.84015103838892,
-      "SC": 100.0,
+      "SC": 100,
       "TA": 48.60149290853558
     }
   },
@@ -2924,8 +3242,23 @@
   "form_rising": false,
   "surname": "Eisenhauer",
   "value": 3321600,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1",
+    "CO": "1",
+    "DP": "1",
+    "PA": "1",
+    "TA": "1"
+  },
+  "skills_age": {
+    "AE": 2.8,
+    "BC": -0.8,
+    "CO": 8.9,
+    "DP": 2.6,
+    "OP": -0.8,
+    "PA": 3.5,
+    "SC": -18.4,
+    "TA": 3.5
+  },
   "country_info": {
     "url": "/assets/flags/uy-a9e1e480a5e929ad3ce0bd759c6b15b4.png",
     "title": "Uruguay",
@@ -2939,7 +3272,7 @@
   "skills_match": {
     "no_fitness": {
       "AE": 102.18995878606219,
-      "BC": 1.0,
+      "BC": 1,
       "CO": 84.02637739693579,
       "DP": 106.56987635818659,
       "OP": 10.345601890047654,
@@ -2949,7 +3282,7 @@
     },
     "with_fitness": {
       "AE": 102.18995878606219,
-      "BC": 1.0,
+      "BC": 1,
       "CO": 76.39304406360249,
       "DP": 106.56987635818659,
       "OP": 10.345601890047654,
@@ -3034,8 +3367,20 @@
   "form_rising": false,
   "surname": "Lajos",
   "value": 2209152,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "BC": "1",
+    "PA": "1"
+  },
+  "skills_age": {
+    "AE": -3.8,
+    "BC": 2.9,
+    "CO": -3.2,
+    "DP": -10.5,
+    "OP": 11.4,
+    "PA": 2.4,
+    "SC": -3.4,
+    "TA": -9.4
+  },
   "country_info": {
     "url": "/assets/flags/hu-c30400e45c683a5e24bf97aa41564622.png",
     "title": "Hungary",
@@ -3144,8 +3489,22 @@
   "form_rising": true,
   "surname": "Canpolat",
   "value": 2013696,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1",
+    "CO": "1",
+    "PA": "1",
+    "TA": "1"
+  },
+  "skills_age": {
+    "AE": 2,
+    "BC": -1.4,
+    "CO": 1.9,
+    "DP": -1.2,
+    "OP": -1.4,
+    "PA": 2.8,
+    "SC": -6.1,
+    "TA": 2
+  },
   "country_info": {
     "url": "/assets/flags/tr-df1c13c6ff91cb2b5eef29417dae42ef.png",
     "title": "Turkey",
@@ -3254,8 +3613,19 @@
   "form_rising": false,
   "surname": "Amorim",
   "value": 756000,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "PA": "1"
+  },
+  "skills_age": {
+    "AE": 4,
+    "BC": 3.8,
+    "CO": 3.8,
+    "DP": 4.1,
+    "OP": 3.3,
+    "PA": 4.7,
+    "SC": 3.3,
+    "TA": 2.2
+  },
   "country_info": {
     "url": "/assets/flags/pt-1de92cb49754ca11fbac6b0d56cf78eb.png",
     "title": "Portugal",
@@ -3263,7 +3633,7 @@
   },
   "experience": 12,
   "experience_team": 3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -3359,8 +3729,19 @@
   "form_rising": true,
   "surname": "Gabor",
   "value": 2145120,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "PA": "1"
+  },
+  "skills_age": {
+    "AE": 0.3,
+    "BC": -0.4,
+    "CO": 1.3,
+    "DP": -0.5,
+    "OP": 2.7,
+    "PA": 4.7,
+    "SC": 0.9,
+    "TA": 0.4
+  },
   "country_info": {
     "url": "/assets/flags/pl-6203406cb7c042daad943c757fdbf811.png",
     "title": "Poland",
@@ -3368,7 +3749,7 @@
   },
   "experience": 23,
   "experience_team": 5,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -3464,8 +3845,19 @@
   "form_rising": true,
   "surname": "Liski ",
   "value": 1391808,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "OP": "1"
+  },
+  "skills_age": {
+    "AE": 4.1,
+    "BC": 2.7,
+    "CO": 3.6,
+    "DP": 3.4,
+    "OP": 19.8,
+    "PA": 2.7,
+    "SC": 3.5,
+    "TA": 4.9
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -3473,7 +3865,7 @@
   },
   "experience": 6,
   "experience_team": -3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -3569,8 +3961,19 @@
   "form_rising": true,
   "surname": "Isaac",
   "value": 2412576,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "CO": "1"
+  },
+  "skills_age": {
+    "AE": 3,
+    "BC": 6.5,
+    "CO": 22.5,
+    "DP": 3.7,
+    "OP": 2.7,
+    "PA": 2.7,
+    "SC": 4.5,
+    "TA": 4.2
+  },
   "country_info": {
     "url": "/assets/flags/wls-db67c0629805965fd98ab32f31d26838.png",
     "title": "Wales",
@@ -3578,7 +3981,7 @@
   },
   "experience": 6,
   "experience_team": -3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -3674,8 +4077,20 @@
   "form_rising": false,
   "surname": "Androshchuk",
   "value": 3428448,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "DP": "1",
+    "TA": "1"
+  },
+  "skills_age": {
+    "AE": 1.7,
+    "BC": 1.2,
+    "CO": 1,
+    "DP": 5.2,
+    "OP": 14.1,
+    "PA": 7.6,
+    "SC": 7.5,
+    "TA": 12.9
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -3683,7 +4098,7 @@
   },
   "experience": 21,
   "experience_team": 42,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -3784,8 +4199,20 @@
   "form_rising": false,
   "surname": "Reid",
   "value": 2907264,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "CO": "1",
+    "SC": "1"
+  },
+  "skills_age": {
+    "AE": 2.9,
+    "BC": 4.5,
+    "CO": 18.4,
+    "DP": 1.6,
+    "OP": 1.8,
+    "PA": 3.7,
+    "SC": 21.1,
+    "TA": 3
+  },
   "country_info": {
     "url": "/assets/flags/br-41ae170c8fd75fc3736fa4c1ef8ceaf1.png",
     "title": "Brazil",
@@ -3793,7 +4220,7 @@
   },
   "experience": 38,
   "experience_team": 9,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -3889,8 +4316,20 @@
   "form_rising": false,
   "surname": "Caine",
   "value": 3320448,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "CO": "1",
+    "TA": "1"
+  },
+  "skills_age": {
+    "AE": 1.3,
+    "BC": 1.3,
+    "CO": 5.2,
+    "DP": 2.3,
+    "OP": 5.8,
+    "PA": 1.5,
+    "SC": 0.3,
+    "TA": 8.9
+  },
   "country_info": {
     "url": "/assets/flags/im-f8f67f666253321e81b79cc1ebe12ac4.png",
     "title": "Isle of Man",
@@ -3999,8 +4438,20 @@
   "form_rising": false,
   "surname": "Prosinečki",
   "value": 3695040,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "BC": "1",
+    "SC": "1"
+  },
+  "skills_age": {
+    "AE": 2.2,
+    "BC": 3.9,
+    "CO": 0.4,
+    "DP": -7.2,
+    "OP": 0.6,
+    "PA": 1.5,
+    "SC": 3.8,
+    "TA": -0.1
+  },
   "country_info": {
     "url": "/assets/flags/hr-e9041d90fe2c9a17b63aeb664a222077.png",
     "title": "Croatia",
@@ -4008,7 +4459,7 @@
   },
   "experience": 73,
   "experience_team": 94,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -4109,8 +4560,19 @@
   "form_rising": false,
   "surname": "Yanukovych ",
   "value": 1305792,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "PA": "1"
+  },
+  "skills_age": {
+    "AE": 3.5,
+    "BC": 3.5,
+    "CO": 3.4,
+    "DP": 2.7,
+    "OP": 3.7,
+    "PA": 7.5,
+    "SC": 4.5,
+    "TA": 2.7
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -4118,28 +4580,28 @@
   },
   "experience": 6,
   "experience_team": -3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
     "no_fitness": {
       "AE": 30.600897186790583,
-      "BC": 5.0,
+      "BC": 5,
       "CO": 50.05660272966876,
       "DP": 67.45581274752413,
       "OP": 12.209723916821154,
       "PA": 61.16548306202232,
-      "SC": 5.0,
+      "SC": 5,
       "TA": 39.028328165995866
     },
     "with_fitness": {
       "AE": 30.600897186790583,
-      "BC": 5.0,
+      "BC": 5,
       "CO": 50.05660272966876,
       "DP": 67.45581274752413,
       "OP": 12.209723916821154,
       "PA": 61.16548306202232,
-      "SC": 5.0,
+      "SC": 5,
       "TA": 39.028328165995866
     }
   },
@@ -4214,8 +4676,20 @@
   "form_rising": true,
   "surname": "Berthelsen",
   "value": 962784,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "DP": "1",
+    "TA": "1"
+  },
+  "skills_age": {
+    "AE": 1.9,
+    "BC": 1.8,
+    "CO": 2.4,
+    "DP": 37.1,
+    "OP": 2.6,
+    "PA": 2.2,
+    "SC": 2.8,
+    "TA": 2.4
+  },
   "country_info": {
     "url": "/assets/flags/dk-5ed774a9c6acbc3ceed240d2b3ca599a.png",
     "title": "Denmark",
@@ -4223,7 +4697,7 @@
   },
   "experience": 16,
   "experience_team": 4,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -4319,8 +4793,20 @@
   "form_rising": true,
   "surname": "Skoryk ",
   "value": 1200000,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "OP": "1",
+    "SC": "1"
+  },
+  "skills_age": {
+    "AE": 4.2,
+    "BC": 3.9,
+    "CO": 3.5,
+    "DP": 3.9,
+    "OP": 2.7,
+    "PA": 4.7,
+    "SC": 15,
+    "TA": 3.6
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -4328,7 +4814,7 @@
   },
   "experience": 5,
   "experience_team": -4,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -4336,7 +4822,7 @@
       "AE": 53.7910821083593,
       "BC": 54.03349456848612,
       "CO": 43.84085607057071,
-      "DP": 5.0,
+      "DP": 5,
       "OP": 59.53349456848612,
       "PA": 24.727237380380473,
       "SC": 39.20670926368281,
@@ -4346,7 +4832,7 @@
       "AE": 53.7910821083593,
       "BC": 54.03349456848612,
       "CO": 43.84085607057071,
-      "DP": 5.0,
+      "DP": 5,
       "OP": 59.53349456848612,
       "PA": 24.727237380380473,
       "SC": 39.20670926368281,
@@ -4424,8 +4910,23 @@
   "form_rising": false,
   "surname": "Krūze",
   "value": 2408928,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1",
+    "CO": "1",
+    "DP": "1",
+    "PA": "1",
+    "TA": "1"
+  },
+  "skills_age": {
+    "AE": 6.4,
+    "BC": -0.9,
+    "CO": 5.2,
+    "DP": 5.7,
+    "OP": -0.9,
+    "PA": 3.2,
+    "SC": -0.9,
+    "TA": 5.6
+  },
   "country_info": {
     "url": "/assets/flags/lv-a86d390c3bfcbd3bfaf7a6a3d71e0b51.png",
     "title": "Latvia",
@@ -4439,20 +4940,20 @@
   "skills_match": {
     "no_fitness": {
       "AE": 99.32725594276482,
-      "BC": 1.0,
+      "BC": 1,
       "CO": 72.11558126550118,
       "DP": 97.98176782829448,
-      "OP": 1.0,
+      "OP": 1,
       "PA": 34.895795886238034,
       "SC": 11.967737110556115,
       "TA": 99.32725594276482
     },
     "with_fitness": {
       "AE": 99.32725594276482,
-      "BC": 1.0,
+      "BC": 1,
       "CO": 72.06002570994562,
       "DP": 97.98176782829448,
-      "OP": 1.0,
+      "OP": 1,
       "PA": 34.895795886238034,
       "SC": 11.967737110556115,
       "TA": 99.32725594276482
@@ -4534,8 +5035,19 @@
   "form_rising": false,
   "surname": "Fedorenko ",
   "value": 1871520,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "AE": "1"
+  },
+  "skills_age": {
+    "AE": 43.9,
+    "BC": 4.6,
+    "CO": 3.6,
+    "DP": 4.4,
+    "OP": 4.8,
+    "PA": 3.9,
+    "SC": 2.7,
+    "TA": 3.9
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -4543,7 +5055,7 @@
   },
   "experience": 6,
   "experience_team": -3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -4639,8 +5151,19 @@
   "form_rising": true,
   "surname": "Shmata ",
   "value": 3568704,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "BC": "1"
+  },
+  "skills_age": {
+    "AE": 6.2,
+    "BC": 7.3,
+    "CO": 0.9,
+    "DP": 5.5,
+    "OP": 5.4,
+    "PA": 5.6,
+    "SC": 5.7,
+    "TA": 2.4
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -4749,8 +5272,22 @@
   "form_rising": false,
   "surname": "Andreiko",
   "value": 3657120,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "BC": "1",
+    "CO": "1",
+    "OP": "1",
+    "PA": "1"
+  },
+  "skills_age": {
+    "AE": 3.7,
+    "BC": 1.1,
+    "CO": 1.2,
+    "DP": 6.7,
+    "OP": 1.8,
+    "PA": 1.3,
+    "SC": 21.9,
+    "TA": 10.2
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -4855,8 +5392,20 @@
   "form_rising": true,
   "surname": "Cook",
   "value": 2714112,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "CO": "1",
+    "CT": "1",
+    "IN": "1",
+    "OR": "1"
+  },
+  "skills_age": {
+    "CO": 1.2,
+    "CT": 1.2,
+    "GP": 1.1,
+    "IN": 2,
+    "OR": -0.5,
+    "RE": 0.3
+  },
   "country_info": {
     "url": "/assets/flags/gb-46b14142a13484d6bb8fda0ad5ffb6a4.png",
     "title": "United Kingdom",
@@ -4864,7 +5413,7 @@
   },
   "experience": 70,
   "experience_team": 100,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -4957,8 +5506,18 @@
   "form_rising": false,
   "surname": "Moore",
   "value": 3513792,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "GP": "1",
+    "IN": "1"
+  },
+  "skills_age": {
+    "CO": 0.8,
+    "CT": 1.1,
+    "GP": 7.8,
+    "IN": 7.6,
+    "OR": 1,
+    "RE": 1.7
+  },
   "country_info": {
     "url": "/assets/flags/im-f8f67f666253321e81b79cc1ebe12ac4.png",
     "title": "Isle of Man",
@@ -5059,8 +5618,17 @@
   "form_rising": true,
   "surname": "Wieser",
   "value": 2633088,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "GP": "1"
+  },
+  "skills_age": {
+    "CO": 9.8,
+    "CT": 15.8,
+    "GP": 7.4,
+    "IN": 15.7,
+    "OR": 3.4,
+    "RE": 2.7
+  },
   "country_info": {
     "url": "/assets/flags/de-9563326da1d06fcf70e156f698f9212e.png",
     "title": "Germany",
@@ -5068,7 +5636,7 @@
   },
   "experience": 5,
   "experience_team": 1,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -5156,8 +5724,17 @@
   "form_rising": false,
   "surname": "Skoryk ",
   "value": 2298336,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "RE": "1"
+  },
+  "skills_age": {
+    "CO": 1.6,
+    "CT": 2.8,
+    "GP": 7.1,
+    "IN": 5.6,
+    "OR": 2.5,
+    "RE": 4.8
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -5165,7 +5742,7 @@
   },
   "experience": 6,
   "experience_team": -3,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -5262,8 +5839,19 @@
   "form_rising": false,
   "surname": "Bohatenko ",
   "value": 1857312,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "OP": "1"
+  },
+  "skills_age": {
+    "AE": 3.2,
+    "BC": 2.7,
+    "CO": 3.3,
+    "DP": 4.2,
+    "OP": 4.8,
+    "PA": 2.7,
+    "SC": 3.5,
+    "TA": 4
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -5271,7 +5859,7 @@
   },
   "experience": 6,
   "experience_team": -1,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {
@@ -5363,8 +5951,17 @@
   "form_rising": false,
   "surname": "Lazarenko",
   "value": 2562432,
-  "skills_train": null,
-  "skills_age": null,
+  "skills_train": {
+    "RE": "1"
+  },
+  "skills_age": {
+    "CO": 4.3,
+    "CT": 2.9,
+    "GP": 9.3,
+    "IN": 13.6,
+    "OR": 7.3,
+    "RE": 5.3
+  },
   "country_info": {
     "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
     "title": "Ukraine",
@@ -5372,7 +5969,7 @@
   },
   "experience": 7,
   "experience_team": -2,
-  "experience_nation": 0.0,
+  "experience_nation": 0,
   "squad_number": null,
   "nickname": "",
   "skills_match": {

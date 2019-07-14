@@ -8,6 +8,7 @@ import {
   START_SEARCH_PLAYERS,
   END_SEARCH_PLAYERS,
   CLEAR_SEARCH,
+  CLEAR_SEARCH_FILTER,
 } from 'common/constants';
 import {combineReducers} from 'redux'; 
 import {handleActions, combineActions} from 'redux-actions';
@@ -77,6 +78,7 @@ export const defaultState = {
   search: {
     players: [],
     clubs: [],
+    filter: {},
   },
   loading: {
     players: false,
@@ -139,6 +141,7 @@ const search = handleActions(
       START_SEARCH_PLAYERS,
       END_SEARCH_PLAYERS,
       CLEAR_SEARCH,
+      CLEAR_SEARCH_FILTER,
     )]: (state, action) => ({
       ...state, 
       ...action.payload.search,

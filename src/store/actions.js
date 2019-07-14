@@ -8,6 +8,7 @@ import {
   START_SEARCH_PLAYERS,
   END_SEARCH_PLAYERS,
   CLEAR_SEARCH,
+  CLEAR_SEARCH_FILTER,
 } from '../common/constants';
 import {createAction} from 'redux-actions';
 import axios from 'axios';
@@ -43,6 +44,9 @@ export const endSearchPlayers = createAction(END_SEARCH_PLAYERS, ({players}) => 
 }));
 export const clearSearch = createAction(CLEAR_SEARCH, () => ({
   search: {clubs: [], players: []},
+}));
+export const clearSearchFilter = createAction(CLEAR_SEARCH_FILTER, () => ({
+  search: {filter: []},
 }));
 
 

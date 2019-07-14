@@ -14,7 +14,7 @@ import {
   Switch,
   HTMLTable,
 } from "@blueprintjs/core";
-import {clearSearch, searchPlayers} from '../../store/actions';
+import {clearSearch, searchPlayers, clearSearchFilter} from '../../store/actions';
 import PlayersTable from '../../components/PlayersTable';
 import SearchFilter from '../../components/SearchFilter';
 
@@ -28,6 +28,7 @@ const mapDispatchToProps = dispatch => {
   return {
     searchPlayers: (filter) => dispatch(searchPlayers(filter)),
     clearSearch: () => dispatch(clearSearch()),
+    clearSearchFilter: () => dispatch(clearSearchFilter()),
   }
 };
 
@@ -36,6 +37,7 @@ class Search extends Component {
     activeTabId: 'forvards',
     sortByPotential: false,
     filterVisible: false,
+    filter: {},
   };
 
   setSortByPotential = (event) => {
@@ -90,12 +92,24 @@ class Search extends Component {
             onClick={() => {this.setState((state) => ({filterVisible: !state.filterVisible}))}}
           />
           <HTMLSelect options={['Saved filters', 'opt1', 'opt2', 'opt3']} minimal disabled/>
+          {filterVisible &&
+            <Fragment>
+              <Button 
+                icon="filter-remove"
+                text="Clear filter"
+                onClick={this.props.clearSearchFilter()}
+              />
+              <Button 
+                icon="search"
+                text="Search"
+                onClick={this.props.searchPlayers(this.state.filter)}
+              />
+            </Fragment>
+          }
         </ButtonGroup>
-
         {filterVisible &&
           <SearchFilter />
         }
-
         <Tabs
           animate
           id="searchPlayersTable"

@@ -29,6 +29,7 @@ const PageMenu = ({match, page, clubName}) => {
       {id: "news", title: "News"},
       {id: "calendar", title: "Calendar"},
       {id: "transfers", title: "Transfers"},
+      {id: "search", title: "Search"},
       {id: "finances", title: "Finances"},
       {id: "trophies", title: "Trophies"},
       {id: "scouting", title: "Scouting"},

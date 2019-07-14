@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
-import PlayersTable from '../../components/PlayersTable';
 import {
   Tabs,
   Tab,
@@ -19,10 +18,10 @@ import {clearSearch, searchPlayers} from '../../store/actions';
 
 import './style.scss';
 
+const denoms = ['', 'awf', 'poor', 'weak', 'dec', 'good', 'exe', 'sup', 'bri', 'awe'];
 const mapStateToProps = ({search: {filter}}) => {
   return {filter};
 };
-
 const mapDispatchToProps = dispatch => {
   return {
     searchPlayers: (filter) => dispatch(searchPlayers(filter)),
@@ -32,13 +31,10 @@ const mapDispatchToProps = dispatch => {
 
 class SearchFilter extends Component {
   state = {
-    // activeTabId: 'forvards',
-    // sortByPotential: false,
-    // filterVisible: false,
+    filter: {},
   };
 
   render() {
-
     return (
       <Fragment>
         <HTMLTable>
@@ -61,10 +57,10 @@ class SearchFilter extends Component {
                 <NumericInput min={21} max={40} placeholder="Min age" allowNumericCharactersOnly />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
             </tr>
             <tr>
@@ -76,10 +72,10 @@ class SearchFilter extends Component {
                 <NumericInput min={21} max={40} placeholder="Max age" allowNumericCharactersOnly />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
             </tr>
           </tbody>
@@ -103,55 +99,55 @@ class SearchFilter extends Component {
             <tr>
               <td>Current</td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
             </tr>
             <tr>
               <td>Potential</td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
               <td>
-                <HTMLSelect options={['opt1', 'opt2', 'opt3']} minimal />
+                <HTMLSelect options={denoms} minimal />
               </td>
             </tr>
           </tbody>

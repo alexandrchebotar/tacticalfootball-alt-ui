@@ -13,6 +13,7 @@ import {
   HTMLSelect,
   Switch,
   HTMLTable,
+  Navbar,
 } from "@blueprintjs/core";
 import {clearSearch, searchPlayers, clearSearchFilter} from '../../store/actions';
 import PlayersTable from '../../components/PlayersTable';
@@ -38,6 +39,7 @@ class Search extends Component {
     sortByPotential: false,
     filterVisible: false,
     filter: {},
+    filterPreset: null,
   };
 
   setSortByPotential = (event) => {
@@ -69,7 +71,7 @@ class Search extends Component {
 
   render() {
     const {
-      state: {activeTabId, sortByPotential, filterVisible},
+      state: {activeTabId, sortByPotential, filterVisible, filterPreset},
       props: {players},
       getPlayersTable,
       handleTabChange,
@@ -77,36 +79,56 @@ class Search extends Component {
     } = this;
     return (
       <div className="content">
-        <ButtonGroup minimal={true}>
-          <Button 
-            text="Transfer Market"
-            onClick={() => {this.setState({filterVisible: false})}}
-          />  
-          <Button 
-            text="Recent Transfers"
-            onClick={() => {this.setState({filterVisible: false})}}
-          />
-          <Button 
-            icon="filter"
-            text="Custom Filter"
-            onClick={() => {this.setState((state) => ({filterVisible: !state.filterVisible}))}}
-          />
-          <HTMLSelect options={['Saved filters', 'opt1', 'opt2', 'opt3']} minimal disabled/>
-          {filterVisible &&
-            <Fragment>
+        <Navbar>
+          <Navbar.Group align="left">
+            <ButtonGroup minimal>
               <Button 
-                icon="filter-remove"
-                text="Clear filter"
-                onClick={this.props.clearSearchFilter()}
-              />
+                text="Transfer Market"
+                onClick={() => {this.setState({filterVisible: false, filterPreset: null})}}
+              />  
               <Button 
-                icon="search"
-                text="Search"
-                onClick={this.props.searchPlayers(this.state.filter)}
+                text="Recent Transfers"
+                onClick={() => {this.setState({filterVisible: false, filterPreset: null})}}
               />
-            </Fragment>
-          }
-        </ButtonGroup>
+              <HTMLSelect
+                options={['Saved filters', 'opt1', 'opt2', 'opt3']}
+                minimal
+                onChange={(e) => this.setState({filterVisible: false, filterPreset: e.target.value})}
+              />
+            </ButtonGroup>
+          </Navbar.Group>
+          {/* <Navbar.Divider /> */}
+          <Navbar.Group align="right">
+            <ButtonGroup minimal>
+              {filterVisible &&
+                <Fragment>
+                  <Button 
+                    icon="filter-remove"
+                    text="Clear filter"
+                    onClick={this.props.clearSearchFilter()}
+                  />
+                  <Button 
+                    icon="search"
+                    text="Search"
+                    onClick={this.props.searchPlayers(this.state.filter)}
+                  />
+                </Fragment>
+              }
+              {filterPreset &&
+                <Button 
+                  icon="delete"
+                  text="Remove saved filter"
+                  onClick={() => this.setState({filterPreset: null})}
+                />
+              }
+              <Button 
+                icon="filter"
+                text="Custom Filter"
+                onClick={() => {this.setState((state) => ({filterVisible: !state.filterVisible, filterPreset: null}))}}
+              />
+            </ButtonGroup>
+          </Navbar.Group>
+        </Navbar>
         {filterVisible &&
           <SearchFilter />
         }

@@ -40,6 +40,7 @@ class Search extends Component {
     filterVisible: false,
     filter: {},
     filterPreset: null,
+    filterMode: 'transferMarket',
   };
 
   setSortByPotential = (event) => {
@@ -71,7 +72,7 @@ class Search extends Component {
 
   render() {
     const {
-      state: {activeTabId, sortByPotential, filterVisible, filterPreset},
+      state: {activeTabId, sortByPotential, filterVisible, filterPreset, filterMode},
       props: {players},
       getPlayersTable,
       handleTabChange,
@@ -79,21 +80,23 @@ class Search extends Component {
     } = this;
     return (
       <div className="content">
-        <Navbar>
+        <Navbar className="filter-settings" >
           <Navbar.Group align="left">
             <ButtonGroup minimal>
               <Button 
                 text="Transfer Market"
-                onClick={() => {this.setState({filterVisible: false, filterPreset: null})}}
+                onClick={() => {this.setState({filterVisible: false, filterPreset: null, filterMode: 'transferMarket'})}}
               />  
               <Button 
                 text="Recent Transfers"
-                onClick={() => {this.setState({filterVisible: false, filterPreset: null})}}
+                onClick={() => {this.setState({filterVisible: false, filterPreset: null, filterMode: 'recentTransfers'})}}
               />
               <HTMLSelect
-                options={['Saved filters', 'opt1', 'opt2', 'opt3']}
+                // disabled
+                options={[{disabled: true, value: 'Saved filters'}, 'opt1', 'opt2', 'opt3']}
+                value={filterPreset || "Saved filters"}
                 minimal
-                onChange={(e) => this.setState({filterVisible: false, filterPreset: e.target.value})}
+                onChange={(e) => this.setState({filterVisible: false, filterPreset: e.target.value, filterMode: e.target.value})}
               />
             </ButtonGroup>
           </Navbar.Group>
@@ -110,7 +113,7 @@ class Search extends Component {
                   <Button 
                     icon="search"
                     text="Search"
-                    onClick={this.props.searchPlayers(this.state.filter)}
+                    onClick={() => {this.props.searchPlayers(this.state.filter); this.setState({filterMode: 'customFilter'})}}
                   />
                 </Fragment>
               }
@@ -132,6 +135,16 @@ class Search extends Component {
         {filterVisible &&
           <SearchFilter />
         }
+        <h2>
+          {filterMode === 'transferMarket' &&
+            'Current Transfer Market'
+          || filterMode === 'recentTransfers' &&
+            'Transfer Market History'
+          || filterMode === 'customFilter' &&
+            'Custom Players Search'
+          || 'Saved Players Search - ' + filterMode
+          }
+        </h2>
         <Tabs
           animate
           id="searchPlayersTable"

@@ -1,7 +1,37 @@
 @import "../../common/variables.scss";
 
 .content {
-  .bp3-navbar {
+  .bp3-navbar.filter-settings {
     padding: 0;
+    width: calc(100% + 10px);
+    position: relative;
+    left: -5px;
+    background: transparent;
+    box-shadow: none;
+    height: 30px;
+
+    .bp3-navbar-group {
+      height: 30px;
+    }
+
+    .bp3-button {
+      padding: 5px;
+      color: $gray1;
+      font-weight: 600;
+      &:hover, &:focus {
+        outline: none;
+        background: transparent;
+        color: $gray1;
+        text-shadow: $text-shadow;
+      }
+    }
+  }
+
+  h2 {
+    text-align: center;
+    color: $gray1;
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 2px;
   }
 }

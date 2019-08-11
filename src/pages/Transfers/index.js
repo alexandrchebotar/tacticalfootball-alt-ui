@@ -51,14 +51,14 @@ class Transfers extends Component {
     this.setState({activeTabIdTransferMarket: id});
   };
 
-  getPlayersTable = ({players, filter}) => {
+  getPlayersTable = ({players, filter, sortByPotential}) => {
     return (
       <PlayersTable 
         players={players}
         filter={filter}
         type="transfers"
         skillsMode="combined"
-        sortByPotential={this.state.sortByPotential}
+        sortByPotential={sortByPotential}
       />
     );
   };
@@ -104,11 +104,11 @@ class Transfers extends Component {
           onChange={handleSellsTabChange}
           renderActiveTabPanelOnly
         >
-          <Tab id="outfielders" title="All Outfielders" panel={getPlayersTable({players: sells, filter: 'outfielders'})} />
-          <Tab id="forvards" title="Forvards" panel={getPlayersTable({players: sells, filter: 'forwards'})} />
-          <Tab id="midlefielders" title="Midlefielders" panel={getPlayersTable({players: sells, filter: 'midlefielders'})} />
-          <Tab id="defenders" title="Defenders" panel={getPlayersTable({players: sells, filter: 'defenders'})} />
-          <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable({players: sells, filter: 'goalkeepers'})} />
+          <Tab id="outfielders" title="All Outfielders" panel={getPlayersTable({players: sells, filter: 'outfielders', sortByPotential: sortByPotentialSells})} />
+          <Tab id="forvards" title="Forvards" panel={getPlayersTable({players: sells, filter: 'forwards', sortByPotential: sortByPotentialSells})} />
+          <Tab id="midlefielders" title="Midlefielders" panel={getPlayersTable({players: sells, filter: 'midlefielders', sortByPotential: sortByPotentialSells})} />
+          <Tab id="defenders" title="Defenders" panel={getPlayersTable({players: sells, filter: 'defenders', sortByPotential: sortByPotentialSells})} />
+          <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable({players: sells, filter: 'goalkeepers', sortByPotential: sortByPotentialSells})} />
           <Tabs.Expander />
           <Checkbox  className="bp3-tab"
             checked={sortByPotentialSells}
@@ -126,11 +126,11 @@ class Transfers extends Component {
           onChange={handleBidsTabChange}
           renderActiveTabPanelOnly
         >
-          <Tab id="outfielders" title="All Outfielders" panel={getPlayersTable({players: bids, filter: 'outfielders'})} />
-          <Tab id="forvards" title="Forvards" panel={getPlayersTable({players: bids, filter: 'forwards'})} />
-          <Tab id="midlefielders" title="Midlefielders" panel={getPlayersTable({players: bids, filter: 'midlefielders'})} />
-          <Tab id="defenders" title="Defenders" panel={getPlayersTable({players: bids, filter: 'defenders'})} />
-          <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable({players: bids, filter: 'goalkeepers'})} />
+          <Tab id="outfielders" title="All Outfielders" panel={getPlayersTable({players: bids, filter: 'outfielders', sortByPotential: sortByPotentialBids})} />
+          <Tab id="forvards" title="Forvards" panel={getPlayersTable({players: bids, filter: 'forwards', sortByPotential: sortByPotentialBids})} />
+          <Tab id="midlefielders" title="Midlefielders" panel={getPlayersTable({players: bids, filter: 'midlefielders', sortByPotential: sortByPotentialBids})} />
+          <Tab id="defenders" title="Defenders" panel={getPlayersTable({players: bids, filter: 'defenders', sortByPotential: sortByPotentialBids})} />
+          <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable({players: bids, filter: 'goalkeepers', sortByPotential: sortByPotentialBids})} />
           <Tabs.Expander />
           <Checkbox  className="bp3-tab"
             checked={sortByPotentialBids}
@@ -148,11 +148,11 @@ class Transfers extends Component {
           onChange={handleTransferMarketTabChange}
           renderActiveTabPanelOnly
         >
-          <Tab id="outfielders" title="All Outfielders" panel={getPlayersTable({players, filter: 'outfielders'})} />
-          <Tab id="forvards" title="Forvards" panel={getPlayersTable({players, filter: 'forwards'})} />
-          <Tab id="midlefielders" title="Midlefielders" panel={getPlayersTable({players, filter: 'midlefielders'})} />
-          <Tab id="defenders" title="Defenders" panel={getPlayersTable({players, filter: 'defenders'})} />
-          <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable({players, filter: 'goalkeepers'})} />
+          <Tab id="outfielders" title="All Outfielders" panel={getPlayersTable({players, filter: 'outfielders', sortByPotential: sortByPotentialTransferMarket})} />
+          <Tab id="forvards" title="Forvards" panel={getPlayersTable({players, filter: 'forwards', sortByPotential: sortByPotentialTransferMarket})} />
+          <Tab id="midlefielders" title="Midlefielders" panel={getPlayersTable({players, filter: 'midlefielders', sortByPotential: sortByPotentialTransferMarket})} />
+          <Tab id="defenders" title="Defenders" panel={getPlayersTable({players, filter: 'defenders', sortByPotential: sortByPotentialTransferMarket})} />
+          <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable({players, filter: 'goalkeepers', sortByPotential: sortByPotentialTransferMarket})} />
           <Tabs.Expander />
           <Checkbox  className="bp3-tab"
             checked={sortByPotentialTransferMarket}

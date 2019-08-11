@@ -3,6 +3,9 @@ import {
   START_FETCH_PLAYERS,
   END_FETCH_PLAYERS,
   CLEAR_PLAYERS,
+  START_FETCH_TRANSFERS,
+  END_FETCH_TRANSFERS,
+  CLEAR_TRANSFERS,
   START_SET_TRAINING,
   END_SET_TRAINING,
   START_SEARCH_PLAYERS,
@@ -83,6 +86,7 @@ export const defaultState = {
   loading: {
     players: false,
     search: false,
+    transfers: false,
     trainings: [],
   },
 };
@@ -126,6 +130,8 @@ const currentClub = handleActions(
       GET_INIT_DATA,
       END_FETCH_PLAYERS,
       CLEAR_PLAYERS,
+      END_FETCH_TRANSFERS,
+      CLEAR_TRANSFERS,
       START_SET_TRAINING,
       END_SET_TRAINING,
     )]: (state, action) => ({
@@ -155,6 +161,8 @@ const loading = handleActions(
       GET_INIT_DATA,
       START_FETCH_PLAYERS,
       END_FETCH_PLAYERS,
+      START_FETCH_TRANSFERS,
+      END_FETCH_TRANSFERS,
       START_SET_TRAINING,
       END_SET_TRAINING,
       START_SEARCH_PLAYERS,

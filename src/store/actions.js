@@ -3,6 +3,9 @@ import {
   START_FETCH_PLAYERS,
   END_FETCH_PLAYERS,
   CLEAR_PLAYERS,
+  START_FETCH_TRANSFERS,
+  END_FETCH_TRANSFERS,
+  CLEAR_TRANSFERS,
   START_SET_TRAINING,
   END_SET_TRAINING,
   START_SEARCH_PLAYERS,
@@ -16,6 +19,7 @@ import axios from 'axios';
 import playersJSON from './players.json';
 import trainingJSON from './training.json';
 import transfersJSON from './transfers.json';
+import clubTransfersJSON from './clubTransfers.json';
 
 export const getInitData = createAction(GET_INIT_DATA);
 export const startFetchPlayers = createAction(START_FETCH_PLAYERS, () => ({
@@ -27,6 +31,16 @@ export const endFetchPlayers = createAction(END_FETCH_PLAYERS, ({players = []}) 
 }));
 export const clearPlayers = createAction(CLEAR_PLAYERS, () => ({
   currentClub: {players: []},
+}));
+export const startFetchTransfers = createAction(START_FETCH_TRANSFERS, () => ({
+  loading: {transfers: true},
+}));
+export const endFetchTransfers = createAction(END_FETCH_TRANSFERS, ({sells = [], bids = []}) => ({
+  currentClub: {sells, bids},
+  loading: {transfers: false},
+}));
+export const clearTransfers = createAction(CLEAR_TRANSFERS, () => ({
+  currentClub: {sells: [], bids: []},
 }));
 export const startSetTraining = createAction(START_SET_TRAINING, ({trainings}) => ({
   loading: {trainings},
@@ -205,6 +219,27 @@ export const searchPlayers = (filter) => {
 
     // endFetch action
     dispatch(endSearchPlayers({players}));
+/************************************************/
+  };
+};
+
+export const getTransfers = () => {
+  return (dispatch, getState) => {
+    // thunk getTransfers
+    // startFetchAction
+    dispatch(startFetchTransfers());
+
+/******* enable after CORS resolve **************/
+
+/************************************************/
+
+/******* remove after CORS resolve **************/
+    const {current_transfers, current_offers} = clubTransfersJSON;
+    const bids = current_transfers.filter(({auction_type}) => auction_type === 'bid').flatMap(({items}) => items).map(item => ({...item.player, ...item}));
+    const sells = current_transfers.filter(({auction_type}) => auction_type === 'sell').flatMap(({items}) => items).map(item => ({...item.player, ...item}));
+// debugger;
+    // endFetch action
+    dispatch(endFetchTransfers({bids, sells}));
 /************************************************/
   };
 };

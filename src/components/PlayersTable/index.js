@@ -21,7 +21,7 @@ class PlayersTable extends Component {
   };
 
   static getDerivedStateFromProps(props, state) {
-    const {players, filter, skillsMode, sortByPotential, setTraining, type} = props;
+    const {players = [], filter, skillsMode, sortByPotential, setTraining, type} = props;
     const getPlayers = () => {
       return (filter === 'outfielders') ?
         players.filter(({position}) => position !== 'GK') :

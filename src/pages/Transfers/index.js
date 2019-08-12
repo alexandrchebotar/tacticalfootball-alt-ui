@@ -6,7 +6,7 @@ import {
   Tab,
   Checkbox,
 } from "@blueprintjs/core";
-import {getTransfers, searchPlayers, clearSearch} from '../../store/actions';
+import {getTransfers, clearTransfers, searchPlayers, clearSearch} from '../../store/actions';
 
 import './style.scss';
 
@@ -17,6 +17,7 @@ const mapStateToProps = ({currentClub: {id, sells, bids}, search: {players}}) =>
 const mapDispatchToProps = dispatch => {
   return {
     getTransfers: () => dispatch(getTransfers()),
+    clearTransfers: () => dispatch(clearTransfers()),
     searchPlayers: () => dispatch(searchPlayers()),
     clearSearch: () => dispatch(clearSearch()),
   }

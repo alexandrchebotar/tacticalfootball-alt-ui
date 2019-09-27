@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 exports.__esModule = true;
 var server_1 = require("react-dom/server");
 // .prettierignore    (to keep relevant props together)

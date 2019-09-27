@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -79,14 +79,14 @@ var editableColumns = [
 var default_1 = /** @class */ (function (_super) {
     __extends(default_1, _super);
     function default_1() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+        var _this = ((_super !== null) && _super.apply(this, arguments)) || this;
         _this.state = {
             data: []
         };
         _this.ref = null;
         _this.rowClick = function (e, row) {
             console.log('ref table: ', _this.ref.table); // this is the Tabulator table instance
-            console.log('rowClick id: ${row.getData().id}', row, e);
+            console.log(`rowClick id: ${row.getData().id}`, row, e);
         };
         _this.setData = function () {
             _this.setState({ data: data });

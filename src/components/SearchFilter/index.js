@@ -1,17 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import {
-  Tabs,
-  Tab,
-  Checkbox,
-  Button,
-  ButtonGroup,
-  FormGroup,
-  InputGroup,
-  ControlGroup,
   NumericInput,
   HTMLSelect,
-  Switch,
   HTMLTable,
 } from "@blueprintjs/core";
 import {clearSearch, searchPlayers} from '../../store/actions';

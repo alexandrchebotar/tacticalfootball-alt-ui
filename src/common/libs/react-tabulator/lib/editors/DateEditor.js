@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -26,7 +26,7 @@ var inputCss = {
 var Editor = /** @class */ (function (_super) {
     __extends(Editor, _super);
     function Editor() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+        var _this = (_super !== null && _super.apply(this, arguments)) || this;
         _this.state = { value: '' };
         _this.ref = null;
         _this.format = _this.props.editorParams.format || 'MM/dd/yyyy'; // TODO: detect from user locale & set default.

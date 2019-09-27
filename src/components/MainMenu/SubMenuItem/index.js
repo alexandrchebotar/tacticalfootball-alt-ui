@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
-import {MenuItem, Icon, Classes} from "@blueprintjs/core";
+import {MenuItem, Icon} from "@blueprintjs/core";
 import SubMenu from '../SubMenu';
 
 const SubmenuItem = ({id, href, path, icon, categoryIcon, alert, subMenu, handleItemClick}) => {

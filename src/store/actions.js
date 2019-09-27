@@ -14,8 +14,7 @@ import {
   CLEAR_SEARCH_FILTER,
 } from '../common/constants';
 import {createAction} from 'redux-actions';
-import axios from 'axios';
-
+//import axios from 'axios';
 import playersJSON from './players.json';
 import trainingJSON from './training.json';
 import transfersJSON from './transfers.json';
@@ -234,7 +233,10 @@ export const getTransfers = () => {
 /************************************************/
 
 /******* remove after CORS resolve **************/
-    const {current_transfers, current_offers} = clubTransfersJSON;
+    const {
+      current_transfers,
+      //current_offers,
+    } = clubTransfersJSON;
     const bids = current_transfers.filter(({auction_type}) => auction_type === 'bid').flatMap(({items}) => items).map(item => ({...item.player, ...item}));
     const sells = current_transfers.filter(({auction_type}) => auction_type === 'sell').flatMap(({items}) => items).map(item => ({...item.player, ...item}));
 // debugger;

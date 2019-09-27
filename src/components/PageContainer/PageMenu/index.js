@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import {
   Navbar,
-  Switch,
   Tabs,
   Tab,
 } from "@blueprintjs/core";
@@ -39,7 +38,7 @@ const PageMenu = ({match, page, clubName}) => {
     players: [],
     settings: [],
     user: [],
-    [404]: [],
+    404: [],
   };
   const getTabs = () => tabs[page].map(({id, title, disabled}) => (
     <Tab key={id} id={id} disabled={disabled}>

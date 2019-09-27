@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -19,22 +19,23 @@ var Utils_1 = require("../Utils");
 // import { parse, format } from 'date-fns';
 // import ReactTags from 'react-tag-autocomplete';
 var ReactTags = require('react-tag-autocomplete');
-var DEFAULT_DATE_INPUT_FORMAT = 'yyyy-MM-dd';
-var inputCss = {
-    width: '100%',
-    height: '100%',
-    fontSize: '1em',
-    fontFamily: 'inherit'
-};
+// var DEFAULT_DATE_INPUT_FORMAT = 'yyyy-MM-dd';
+// var inputCss = {
+//     width: '100%',
+//     height: '100%',
+//     fontSize: '1em',
+//     fontFamily: 'inherit'
+// };
 var Editor = /** @class */ (function (_super) {
     __extends(Editor, _super);
     function Editor() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+        var _this = ((_super !== null) && _super.apply(this, arguments)) || this;
         _this.state = { value: '', values: [], autofocus: false };
         _this.ref = null;
         _this.setValueOnSuccess = function (values) {
             if (values === void 0) { values = _this.state.values; }
-            var _a = _this.props, success = _a.success, cancel = _a.cancel;
+            var _a = _this.props, success = _a.success;
+            // var cancel = _a.cancel;
             // console.log('setValueOnSuccess: ', values);
             success(values);
             // cancel();

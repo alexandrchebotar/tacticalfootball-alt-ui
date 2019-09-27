@@ -23,7 +23,7 @@ function App() {
         <Route path='/settings/:activeTabId' render={() => <PageContainer page="settings" />} exact />
         <Route path='/user/:activeTabId' render={() => <PageContainer page="user" />} exact />
 
-        <Route path='/404' exact render={() => <PageContainer page="404" />} exact />
+        <Route path='/404' exact render={() => <PageContainer page="404" />} />
         <Route path='/' render={() => <Redirect to="/404" />} exact />
         <Route path='' render={() => <Redirect to="/404" />} />
       </Switch>

@@ -6,13 +6,7 @@ import {
   Checkbox,
   Button,
   ButtonGroup,
-  FormGroup,
-  InputGroup,
-  ControlGroup,
-  NumericInput,
   HTMLSelect,
-  Switch,
-  HTMLTable,
   Navbar,
 } from "@blueprintjs/core";
 import {clearSearch, searchPlayers, clearSearchFilter} from '../../store/actions';
@@ -136,12 +130,12 @@ class Search extends Component {
           <SearchFilter />
         }
         <h2>
-          {filterMode === 'transferMarket' &&
-            'Current Transfer Market'
-          || filterMode === 'recentTransfers' &&
-            'Transfer Market History'
-          || filterMode === 'customFilter' &&
-            'Custom Players Search'
+          {(filterMode === 'transferMarket' &&
+            'Current Transfer Market')
+          || (filterMode === 'recentTransfers' &&
+            'Transfer Market History')
+          || (filterMode === 'customFilter' &&
+            'Custom Players Search')
           || 'Saved Players Search - ' + filterMode
           }
         </h2>

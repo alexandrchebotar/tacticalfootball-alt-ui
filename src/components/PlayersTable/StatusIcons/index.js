@@ -21,7 +21,7 @@ const StatusIcons = ({
   return (
     <div className="status-container">
       {national_club_id && <NationalPlayerIcon />}
-      {!!national_club_id || national_prospect_id && <NationalProspectIcon />}
+      {!!national_club_id && national_prospect_id && <NationalProspectIcon />}
       {card_nation && <CardNationIcon />}
       {card && <CardIcon />}
       {auction_date && <AuctionIcon />}

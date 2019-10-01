@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
+import {Helmet} from "react-helmet";
 import { connect } from 'react-redux';
 import PlayersTable from '../../components/PlayersTable';
 import {
@@ -10,8 +11,8 @@ import {getTraining, clearPlayers, setTraining} from '../../store/actions';
 
 import './style.scss';
 
-const mapStateToProps = ({currentClub: {id, players}}) => {
-  return {clubId: id, players};
+const mapStateToProps = ({currentClub: {id, name, players}}) => {
+  return {clubId: id, clubName: name, players};
 };
 
 const mapDispatchToProps = dispatch => {
@@ -59,33 +60,38 @@ class Training extends Component {
   render() {
     const {
       state: {activeTabId, sortByPotential},
-      props: {players},
+      props: {clubName, players},
       getPlayersTable,
       handleTabChange,
       setSortByPotential,
     } = this;
     return (
-      <div className="content">
-        <Tabs
-          animate
-          id="playersTable"
-          selectedTabId={activeTabId}
-          onChange={handleTabChange}
-          renderActiveTabPanelOnly
-        >
-          <Tab id="outfielders" title="All Outfielders" panel={getPlayersTable({players, filter: 'outfielders'})} />
-          <Tab id="forvards" title="Forvards" panel={getPlayersTable({players, filter: 'forwards'})} />
-          <Tab id="midlefielders" title="Midlefielders" panel={getPlayersTable({players, filter: 'midlefielders'})} />
-          <Tab id="defenders" title="Defenders" panel={getPlayersTable({players, filter: 'defenders'})} />
-          <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable({players, filter: 'goalkeepers'})} />
-          <Tabs.Expander />
-          <Checkbox  className="bp3-tab"
-            checked={sortByPotential}
-            onChange={setSortByPotential}
-            label="sort by potential"
-          />
-        </Tabs>
-      </div> 
+      <Fragment>
+        <Helmet>
+          <title>{clubName} - Training</title>
+        </Helmet>
+        <div className="content">
+          <Tabs
+            animate
+            id="playersTable"
+            selectedTabId={activeTabId}
+            onChange={handleTabChange}
+            renderActiveTabPanelOnly
+          >
+            <Tab id="outfielders" title="All Outfielders" panel={getPlayersTable({players, filter: 'outfielders'})} />
+            <Tab id="forvards" title="Forvards" panel={getPlayersTable({players, filter: 'forwards'})} />
+            <Tab id="midlefielders" title="Midlefielders" panel={getPlayersTable({players, filter: 'midlefielders'})} />
+            <Tab id="defenders" title="Defenders" panel={getPlayersTable({players, filter: 'defenders'})} />
+            <Tab id="goalkeepers" title="Goalkeepers" panel={getPlayersTable({players, filter: 'goalkeepers'})} />
+            <Tabs.Expander />
+            <Checkbox  className="bp3-tab"
+              checked={sortByPotential}
+              onChange={setSortByPotential}
+              label="sort by potential"
+            />
+          </Tabs>
+        </div> 
+      </Fragment>
     );
   };
 };

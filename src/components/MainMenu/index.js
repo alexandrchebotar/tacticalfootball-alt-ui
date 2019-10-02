@@ -40,7 +40,7 @@ class MainMenu extends Component {
         id: 'office',
         alert: true,
         subMenu: [
-          {id: 'news', icon: 'feed', alert: true},
+          {id: 'home', icon: 'feed', alert: true},
           {id: 'calendar', icon: 'calendar'},
           {id: 'transfers', icon: 'shopping-cart'},
           {id: 'search', icon: 'search'},

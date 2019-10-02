@@ -25,7 +25,7 @@ const PageMenu = ({match, page, clubName}) => {
       {id: "tactics", title: "Tactics", disabled: true},
     ],
     office: [
-      {id: "news", title: "News"},
+      {id: "home", title: "Home"},
       {id: "calendar", title: "Calendar"},
       {id: "transfers", title: "Transfers"},
       {id: "search", title: "Search"},

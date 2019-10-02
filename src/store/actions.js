@@ -12,6 +12,7 @@ import {
   END_SEARCH_PLAYERS,
   CLEAR_SEARCH,
   CLEAR_SEARCH_FILTER,
+  MARK_NEWS,
 } from '../common/constants';
 import {createAction} from 'redux-actions';
 //import axios from 'axios';
@@ -60,6 +61,9 @@ export const clearSearch = createAction(CLEAR_SEARCH, () => ({
 }));
 export const clearSearchFilter = createAction(CLEAR_SEARCH_FILTER, () => ({
   search: {filter: []},
+}));
+export const markNews = createAction(MARK_NEWS, ({news}) => ({
+  currentClub: {news},
 }));
 
 
@@ -242,6 +246,29 @@ export const getTransfers = () => {
 // debugger;
     // endFetch action
     dispatch(endFetchTransfers({bids, sells}));
+/************************************************/
+  };
+};
+
+export const markNewsOpened = (openedNewsId) => {
+  return (dispatch, getState) => {
+    // thunk markNewsOpened
+// debugger;
+    const {msgs, total} = getState().currentClub.news;
+    const news = {
+      msgs: msgs.map(msg => {
+        const {id} = msg;
+        return (id === openedNewsId) ? {...msg, opened: true} : msg;
+      }),
+      total,
+    };
+
+    dispatch(markNews({news}));
+
+/******* enable after CORS resolve **************/
+// TODO: set news opened by API
+    //
+/************************************************/
 /************************************************/
   };
 };

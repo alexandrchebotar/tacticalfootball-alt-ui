@@ -30,5 +30,10 @@ $page-menu-height: 32px;
 $page-menu-width: $app-width - $main-menu-width;
 $page-content-min-height: calc(100vh - #{$infobar-height} - #{$page-menu-height});
 
+// pages: office-home
+$club-logo-width: 275px;
+$club-news-width: $page-menu-width - $club-logo-width - 2*15px;
+$club-matches-width: $club-news-width/2 - 15px;
+
 // footer
 $footer-height: 25px;

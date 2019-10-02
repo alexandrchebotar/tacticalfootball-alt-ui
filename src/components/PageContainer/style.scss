@@ -7,10 +7,11 @@
   min-height: $page-container-min-height;
 
   .page-content {
+    position: relative;
     padding: 5px;
     padding-bottom: $footer-height + 5px;
     background: rgba(250, 250, 250, 0.75);
-    z-index: -2;
+    // z-index: -2;
     min-height: $page-content-min-height;
 
     .bp3-tab-panel {

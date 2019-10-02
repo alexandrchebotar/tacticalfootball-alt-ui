@@ -40,10 +40,35 @@
   width: $club-news-width;
   clear: both;
 
+  .newsHeader {
+    padding-left: 2px;
+    margin-left: 10px;
+    &:focus {
+      outline: none;
+      background-color: rgba($gray1, 0.1);
+    }
+  }
+
+  .newsDate {
+    width: 120px;
+    float: left;
+    padding-right: 5px;
+    line-height: 16px;
+    font-size: 0.85em;
+  }
+
+  .newsTopic {
+    float: left;
+    &::before {
+      content: "|";
+      padding-right: 10px;
+    }
+  }
+
   .club-news-body {
     margin-left: 10px;
     padding-left: 5px;
-    background-color: rgba($dark-text-hover, 0.1);
+    background-color: rgba($gray1, 0.1);
     border-radius: 3px;
   }
 

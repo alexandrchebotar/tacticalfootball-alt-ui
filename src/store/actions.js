@@ -272,3 +272,21 @@ export const markNewsOpened = (openedNewsId) => {
 /************************************************/
   };
 };
+
+
+/********             Mark news opened        ***********/
+// fetch(
+//   "https://tacticalfootball.com/api/alerts/5266248?alert_action=open", {
+//     "credentials": "include",
+//     "headers": {
+//       "accept": "application/json, text/plain, */*",
+//       "accept-language": "ru,en-US;q=0.9,en;q=0.8,uk;q=0.7",
+//       "x-csrf-token": "TUJAP5Sac9wvk5oHSpQa7FyLpED8n0FHghHg3b/tq0I=",
+//       "x-xsrf-token": "TUJAP5Sac9wvk5oHSpQa7FyLpED8n0FHghHg3b/tq0I="
+//     },
+//     "referrer": "https://tacticalfootball.com/clubs/729/overview?make_current=true",
+//     "referrerPolicy": "no-referrer-when-downgrade",
+//     "body": null,
+//     "method": "PUT",
+//     "mode": "cors"
+//   });

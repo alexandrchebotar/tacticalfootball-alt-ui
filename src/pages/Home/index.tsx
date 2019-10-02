@@ -10,6 +10,7 @@ import {
   Button,
   Collapse,
 } from '@blueprintjs/core';
+import parse from 'html-react-parser'
 import {markNewsOpened} from '../../store/actions';
 
 import './style.scss';
@@ -97,7 +98,7 @@ const mapDispatchToProps = (dispatch: any) => {
 
 class Home extends Component<HomeProps> {
   state: HomeState = {
-    openNews: [5246179, 5263443],
+    openNews: [5233001],
   };
 
   // componentDidMount() {
@@ -127,6 +128,7 @@ class Home extends Component<HomeProps> {
       <Fragment key={id} >
         <Button 
           minimal
+          className="newsHeader"
           icon="feed"
           intent={opened ? 'none' : 'warning'}
           onClick={() => {
@@ -136,10 +138,11 @@ class Home extends Component<HomeProps> {
             }
           }}
         >
-          {date} - {topic}
+          <div className="newsDate">{date}</div>
+          <div className="newsTopic">{topic}</div>
         </Button>
         <Collapse className="club-news-body" isOpen={openNews.includes(id)}>
-          {body}
+          {parse(body)}
         </Collapse>
       </Fragment>
     ));

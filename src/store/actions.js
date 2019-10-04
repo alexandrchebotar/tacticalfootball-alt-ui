@@ -12,6 +12,7 @@ import {
   END_SEARCH_PLAYERS,
   CLEAR_SEARCH,
   CLEAR_SEARCH_FILTER,
+  MARK_NEWS,
 } from '../common/constants';
 import {createAction} from 'redux-actions';
 //import axios from 'axios';
@@ -60,6 +61,9 @@ export const clearSearch = createAction(CLEAR_SEARCH, () => ({
 }));
 export const clearSearchFilter = createAction(CLEAR_SEARCH_FILTER, () => ({
   search: {filter: []},
+}));
+export const markNews = createAction(MARK_NEWS, ({news}) => ({
+  currentClub: {news},
 }));
 
 
@@ -245,3 +249,44 @@ export const getTransfers = () => {
 /************************************************/
   };
 };
+
+export const markNewsOpened = (openedNewsId) => {
+  return (dispatch, getState) => {
+    // thunk markNewsOpened
+// debugger;
+    const {msgs, total} = getState().currentClub.news;
+    const news = {
+      msgs: msgs.map(msg => {
+        const {id} = msg;
+        return (id === openedNewsId) ? {...msg, opened: true} : msg;
+      }),
+      total,
+    };
+
+    dispatch(markNews({news}));
+
+/******* enable after CORS resolve **************/
+// TODO: set news opened by API
+    //
+/************************************************/
+/************************************************/
+  };
+};
+
+
+/********             Mark news opened        ***********/
+// fetch(
+//   "https://tacticalfootball.com/api/alerts/5266248?alert_action=open", {
+//     "credentials": "include",
+//     "headers": {
+//       "accept": "application/json, text/plain, */*",
+//       "accept-language": "ru,en-US;q=0.9,en;q=0.8,uk;q=0.7",
+//       "x-csrf-token": "TUJAP5Sac9wvk5oHSpQa7FyLpED8n0FHghHg3b/tq0I=",
+//       "x-xsrf-token": "TUJAP5Sac9wvk5oHSpQa7FyLpED8n0FHghHg3b/tq0I="
+//     },
+//     "referrer": "https://tacticalfootball.com/clubs/729/overview?make_current=true",
+//     "referrerPolicy": "no-referrer-when-downgrade",
+//     "body": null,
+//     "method": "PUT",
+//     "mode": "cors"
+//   });

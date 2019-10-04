@@ -16,7 +16,7 @@ function App() {
         <Route path='/squad/:activeTabId' render={() => <PageContainer page="squad" />} exact />
         <Route path='/squad/' render={() => <Redirect to="/squad/players"/>} exact />
         <Route path='/office/:activeTabId' render={() => <PageContainer page="office" />} exact />
-        <Route path='/office/' render={() => <Redirect to="/office/news"/>} exact />
+        <Route path='/office/' render={() => <Redirect to="/office/home"/>} exact />
         <Route path='/competitions/:competitionsId/:activeTabId' render={() => <PageContainer page="competitions" />} exact />
         <Route path='/clubs/:clubId/:activeTabId' render={() => <PageContainer page="clubs" />} exact />
         <Route path='/players/:playerId/:activeTabId' render={() => <PageContainer page="players" />} exact />

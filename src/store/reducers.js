@@ -223,11 +223,11 @@ export const defaultState = {
       {
         away_info: {
           club_id: "729",
-          club_name: "SKIF",
-          goals: null,
+          club_name: "SKIF, but with long name",
+          goals: 5,
           match_info: {
             match_id: "190490",
-            team_id: null,
+            team_id: 222,
             club_id: 729,
           },
           show_create: true,
@@ -235,13 +235,13 @@ export const defaultState = {
           show_visit: false,
           team_id: null,
         },
-        competition: "Super League",
+        competition: "International Cup",
         date: "2019-11-27 18:30:00",
         formatted_date: "18:30  Wed  27 Nov 2019",
         home_info: {
           club_id: "765",
-          club_name: "Papugi",
-          goals: null,
+          club_name: "Monsterly borred Muppets",
+          goals: 12,
           match_info: null,
           show_create: false,
           show_pending_button: false,
@@ -250,14 +250,14 @@ export const defaultState = {
         },
         id: "190490",
         match_subscript: null,
-        pending: false,
+        pending: true,
         played: false,
       },
       {
         away_info: {
           club_id: "729",
           club_name: "SKIF",
-          goals: null,
+          goals: 2,
           match_info: {
             match_id: "190490",
             team_id: null,
@@ -274,7 +274,7 @@ export const defaultState = {
         home_info: {
           club_id: "765",
           club_name: "Papugi",
-          goals: null,
+          goals: 5,
           match_info: null,
           show_create: false,
           show_pending_button: false,
@@ -290,7 +290,7 @@ export const defaultState = {
         away_info: {
           club_id: "729",
           club_name: "SKIF",
-          goals: null,
+          goals: 7,
           match_info: {
             match_id: "190490",
             team_id: null,
@@ -307,7 +307,7 @@ export const defaultState = {
         home_info: {
           club_id: "765",
           club_name: "Papugi",
-          goals: null,
+          goals: 1,
           match_info: null,
           show_create: false,
           show_pending_button: false,
@@ -317,13 +317,13 @@ export const defaultState = {
         id: "190492",
         match_subscript: null,
         pending: false,
-        played: false,
+        played: true,
       },
       {
         away_info: {
           club_id: "729",
           club_name: "SKIF",
-          goals: null,
+          goals: 0,
           match_info: {
             match_id: "190490",
             team_id: null,
@@ -340,7 +340,7 @@ export const defaultState = {
         home_info: {
           club_id: "765",
           club_name: "Papugi",
-          goals: null,
+          goals: 0,
           match_info: null,
           show_create: false,
           show_pending_button: false,
@@ -350,13 +350,13 @@ export const defaultState = {
         id: "190493",
         match_subscript: null,
         pending: false,
-        played: false,
+        played: true,
       },
       {
         away_info: {
           club_id: "729",
           club_name: "SKIF",
-          goals: null,
+          goals: 2,
           match_info: {
             match_id: "190490",
             team_id: null,
@@ -373,7 +373,7 @@ export const defaultState = {
         home_info: {
           club_id: "765",
           club_name: "Papugi",
-          goals: null,
+          goals: 1,
           match_info: null,
           show_create: false,
           show_pending_button: false,
@@ -392,7 +392,7 @@ export const defaultState = {
           goals: null,
           match_info: {
             match_id: "190490",
-            team_id: null,
+            team_id: 729,
             club_id: 729,
           },
           show_create: true,
@@ -416,7 +416,7 @@ export const defaultState = {
         id: "190495",
         match_subscript: null,
         pending: false,
-        played: true,
+        played: false,
       },
     ]
   },

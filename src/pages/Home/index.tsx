@@ -12,6 +12,7 @@ import {
 } from '@blueprintjs/core';
 import parse from 'html-react-parser'
 import {markNewsOpened} from '../../store/actions';
+import MatchPreview from '../../components/MatchPreview';
 
 import './style.scss';
 
@@ -149,12 +150,8 @@ class Home extends Component<HomeProps> {
   };
 
   getMatchesList(matches: Array<any>) {
-    return matches.map(({id, date, competition, home_info, away_info, played, pending}) => {
-      return (played) ?
-        <p key={id} >{date} - {competition} - {home_info.club_name} vs {away_info.club_name} - {home_info.goals} : {away_info.goals}</p> :
-        (pending) ?
-          <p key={id} >{date} - {competition} - {home_info.club_name} vs {away_info.club_name} - playing now</p> :
-          <p key={id} >{date} - {competition} - {home_info.club_name} vs {away_info.club_name} - set tactics</p>
+    return matches.map(match => {
+      return <MatchPreview short {...match} key={match.id} />;
     });
   };
 

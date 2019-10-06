@@ -1,0 +1,58 @@
+@import "../../common/variables.scss";
+
+.calendar {
+  position: relative;
+  // left: 10px;
+  // width: 100%;
+
+  h3 {
+    font-size: 1.1em;
+    margin: 0;
+    padding: 5px 0;
+  }
+
+  .weekly-schedule {
+    float: left;
+    margin-left: 20px;
+    width: $weekly-shedule-width;
+
+    .daily-schedule {
+      position: relative;
+      left: 10px;
+      width: 100%;
+
+      &-header {
+        float: right;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 0.75rem;
+
+        .bp3-tag {
+          min-height: unset;
+          padding: 0 3px;
+          font-size: 0.75rem;
+        }
+      }
+  
+      &-events {
+        background-color: rgba($gray1, 0.1);
+        padding: 5px;
+        clear: both;
+      }
+  
+      &-event-name {
+        clear: both;
+        position: relative;
+      }
+    
+      &-event-time {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding-left: 5px;
+      }
+    }
+
+    
+  }
+}

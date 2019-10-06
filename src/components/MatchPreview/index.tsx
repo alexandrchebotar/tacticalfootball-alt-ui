@@ -1,10 +1,5 @@
 import React, {FunctionComponent} from 'react';
-import {
-  Button,
-  Tag,
-  Callout,
-} from '@blueprintjs/core';
-import parse from 'html-react-parser'
+import {Tag, Callout} from '@blueprintjs/core';
 
 import './style.scss';
 
@@ -49,13 +44,13 @@ interface MatchPreviewProps {
 
 
 const MatchPreview: FunctionComponent<MatchPreviewProps> = (props) => {
-  const {short, id, date, competition, home_info, away_info, played, pending} = props;
+  const {short, date, competition, home_info, away_info, played, pending} = props;
   return (
     <div className={'match-preview' + (short ? '-short' : '')} >
       <div className="match-preview-header" >
         {competition} | {date.slice(0, -3)} | {
           (played) ?
-          <Tag intent="success" minimal>finished</Tag> :
+          <Tag intent="success" minimal={true}>finished</Tag> :
           (pending) ?
             <Tag intent="danger" minimal>playing now</Tag> :
             (away_info.match_info && away_info.match_info.team_id) ?
@@ -63,9 +58,8 @@ const MatchPreview: FunctionComponent<MatchPreviewProps> = (props) => {
               <Tag intent="warning" minimal>sheduled</Tag>
         }
       </div>
-      <Callout className="match-preview-body" >
+      <Callout className="match-preview-body">
         <div className="match-preview-home" >
-          {/* {home_info.club_name} | {home_info.goals} */}
           {home_info.club_name}
           <div className="match-preview-score" >
             {(played) ?
@@ -93,14 +87,6 @@ const MatchPreview: FunctionComponent<MatchPreviewProps> = (props) => {
         </div>
       </Callout>
     </div>
-// 
-// (played) ?
-//         <p key={id} >{date} - {competition} - {home_info.club_name} vs {away_info.club_name} - {home_info.goals} : {away_info.goals}</p> :
-//         (pending) ?
-//           <p key={id} >{date} - {competition} - {home_info.club_name} vs {away_info.club_name} - playing now</p> :
-//           <p key={id} >{date} - {competition} - {home_info.club_name} vs {away_info.club_name} - set tactics</p>
-//           
-    
   );
 };
 

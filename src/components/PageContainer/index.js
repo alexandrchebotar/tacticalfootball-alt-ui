@@ -6,6 +6,7 @@ import Training from '../../pages/Training';
 import Transfers from '../../pages/Transfers';
 import Search from '../../pages/Search';
 import Home from '../../pages/Home';
+import Calendar from '../../pages/Calendar';
 
 import './style.scss';
 
@@ -21,13 +22,14 @@ const PageContainer = ({page}) => {
       </div>
       <div className="page-content">
         <Switch>
-          <Route path='/squad/players' component={Players} exact />
-          <Route path='/squad/training' component={Training} exact />
-          <Route path='/squad/:activeTabId' component={Page404} exact />
           <Route path='/office/home' component={Home} exact />
           <Route path='/office/transfers' component={Transfers} exact />
           <Route path='/office/search' component={Search} exact />
+          <Route path='/office/calendar' component={Calendar} exact />
           <Route path='/office/:activeTabId' component={Page404} exact />
+          <Route path='/squad/players' component={Players} exact />
+          <Route path='/squad/training' component={Training} exact />
+          <Route path='/squad/:activeTabId' component={Page404} exact />
           <Route path='/competitions/:competitionsId/:activeTabId' component={Page404} exact />
           <Route path='/clubs/:clubId/:activeTabId' component={Page404} exact />
           <Route path='/players/:playerId/:activeTabId' component={Page404} exact />
@@ -35,8 +37,8 @@ const PageContainer = ({page}) => {
           <Route path='/user/:activeTabId' component={Page404} exact />
   
           <Route path='/404' exact component={Page404} />
-          <Route path='/' render={() => <Redirect to="/404" />} exact />
-          <Redirect from='' to='404'/>
+          <Route path='/' render={() => <Redirect to="/office/home" />} exact />
+          {/* <Redirect from='' to='404'/> */}
           {/* <Route path='' render={() => <Redirect to="/404" />} /> */}
         </Switch>
       </div>

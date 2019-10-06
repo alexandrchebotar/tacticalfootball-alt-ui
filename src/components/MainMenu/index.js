@@ -27,16 +27,6 @@ class MainMenu extends Component {
   state = {
     items: [
       {
-        id: 'squad',
-        subMenu: [
-          {id: 'players', icon: 'people'},
-          {id: 'training', icon: 'walk'},
-          {id: 'prospects', icon: 'new-person'},
-          {id: 'statistics', icon: 'timeline-bar-chart'},
-          {id: 'tactics', icon: 'layout-group-by'},
-        ],
-      },
-      {
         id: 'office',
         alert: true,
         subMenu: [
@@ -47,6 +37,16 @@ class MainMenu extends Component {
           {id: 'finances', icon: 'dollar'},
           {id: 'trophies', icon: 'glass'},
           {id: 'scouting', icon: 'new-person'},
+        ],
+      },
+      {
+        id: 'squad',
+        subMenu: [
+          {id: 'players', icon: 'people'},
+          {id: 'training', icon: 'walk'},
+          {id: 'prospects', icon: 'new-person'},
+          {id: 'statistics', icon: 'timeline-bar-chart'},
+          {id: 'tactics', icon: 'layout-group-by'},
         ],
       },
       {

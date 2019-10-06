@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import {Helmet} from 'react-helmet';
+// import {Helmet} from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
 import {
   // Tabs,
@@ -165,14 +166,10 @@ class Home extends Component<HomeProps> {
 
   render() {
     const {
-    //   state: {activeTabId, skillsMode, sortByPotential},
       props: {clubName, logo, leagueInfo: {position_txt: position, name: leagueName, id: leagueId}, rankings, streaks},
       getNewsList,
       getPrevMatches,
       getNextMatches,
-    //   handleSkillsModeChange,
-    //   handleTabChange,
-    //   setSortByPotential,
     } = this;
     return (
       <Fragment>

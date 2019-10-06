@@ -6,6 +6,7 @@ import Training from '../../pages/Training';
 import Transfers from '../../pages/Transfers';
 import Search from '../../pages/Search';
 import Home from '../../pages/Home';
+import Calendar from '../../pages/Calendar';
 
 import './style.scss';
 
@@ -24,6 +25,7 @@ const PageContainer = ({page}) => {
           <Route path='/office/home' component={Home} exact />
           <Route path='/office/transfers' component={Transfers} exact />
           <Route path='/office/search' component={Search} exact />
+          <Route path='/office/calendar' component={Calendar} exact />
           <Route path='/office/:activeTabId' component={Page404} exact />
           <Route path='/squad/players' component={Players} exact />
           <Route path='/squad/training' component={Training} exact />

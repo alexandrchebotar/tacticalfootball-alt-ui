@@ -94,7 +94,7 @@ const Calendar: FunctionComponent<CalendarProps> = ({clubName, matches}) => {
       day: 'Monday',
       events: [
         {
-          time: '06:00',
+          time: '04:00',
           event: 'Finances'
         },
         {
@@ -113,6 +113,10 @@ const Calendar: FunctionComponent<CalendarProps> = ({clubName, matches}) => {
         {
           time: '10:00',
           event: 'Training'
+        },
+        {
+          time: '17:00',
+          event: 'National Team matches'
         },
       ],
     },

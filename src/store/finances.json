@@ -1,0 +1,574 @@
+{
+  "id": 729,
+  "title_info": {
+    "name": "Finance",
+    "vip": false,
+    "club_name": "SKIF",
+    "image_url": "/system/clubs/logos/000/000/729/thumb/SKIFe3742f3164b95c4c912a7289a5941b22.png",
+    "id": 729
+  },
+  "club_info": {
+    "club_name": "SKIF",
+    "club_id": 729,
+    "user_id": 471,
+    "is_vip": false,
+    "league_id": 4260,
+    "league_name": "Super League",
+    "has_pool": true,
+    "organisation_name": "TF Association",
+    "current_user_is_owner": true,
+    "current_user_is_admin": false,
+    "is_national_club": false,
+    "is_primary_club": true,
+    "is_current_club": true,
+    "is_inactive": false,
+    "image_url": "/system/clubs/logos/000/000/729/thumb/SKIFe3742f3164b95c4c912a7289a5941b22.png",
+    "flag_data": {
+      "url": "/assets/flags/ua-d9e043e018bb696191cdd2a44d5d678a.png",
+      "title": "Ukraine",
+      "nation_id": 478
+    },
+    "default_lineup_id": 6614
+  },
+  "current_user_is_owner": true,
+  "weekly_finances": {
+    "wage": 1165284,
+    "sponsors": 629200,
+    "match_income": 395358,
+    "total": -140726
+  },
+  "transactions": [{
+    "list": [{
+      "id": 918886,
+      "club_id": 729,
+      "description": "Sale of Leopold Wieser",
+      "value": 3691800,
+      "created_at": "2019-10-08T02:02:30.387Z",
+      "updated_at": "2019-10-08T02:02:30.387Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 918854,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Zygfryd Rokita",
+      "value": 1900005,
+      "created_at": "2019-10-07T18:01:05.164Z",
+      "updated_at": "2019-10-07T18:01:05.164Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 918872,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Alex Shynkarchuk ",
+      "value": 1700005,
+      "created_at": "2019-10-07T22:01:10.298Z",
+      "updated_at": "2019-10-07T22:01:10.298Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 918860,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Gothards Priedītis",
+      "value": 1650005,
+      "created_at": "2019-10-07T18:01:21.392Z",
+      "updated_at": "2019-10-07T18:01:21.392Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 918846,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Roberto Conti",
+      "value": 1550005,
+      "created_at": "2019-10-07T14:03:01.706Z",
+      "updated_at": "2019-10-07T14:03:01.706Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 918822,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Mirosław Ziętala",
+      "value": 1450005,
+      "created_at": "2019-10-07T10:44:16.480Z",
+      "updated_at": "2019-10-07T10:44:16.480Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 918890,
+      "club_id": 729,
+      "description": "Sale of Egor Skoryk ",
+      "value": 1335252,
+      "created_at": "2019-10-08T06:01:26.565Z",
+      "updated_at": "2019-10-08T06:01:26.565Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 918868,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Raimo Ahola",
+      "value": 950005,
+      "created_at": "2019-10-07T22:00:59.505Z",
+      "updated_at": "2019-10-07T22:00:59.505Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 917851,
+      "club_id": 729,
+      "description": "Sponsorship",
+      "value": 629200,
+      "created_at": "2019-10-07T04:01:32.598Z",
+      "updated_at": "2019-10-07T04:01:32.598Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 918825,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Kuzma Rodriguez",
+      "value": 600005,
+      "created_at": "2019-10-07T10:44:17.613Z",
+      "updated_at": "2019-10-07T10:44:17.613Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 918830,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Anthony Lynch",
+      "value": 1,
+      "created_at": "2019-10-07T10:44:18.010Z",
+      "updated_at": "2019-10-07T10:44:18.010Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 918793,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Shaan  chauhan",
+      "value": 1,
+      "created_at": "2019-10-07T06:00:36.189Z",
+      "updated_at": "2019-10-07T06:00:36.189Z",
+      "week": 6,
+      "season_id": 29
+    }, {
+      "id": 917850,
+      "club_id": 729,
+      "description": "Wages",
+      "value": -1212340,
+      "created_at": "2019-10-07T04:01:32.587Z",
+      "updated_at": "2019-10-07T04:01:32.587Z",
+      "week": 6,
+      "season_id": 29
+    }],
+    "total": 14243949,
+    "message": "Transactions completed this week"
+  }, {
+    "list": [{
+      "id": 915805,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Marcel Schepers",
+      "value": 7000000,
+      "created_at": "2019-10-01T13:52:52.468Z",
+      "updated_at": "2019-10-01T13:52:52.468Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915794,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Marcel Schepers",
+      "value": 5000000,
+      "created_at": "2019-10-01T11:18:41.422Z",
+      "updated_at": "2019-10-01T11:18:41.422Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 917696,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Alex Kolčář",
+      "value": 1800005,
+      "created_at": "2019-10-07T02:02:17.109Z",
+      "updated_at": "2019-10-07T02:02:17.109Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 917126,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Swen White",
+      "value": 1600005,
+      "created_at": "2019-10-06T10:08:45.380Z",
+      "updated_at": "2019-10-06T10:08:45.380Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916446,
+      "club_id": 729,
+      "description": "Release frozen cash for Purchase of Lucas West",
+      "value": 1450005,
+      "created_at": "2019-10-03T06:00:36.124Z",
+      "updated_at": "2019-10-03T06:00:36.124Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916548,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Vicențiu Boboc",
+      "value": 1300005,
+      "created_at": "2019-10-04T18:02:01.127Z",
+      "updated_at": "2019-10-04T18:02:01.127Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915832,
+      "club_id": 729,
+      "description": "Sale of Anton Krämer",
+      "value": 1241020,
+      "created_at": "2019-10-02T06:03:26.514Z",
+      "updated_at": "2019-10-02T06:03:26.514Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 917378,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Alan Valentini",
+      "value": 1100005,
+      "created_at": "2019-10-06T14:00:41.150Z",
+      "updated_at": "2019-10-06T14:00:41.150Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 917693,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Yoshioka Mayako",
+      "value": 1100005,
+      "created_at": "2019-10-06T22:00:55.999Z",
+      "updated_at": "2019-10-06T22:00:55.999Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 917110,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Olga Sokulsky",
+      "value": 1050005,
+      "created_at": "2019-10-05T22:00:59.961Z",
+      "updated_at": "2019-10-05T22:00:59.961Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 917121,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Giovanni Markiet",
+      "value": 700005,
+      "created_at": "2019-10-06T06:01:21.127Z",
+      "updated_at": "2019-10-06T06:01:21.127Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 914788,
+      "club_id": 729,
+      "description": "Sponsorship",
+      "value": 629200,
+      "created_at": "2019-09-30T04:02:22.114Z",
+      "updated_at": "2019-09-30T04:02:22.114Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 917114,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Myung-suck Su",
+      "value": 500005,
+      "created_at": "2019-10-06T02:01:06.556Z",
+      "updated_at": "2019-10-06T02:01:06.556Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916760,
+      "club_id": 729,
+      "description": "Gate Receipts vs. FC Paps  International Cup \u003Ca href='/matches/196751'\u003EMatch Report\u003C/a\u003E",
+      "value": 166984,
+      "created_at": "2019-10-05T13:42:12.309Z",
+      "updated_at": "2019-10-05T13:42:12.309Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915904,
+      "club_id": 729,
+      "description": "Gate Receipts vs. The Monsterly bored Muppets Super League \u003Ca href='/matches/190397'\u003EMatch Report\u003C/a\u003E",
+      "value": 164238,
+      "created_at": "2019-10-02T18:33:20.040Z",
+      "updated_at": "2019-10-02T18:33:20.040Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 917141,
+      "club_id": 729,
+      "description": "Gate Receipts vs. Turistas '97  Super League \u003Ca href='/matches/190403'\u003EMatch Report\u003C/a\u003E",
+      "value": 93614,
+      "created_at": "2019-10-06T13:06:09.264Z",
+      "updated_at": "2019-10-06T13:06:09.264Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916848,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Alex Kolčář",
+      "value": 1,
+      "created_at": "2019-10-05T14:52:07.207Z",
+      "updated_at": "2019-10-05T14:52:07.207Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916532,
+      "club_id": 729,
+      "description": "Release frozen cash from bid on Luis Michalski",
+      "value": 1,
+      "created_at": "2019-10-04T14:01:07.665Z",
+      "updated_at": "2019-10-04T14:01:07.665Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916495,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Alex Kolčář",
+      "value": -1,
+      "created_at": "2019-10-03T19:45:32.596Z",
+      "updated_at": "2019-10-03T19:45:32.596Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916497,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Anthony Lynch",
+      "value": -1,
+      "created_at": "2019-10-03T19:45:43.673Z",
+      "updated_at": "2019-10-03T19:45:43.673Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915747,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Luis Michalski",
+      "value": -1,
+      "created_at": "2019-09-30T14:22:35.077Z",
+      "updated_at": "2019-09-30T14:22:35.077Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916496,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Shaan  chauhan",
+      "value": -1,
+      "created_at": "2019-10-03T19:45:40.411Z",
+      "updated_at": "2019-10-03T19:45:40.411Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915886,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Myung-suck Su",
+      "value": -500005,
+      "created_at": "2019-10-02T17:58:22.769Z",
+      "updated_at": "2019-10-02T17:58:22.769Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916492,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Kuzma Rodriguez",
+      "value": -600005,
+      "created_at": "2019-10-03T19:39:51.073Z",
+      "updated_at": "2019-10-03T19:39:51.073Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915887,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Giovanni Markiet",
+      "value": -700005,
+      "created_at": "2019-10-02T17:58:43.722Z",
+      "updated_at": "2019-10-02T17:58:43.722Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916493,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Raimo Ahola",
+      "value": -950005,
+      "created_at": "2019-10-03T19:40:06.487Z",
+      "updated_at": "2019-10-03T19:40:06.487Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915734,
+      "club_id": 729,
+      "description": "Signing fee for scouted player Denis Shmata ",
+      "value": -1016150,
+      "created_at": "2019-09-30T12:44:28.077Z",
+      "updated_at": "2019-09-30T12:44:28.077Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915885,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Olga Sokulsky",
+      "value": -1050005,
+      "created_at": "2019-10-02T17:57:50.954Z",
+      "updated_at": "2019-10-02T17:57:50.954Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916457,
+      "club_id": 729,
+      "description": "Signing fee for scouted player Andrii Yevtushok",
+      "value": -1067817,
+      "created_at": "2019-10-03T09:38:18.978Z",
+      "updated_at": "2019-10-03T09:38:18.978Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916489,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Yoshioka Mayako",
+      "value": -1100005,
+      "created_at": "2019-10-03T19:37:25.731Z",
+      "updated_at": "2019-10-03T19:37:25.731Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915888,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Alan Valentini",
+      "value": -1100005,
+      "created_at": "2019-10-02T17:58:56.959Z",
+      "updated_at": "2019-10-02T17:58:56.959Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 914787,
+      "club_id": 729,
+      "description": "Wages",
+      "value": -1156132,
+      "created_at": "2019-09-30T04:02:22.103Z",
+      "updated_at": "2019-09-30T04:02:22.103Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915884,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Vicențiu Boboc",
+      "value": -1300005,
+      "created_at": "2019-10-02T17:57:31.260Z",
+      "updated_at": "2019-10-02T17:57:31.260Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916447,
+      "club_id": 729,
+      "description": "Purchase of Lucas West",
+      "value": -1450005,
+      "created_at": "2019-10-03T06:00:36.132Z",
+      "updated_at": "2019-10-03T06:00:36.132Z",
+      "week": 5,
+      "season_id": null
+    }, {
+      "id": 915883,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Lucas West",
+      "value": -1450005,
+      "created_at": "2019-10-02T17:57:17.078Z",
+      "updated_at": "2019-10-02T17:57:17.078Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915889,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Mirosław Ziętala",
+      "value": -1450005,
+      "created_at": "2019-10-02T17:59:09.487Z",
+      "updated_at": "2019-10-02T17:59:09.487Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916490,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Roberto Conti",
+      "value": -1550005,
+      "created_at": "2019-10-03T19:38:22.482Z",
+      "updated_at": "2019-10-03T19:38:22.482Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 917125,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Swen White",
+      "value": -1600005,
+      "created_at": "2019-10-06T10:08:31.347Z",
+      "updated_at": "2019-10-06T10:08:31.347Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916491,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Gothards Priedītis",
+      "value": -1650005,
+      "created_at": "2019-10-03T19:39:34.573Z",
+      "updated_at": "2019-10-03T19:39:34.573Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 917127,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Swen White",
+      "value": -1650005,
+      "created_at": "2019-10-06T10:08:45.390Z",
+      "updated_at": "2019-10-06T10:08:45.390Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916471,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Alex Shynkarchuk ",
+      "value": -1700005,
+      "created_at": "2019-10-03T12:32:07.181Z",
+      "updated_at": "2019-10-03T12:32:07.181Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916849,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Alex Kolčář",
+      "value": -1800005,
+      "created_at": "2019-10-05T14:52:07.219Z",
+      "updated_at": "2019-10-05T14:52:07.219Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 916494,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Zygfryd Rokita",
+      "value": -1900005,
+      "created_at": "2019-10-03T19:44:35.418Z",
+      "updated_at": "2019-10-03T19:44:35.418Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915761,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Marcel Schepers",
+      "value": -5000000,
+      "created_at": "2019-09-30T19:12:59.954Z",
+      "updated_at": "2019-09-30T19:12:59.954Z",
+      "week": 5,
+      "season_id": 29
+    }, {
+      "id": 915795,
+      "club_id": 729,
+      "description": "Freeze cash for bid on Marcel Schepers",
+      "value": -7000000,
+      "created_at": "2019-10-01T11:23:41.817Z",
+      "updated_at": "2019-10-01T11:23:41.817Z",
+      "week": 5,
+      "season_id": 29
+    }],
+    "total": -13845090,
+    "message": "Transactions completed last week"
+  }],
+  "bank_balance": 19694997,
+  "value": 117280585,
+  "frozen_cash": 1650004
+}

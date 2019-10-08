@@ -1,0 +1,23 @@
+@import "../../../common/variables.scss";
+
+.finance-report {
+  position: relative;
+  // left: 10px;
+  // width: 50%;
+  // float: left;
+  padding: 10px;
+
+  &-item {
+    position: relative;
+
+    &-value {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  .total {
+    font-weight: bold;
+  }
+}

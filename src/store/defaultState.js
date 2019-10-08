@@ -1,3 +1,5 @@
+import financesJSON from './finances.json';
+
 const defaultState = { 
   competitions: {
     leagues: {
@@ -399,7 +401,19 @@ const defaultState = {
         pending: false,
         played: false,
       },
-    ]
+    ],
+    finances: {
+      bank_balance: 19694997,
+      frozen_cash: 1650004,
+      value: 117280585,
+      weekly_finances: {
+        match_income: 395358,
+        sponsors: 629200,
+        total: -140726,
+        wage: 1165284,
+      },
+      transactions: financesJSON.transactions,
+    },
   },
   search: {
     players: [],

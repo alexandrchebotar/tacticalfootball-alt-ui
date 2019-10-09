@@ -35,7 +35,7 @@ interface FinancesProps {
     }>,
   },
 };
-interface PlayerBid {description: string, value: number};
+interface FinanseReportItem {description: string, value: number};
 
 
 const mapStateToProps = ({currentClub: {id, name, finances}}: any) => {
@@ -53,8 +53,8 @@ const Finances: FunctionComponent<FinancesProps> = ({clubName, finances: {
 
   // TODO: move finances data transformation to thunk or API 
 
-  let freezeTransactions: Array<PlayerBid> = [];
-  let releaseTransactions: Array<PlayerBid> = [];
+  let freezeTransactions: Array<FinanseReportItem> = [];
+  let releaseTransactions: Array<FinanseReportItem> = [];
   const allTransactions = transactions[0].list.concat(transactions[1].list);
   allTransactions.forEach(({description, value}: Transaction) => {
     if (description.includes('Freeze cash')) {
@@ -77,8 +77,16 @@ const Finances: FunctionComponent<FinancesProps> = ({clubName, finances: {
     }
     return true;
   });
-  const thisWeakTransactions = transactions[0].list.filter(({description}) => !/Release frozen cash|Freeze cash/.test(description));
-  const lastWeakTransactions = transactions[1].list.filter(({description}) => !/Release frozen cash|Freeze cash/.test(description));
+  const getFormatedTransactions = (transactions: Array<FinanseReportItem>)  => {
+    return transactions
+      .filter(({description}) => !/Release frozen cash|Freeze cash/.test(description))
+      .map(({description, value}) => ({
+        description: description.replace(/(<a|Super League|Premiership|Division|International Cup|Shadow Cup).*a>/, ''),
+        value
+      }));
+  }
+  const thisWeakTransactions = getFormatedTransactions(transactions[0].list);
+  const lastWeakTransactions = getFormatedTransactions(transactions[1].list);
 
   return (
       <Fragment>
@@ -103,7 +111,7 @@ const Finances: FunctionComponent<FinancesProps> = ({clubName, finances: {
             ]} 
             getTotal
           />
-          <FinanceReport title="Frozen Cash" items={freezeTransactions.sort(({value: a}, {value: b}) => b - a)} getTotal />
+          <FinanceReport title="Frozen Cash (Bids)" items={freezeTransactions.sort(({value: a}, {value: b}) => b - a)} getTotal />
         </div>
         <div className="finances-transactions" >
           <FinanceReport title="This Weak Transaction" items={thisWeakTransactions} getTotal />

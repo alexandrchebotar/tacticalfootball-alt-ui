@@ -1,0 +1,30 @@
+@import "../../../common/variables.scss";
+
+.finance-report {
+  position: relative;
+  // left: 10px;
+  // width: 50%;
+  // float: left;
+  padding: 10px;
+
+  &-item {
+    position: relative;
+    border-bottom: 1px solid rgba($gray1, 0.1);
+
+    &-value {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .spending {
+      color: $red2;
+    }
+  }
+
+  .total {
+    background-color: rgba($gray1, 0.1);
+    border-bottom: none;
+    font-weight: 600;
+  }
+}

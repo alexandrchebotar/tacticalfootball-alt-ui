@@ -1,0 +1,22 @@
+@import "../../common/variables.scss";
+
+.finances-summary {
+  position: relative;
+  float: left;
+  width: 50%;
+
+  // h3 {
+  //   font-size: 1.1em;
+  //   margin: 0;
+  //   padding: 5px 0;
+  // }
+
+
+
+}
+
+.finances-transactions {
+  position: relative;
+  width: 50%;
+  float: right;
+}

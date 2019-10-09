@@ -23,6 +23,8 @@
   }
 
   .total {
-    font-weight: bold;
+    background-color: rgba($gray1, 0.1);
+    border-bottom: none;
+    font-weight: 600;
   }
 }

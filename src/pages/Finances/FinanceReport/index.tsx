@@ -18,17 +18,17 @@ const FinanceReport: FunctionComponent<FinanceReportProps> = ({items, title, get
           <div className="finance-report-item" key={description} >
             {description}
             <div className={'finance-report-item-value' + ((value < 0) ? ' spending' : '')} >
-              {value}
+              {value.toLocaleString()}
             </div>
           </div>
         ))
-        
+
       } 
       {getTotal &&
         <div className="finance-report-item total" >
           Total
-          <div className={'finance-report-item-value total' + ((total < 0) ? ' spending' : '')} >
-            {total}
+          <div className={'finance-report-item-value' + ((total < 0) ? ' spending' : '')} >
+            {total.toLocaleString()}
           </div>
         </div>
       }

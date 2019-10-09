@@ -1,7 +1,6 @@
 import React, {FunctionComponent, Fragment} from 'react';
 import {Helmet} from 'react-helmet-async';
 import { connect } from 'react-redux';
-import {Callout, Tag} from '@blueprintjs/core';
 import FinanceReport from './FinanceReport';
 
 import './style.scss';
@@ -65,12 +64,12 @@ const Finances: FunctionComponent<FinancesProps> = ({clubName, finances: {
       });
     } else if (description.includes('Release frozen cash')) {
       releaseTransactions.push({
-        description: description.replace('Release frozen cash from bid on  ', ''),
+        description: description.replace('Release frozen cash from bid on ', ''),
         value,
       });
     }
   });
-  freezeTransactions.filter(({description, value}) => {
+  freezeTransactions = freezeTransactions.filter(({description, value}) => {
     const index = releaseTransactions.findIndex(({description: desc, value: val}) => description === desc && value === val);
     if (index + 1) {
       releaseTransactions.splice(index, 1);

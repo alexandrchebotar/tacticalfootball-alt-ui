@@ -110,6 +110,7 @@ const Finances: FunctionComponent<FinancesProps> = ({clubName, finances: {
           <FinanceReport title="This Weak Transaction" items={thisWeakTransactions} getTotal />
           <FinanceReport title="Last Weak Transactions" items={lastWeakTransactions} getTotal />
         </div>
+        <div className="clear"></div>
         
       </Fragment>
     );

@@ -9,11 +9,16 @@
 
   &-item {
     position: relative;
+    border-bottom: 1px solid rgba($gray1, 0.1);
 
     &-value {
       position: absolute;
       right: 0;
       top: 0;
+    }
+
+    .spending {
+      color: $red2;
     }
   }
 

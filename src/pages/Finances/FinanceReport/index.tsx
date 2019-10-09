@@ -9,7 +9,7 @@ interface FinanceReportProps {
 };
 
 const FinanceReport: FunctionComponent<FinanceReportProps> = ({items, title, getTotal}) => {
-
+  const total = items.reduce((sum, {value}) => sum + value, 0);
   return (
     <div className="finance-report" >
       <h3>{title}:</h3>
@@ -17,17 +17,18 @@ const FinanceReport: FunctionComponent<FinanceReportProps> = ({items, title, get
         items.map(({description, value}) => (
           <div className="finance-report-item" key={description} >
             {description}
-            <div className="finance-report-item-value" >
+            <div className={'finance-report-item-value' + ((value < 0) ? ' spending' : '')} >
               {value}
             </div>
           </div>
         ))
-      }
+        
+      } 
       {getTotal &&
         <div className="finance-report-item total" >
           Total
-          <div className="finance-report-item-value total" >
-            {items.reduce((sum, {value}) => sum + value, 0)}
+          <div className={'finance-report-item-value total' + ((total < 0) ? ' spending' : '')} >
+            {total}
           </div>
         </div>
       }

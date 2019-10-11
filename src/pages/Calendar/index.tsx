@@ -4,56 +4,13 @@ import { connect } from 'react-redux';
 import {Callout, Tag} from '@blueprintjs/core';
 // import {markNewsOpened} from '../../store/actions';
 import MatchPreview from '../../components/MatchPreview';
+import {CalendarProps} from '../../types';
 
 import './style.scss';
-
-interface CalendarProps {
-  clubId: number,
-  clubName: string,
-  matches: Array<{
-    away_info: {
-      club_id: number,
-      club_name: string,
-      goals: number|null,
-      match_info: null|{
-        match_id: number,
-        team_id: number|null,
-        club_id?: number,
-      },
-      show_create: boolean,
-      show_pending_button: boolean,
-      show_visit: boolean,
-      team_id: number|null,
-    },
-    competition: string,
-    date: string,
-    formatted_date: string,
-    home_info: {
-      club_id: number,
-      club_name: string,
-      goals: number|null,
-      match_info: null|{
-        match_id: number,
-        team_id: number|null,
-        club_id?: number,
-      },
-      show_create: boolean,
-      show_pending_button: boolean,
-      show_visit: boolean,
-      team_id: number|null,
-    },
-    id: number,
-    match_subscript: any,
-    pending: boolean,
-    played: boolean,
-  }>,
-};
 
 const mapStateToProps = ({currentClub: {id, name, matches}}: any) => {
   return {clubId: id, clubName: name, matches};
 };
-
-
 
 const Calendar: FunctionComponent<CalendarProps> = ({clubName, matches}) => {
 

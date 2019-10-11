@@ -1,12 +1,7 @@
 import React, {FunctionComponent} from 'react';
+import {FinanceReportProps} from '../../../types';
 
 import './style.scss';
-
-interface FinanceReportProps {
-  items: Array<{description: string, value: number}>,
-  title: string,
-  getTotal?: boolean;
-};
 
 const FinanceReport: FunctionComponent<FinanceReportProps> = ({items, title, getTotal}) => {
   const total = items.reduce((sum, {value}) => sum + value, 0);

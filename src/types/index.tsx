@@ -3,7 +3,7 @@
 // init App
 export interface MenuItem {
   text: string,
-  sub_menu?: Array<MenuItem>,
+  sub_menu: Array<MenuItem> | null,
   key?: string,
   $$hashKey?: string,
 };

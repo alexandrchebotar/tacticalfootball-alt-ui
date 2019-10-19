@@ -76,11 +76,11 @@ export const initApp = (): ThunkAction<void, {}, {}, AnyAction> => {
     // get menu data
     const competitionsMenu = JSON.parse(localStorage.getItem('competitionsMenu') || '');
     const forumsMenu = JSON.parse(localStorage.getItem('forumsMenu') || '');
-    const getMenu = (menu: MenuItem[]) => {
-      menu.map(({text, sub_menu}) => ({text, sub_menu: sub_menu ? getMenu(sub_menu) : null}));
+    const getMenu = (menu: MenuItem[]): MenuItem[] => {
+      return menu.map(({text, sub_menu}) => ({text, sub_menu: sub_menu ? getMenu(sub_menu) : null}));
     };
 
-
+debugger;
     // send all init data to store
     dispatch(getInitData({
       competitions: getMenu(competitionsMenu),

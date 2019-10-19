@@ -20,12 +20,15 @@ import playersJSON from './players.json';
 import trainingJSON from './training.json';
 import transfersJSON from './transfers.json';
 import clubTransfersJSON from './clubTransfers.json';
+import {MenuItem} from '../types';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk'
+import { AnyAction } from 'redux';
 
 export const getInitData = createAction(GET_INIT_DATA);
 export const startFetchPlayers = createAction(START_FETCH_PLAYERS, () => ({
   loading: {players: true},
 }));
-export const endFetchPlayers = createAction(END_FETCH_PLAYERS, ({players = []}) => ({
+export const endFetchPlayers = createAction(END_FETCH_PLAYERS, ({players = []}:any) => ({
   currentClub: {players},
   loading: {players: false},
 }));
@@ -35,24 +38,24 @@ export const clearPlayers = createAction(CLEAR_PLAYERS, () => ({
 export const startFetchTransfers = createAction(START_FETCH_TRANSFERS, () => ({
   loading: {transfers: true},
 }));
-export const endFetchTransfers = createAction(END_FETCH_TRANSFERS, ({sells = [], bids = []}) => ({
+export const endFetchTransfers = createAction(END_FETCH_TRANSFERS, ({sells = [], bids = []}:any) => ({
   currentClub: {sells, bids},
   loading: {transfers: false},
 }));
 export const clearTransfers = createAction(CLEAR_TRANSFERS, () => ({
   currentClub: {sells: [], bids: []},
 }));
-export const startSetTraining = createAction(START_SET_TRAINING, ({trainings}) => ({
+export const startSetTraining = createAction(START_SET_TRAINING, ({trainings}:any) => ({
   loading: {trainings},
 }));
-export const endSetTraining = createAction(END_SET_TRAINING, ({trainings, players}) => ({
+export const endSetTraining = createAction(END_SET_TRAINING, ({trainings, players}:any) => ({
   currentClub: {players},
   loading: {trainings},
 }));
 export const startSearchPlayers = createAction(START_SEARCH_PLAYERS, () => ({
   loading: {search: true},
 }));
-export const endSearchPlayers = createAction(END_SEARCH_PLAYERS, ({players}) => ({
+export const endSearchPlayers = createAction(END_SEARCH_PLAYERS, ({players}:any) => ({
   search: {players},
   loading: {transfers: false},
 }));
@@ -62,12 +65,34 @@ export const clearSearch = createAction(CLEAR_SEARCH, () => ({
 export const clearSearchFilter = createAction(CLEAR_SEARCH_FILTER, () => ({
   search: {filter: []},
 }));
-export const markNews = createAction(MARK_NEWS, ({news}) => ({
+export const markNews = createAction(MARK_NEWS, ({news}:any) => ({
   currentClub: {news},
 }));
 
+export const initApp = (): ThunkAction<void, {}, {}, AnyAction> => {
+  return (dispatch, getState) => {
+    // thunk initApp
 
-export const getPlayers = () => {
+    // get menu data
+    const competitionsMenu = JSON.parse(localStorage.getItem('competitionsMenu') || '');
+    const forumsMenu = JSON.parse(localStorage.getItem('forumsMenu') || '');
+    const getMenu = (menu: MenuItem[]) => {
+      menu.map(({text, sub_menu}) => ({text, sub_menu: sub_menu ? getMenu(sub_menu) : null}));
+    };
+
+
+    // send all init data to store
+    dispatch(getInitData({
+      competitions: getMenu(competitionsMenu),
+      forums: getMenu(forumsMenu),
+      // user,
+      // currentClub,
+    }));
+/************************************************/
+  };
+};
+
+export const getPlayers = (): ThunkAction<void, {}, {}, AnyAction> => {
   return (dispatch, getState) => {
     // thunk getPlayers
     // startFetchAction
@@ -98,7 +123,7 @@ export const getPlayers = () => {
   };
 };
 
-export const getTraining = () => {
+export const getTraining = (): ThunkAction<void, {}, {}, AnyAction> => {
   return (dispatch, getState) => {
     // thunk getTraining
     // startFetchAction
@@ -141,11 +166,11 @@ export const getTraining = () => {
   };
 };
 
-export const setTraining = ({playerId, skill, value}) => {
+export const setTraining = ({playerId, skill, value}: any): ThunkAction<void, any, {}, AnyAction> => {
   return (dispatch, getState) => {
     // thunk setTraining
     let {trainings} = getState().loading;
-    if (trainings.some(({playerId: _playerId, skill: _skill}) => _playerId === playerId && _skill === skill)) {
+    if (trainings.some(({playerId: _playerId, skill: _skill}: any) => _playerId === playerId && _skill === skill)) {
       return;
     }
     dispatch(startSetTraining({trainings: [...trainings, {playerId, skill}]}));
@@ -183,18 +208,18 @@ export const setTraining = ({playerId, skill, value}) => {
 
 /******* remove after CORS resolve **************/
     let {players} = getState().currentClub;
-    let player = players.find(({id}) => id === playerId);
+    let player = players.find(({id}: any) => id === playerId);
     let skills_train = player.skills_train ? player.skills_train : {};
     skills_train = {...skills_train, [skill]: !skills_train[skill]};
     player = {...player, skills_train};
-    players = [...players.filter(({id}) => id !== playerId), player];
-    trainings = trainings.filter(({playerId: _playerId, skill: _skill}) => !(_playerId === playerId && _skill === skill));
+    players = [...players.filter(({id}: any) => id !== playerId), player];
+    trainings = trainings.filter(({playerId: _playerId, skill: _skill}: any) => !(_playerId === playerId && _skill === skill));
     dispatch(endSetTraining({trainings, players}));
 /************************************************/
   };
 };
 
-export const searchPlayers = (filter) => {
+export const searchPlayers = (filter: []): ThunkAction<void, {}, {}, AnyAction> => {
   return (dispatch, getState) => {
     // thunk searchPlayers
     // startFetchAction
@@ -226,7 +251,7 @@ export const searchPlayers = (filter) => {
   };
 };
 
-export const getTransfers = () => {
+export const getTransfers = (): ThunkAction<void, {}, {}, AnyAction> => {
   return (dispatch, getState) => {
     // thunk getTransfers
     // startFetchAction
@@ -241,8 +266,8 @@ export const getTransfers = () => {
       current_transfers,
       //current_offers,
     } = clubTransfersJSON;
-    const bids = current_transfers.filter(({auction_type}) => auction_type === 'bid').flatMap(({items}) => items).map(item => ({...item.player, ...item}));
-    const sells = current_transfers.filter(({auction_type}) => auction_type === 'sell').flatMap(({items}) => items).map(item => ({...item.player, ...item}));
+    const bids = current_transfers.filter(({auction_type}) => auction_type === 'bid').flatMap(({items}: any) => items).map((item: any) => ({...item.player, ...item}));
+    const sells = current_transfers.filter(({auction_type}) => auction_type === 'sell').flatMap(({items}: any) => items).map((item: any) => ({...item.player, ...item}));
 // debugger;
     // endFetch action
     dispatch(endFetchTransfers({bids, sells}));
@@ -250,13 +275,13 @@ export const getTransfers = () => {
   };
 };
 
-export const markNewsOpened = (openedNewsId) => {
+export const markNewsOpened = (openedNewsId: number): ThunkAction<void, any, {}, AnyAction> => {
   return (dispatch, getState) => {
     // thunk markNewsOpened
 // debugger;
     const {msgs, total} = getState().currentClub.news;
     const news = {
-      msgs: msgs.map(msg => {
+      msgs: msgs.map((msg: any) => {
         const {id} = msg;
         return (id === openedNewsId) ? {...msg, opened: true} : msg;
       }),
@@ -267,13 +292,6 @@ export const markNewsOpened = (openedNewsId) => {
 
 /******* enable after CORS resolve **************/
 // TODO: set news opened by API
-    //
-/************************************************/
-/************************************************/
-  };
-};
-
-
 /********             Mark news opened        ***********/
 // fetch(
 //   "https://tacticalfootball.com/api/alerts/5266248?alert_action=open", {
@@ -290,3 +308,8 @@ export const markNewsOpened = (openedNewsId) => {
 //     "method": "PUT",
 //     "mode": "cors"
 //   });
+
+/************************************************/
+/************************************************/
+  };
+};

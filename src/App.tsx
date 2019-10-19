@@ -1,13 +1,22 @@
-import React from 'react';
+import React,  { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Infobar from './components/Infobar';
 import MainMenu from './components/MainMenu';
 import Footer from './components/Footer';
 import PageContainer from './components/PageContainer';
+import {initApp} from './store/actions';
 
 import './App.scss';
 
-function App() {
+const mapDispatchToProps = (dispatch: any) => {
+  return {    
+    initApp: () => dispatch(initApp()),
+  }
+};
+
+function App(initApp: any) {
+  useEffect(initApp(), []);
   return (
     <div className="App">
       <Infobar />
@@ -27,11 +36,9 @@ function App() {
         <Redirect exact from="/" to="/office/home"/>
         <Redirect from="/" to="/404"/>
       </Switch>
-      <Footer>
-        <div className="footer"></div>
-      </Footer>
+      <Footer />
     </div>
   );
 }
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);

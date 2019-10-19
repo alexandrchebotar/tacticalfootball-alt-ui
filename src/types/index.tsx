@@ -1,3 +1,14 @@
+// export * from './actions';
+
+// init App
+export interface MenuItem {
+  text: string,
+  sub_menu?: Array<MenuItem>,
+  key?: string,
+  $$hashKey?: string,
+};
+
+
 // pages-office-home
 
 export interface HomeProps {

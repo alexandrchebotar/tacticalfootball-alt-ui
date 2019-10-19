@@ -195,6 +195,7 @@ const Calendar: FunctionComponent<CalendarProps> = ({clubName, matches}) => {
             <h3>Weekly Schedule:</h3>
             {weeklyShedule()}
           </div> 
+          <div className="clear"></div>
         </div> 
       </Fragment>
     );

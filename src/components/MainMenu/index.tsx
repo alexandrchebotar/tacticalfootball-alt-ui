@@ -20,156 +20,25 @@ import {MainMenuItem, MainMenuItemWithSubMenu} from '../../types';
 
 import './style.scss';
 
-const mapStateToProps = ({competitions, forums}: {competitions: MainMenuItem[], forums: MainMenuItem[]}) => {
-  return {competitions, forums};
+export interface MainMenuProps {
+  menu: MainMenuItemWithSubMenu[],
+};
+export interface MainMenuState {
+  activeMenuItem: string|null,
 };
 
-class MainMenu extends Component {
+const mapStateToProps = ({menu}: {menu: MainMenuItemWithSubMenu[]}) => {
+  return {menu};
+};
+
+class MainMenu extends Component<MainMenuProps> {
   state = {
-    activeMenuId: null,
+    activeMenuItem: null,
   };
 
-  items: MainMenuItemWithSubMenu[] = [
-    {
-      text: 'office',
-      alert: true,
-      subMenu: [
-        {text: 'home', icon: 'feed', alert: true},
-        {text: 'calendar', icon: 'calendar'},
-        {text: 'transfers', icon: 'shopping-cart'},
-        {text: 'search', icon: 'search'},
-        {text: 'finances', icon: 'dollar'},
-        {text: 'trophies', icon: 'glass'},
-        {text: 'scouting', icon: 'new-person'},
-      ],
-    },
-    {
-      text: 'squad',
-      subMenu: [
-        {text: 'players', icon: 'people'},
-        {text: 'training', icon: 'walk'},
-        {text: 'prospects', icon: 'new-person'},
-        {text: 'statistics', icon: 'timeline-bar-chart'},
-        {text: 'tactics', icon: 'layout-group-by'},
-      ],
-    },
-    {
-      text: 'competitions',
-      subMenu: [
-        {
-          text: 'leagues',
-          subMenu: [
-            {text: 'SuperLeague'},
-            {
-              text: 'Premiership',
-              subMenu: [
-                {text: 'PremiershipA'},
-                {text: 'PremiershipB'},
-              ],
-            },
-            {
-              text: 'Division1',
-              subMenu: [
-                {text: 'Division1A'},
-                {text: 'Division1B'},
-                {text: 'Division1C'},
-                {text: 'Division1D'},
-              ],
-            },
-            {
-              text: 'Division2',
-              subMenu: [
-                {
-                  text: 'Division2fromAtoB',
-                  subMenu: [
-                    {text: 'Division2A'},
-                    {text: 'Division2B'},
-                  ],
-                },
-                {
-                  text: 'Division2fromCtoD',
-                  subMenu: [
-                    {text: 'Division2C'},
-                    {text: 'Division2D'},
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          text: 'cups',
-          subMenu: [
-            {text: 'InternationalCup'},
-            {text: 'ShadowCup'},
-          ],
-        },
-        {
-          text: 'nationat',
-          subMenu: [
-            {text: 'WorldCup'},
-            {text: 'WorldLeague'},
-          ],
-        },
-      ],
-    },
-    {
-      text: 'forum',
-      alert: true,
-      subMenu: [
-        {
-          text: 'gameNews',
-          href: 'https://tacticalfootball.com/forums/5/overview',
-          alert: false,
-        },
-        {
-          text: 'general',
-          href: 'https://tacticalfootball.com/forums/1/overview',
-          alert: true,
-        },
-        {
-          text: 'national',
-          href: 'https://tacticalfootball.com/forums/8/overview',
-          alert: true,
-        },
-      ],
-
-    },
-    {
-      text: 'help',
-      subMenu: [
-        {
-          text: 'gameManual',
-          href: 'https://tacticalfootball.com/rules/0',
-        },
-        {
-          text: 'originalUITours',
-          subMenu: [
-            {
-              text: 'clubPage',
-              href: 'https://tacticalfootball.com/tours/1?tour_id=club_overview',
-            },
-            {
-              text: 'playerPage',
-              href: 'https://tacticalfootball.com/tours/1?tour_id=player_overview',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      text: 'settings',
-      subMenu: [
-        {text: 'alternateUI'},
-        {text: 'user'},
-        {text: 'club'},
-      ],
-    },
-  ];
-
   closeMenu = (id: number|string) => {
-    if (this.state.activeMenuId === id) {
-      this.setState({activeMenuId: null});
+    if (this.state.activeMenuItem === id) {
+      this.setState({activeMenuItem: null});
     }
   };
 
@@ -184,7 +53,7 @@ class MainMenu extends Component {
       help: HelpIcon,
       settings: SettingsIcon,
     };
-    return this.items.map(({text, icon = null, alert, subMenu}) => {
+    return this.props.menu.map(({text, icon = null, alert, subMenu}) => {
       const MenuIcon = icons[text];
       const categoryIcon = icon ?
         icon :
@@ -216,10 +85,10 @@ class MainMenu extends Component {
           minimal
           autoFocus={false}
           popoverClassName="main-menu-submenu"
-          isOpen={this.state.activeMenuId === text}
+          isOpen={this.state.activeMenuItem === text}
           onInteraction={(state)=>{
             if (state) {
-              this.setState({activeMenuId: text});
+              this.setState({activeMenuItem: text});
             } else {
               this.closeMenu(text);
             }

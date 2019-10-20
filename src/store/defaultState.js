@@ -1,50 +1,70 @@
 import financesJSON from './finances.json';
 
 const defaultState = { 
-  competitions: {
-    leagues: {
-      premiership: '',
-      div1: {
-        'div1 A': '',
-        'div1 B': '',
-      },
-      div2: {
-        'A - J': {
-          'A': '',
-          B: '',
-          C: '',
-          D: '',
-          E: '',
-          F: '',
-          G: '',
-          H: '',
-          I: '',
-          J: '',
+  menu: [
+    {
+      text: 'office',
+      alert: true,
+      subMenu: [
+        {text: 'home', icon: 'feed', alert: true},
+        {text: 'calendar', icon: 'calendar'},
+        {text: 'transfers', icon: 'shopping-cart'},
+        {text: 'search', icon: 'search'},
+        {text: 'finances', icon: 'dollar'},
+        {text: 'trophies', icon: 'glass'},
+        {text: 'scouting', icon: 'new-person'},
+      ],
+    },
+    {
+      text: 'squad',
+      subMenu: [
+        {text: 'players', icon: 'people'},
+        {text: 'training', icon: 'walk'},
+        {text: 'prospects', icon: 'new-person'},
+        {text: 'statistics', icon: 'timeline-bar-chart'},
+        {text: 'tactics', icon: 'layout-group-by'},
+      ],
+    },
+    {
+      text: 'competitions',
+      subMenu: [],
+    },
+    {
+      text: 'forum',
+      alert: true,
+      subMenu: [],
+    },
+    {
+      text: 'help',
+      subMenu: [
+        {
+          text: 'gameManual',
+          href: 'https://tacticalfootball.com/rules/0',
         },
-        'divisions': {
-          'div1 C': '',
-          div2: '',
+        {
+          text: 'originalUITours',
+          subMenu: [
+            {
+              text: 'clubPage',
+              href: 'https://tacticalfootball.com/tours/1?tour_id=club_overview',
+            },
+            {
+              text: 'playerPage',
+              href: 'https://tacticalfootball.com/tours/1?tour_id=player_overview',
+            },
+          ],
         },
-      },
+      ],
     },
-    cups: {
-      cup1: '',
-      cup2: '',
+    {
+      text: 'settings',
+      subMenu: [
+        {text: 'alternateUI'},
+        {text: 'user'},
+        {text: 'club'},
+      ],
     },
-    national: {
-      WC: '',
-      WL: '',
-    },
-    current: {
-      'Super League': '',
-      'IC group X': '',
-      IC: '',
-    },
-  },
-  forums: {
-    general: ['#', false, null, '_blank'], 
-    national: ['#', true, null, '_blank'],
-  },
+  ],
   user: {
     id: 409,
     name: 'UserName',

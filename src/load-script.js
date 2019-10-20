@@ -53,7 +53,7 @@ const getMenus = () => {
   document.querySelector('.rb-nav_arrow').parentNode.click();
   const navbarMenu = _console.find(item => item[0].sub_menu && item[0].sub_menu.find(item => item.sub_menu && item.sub_menu[0].text==='Current'))[0].sub_menu;
   localStorage.setItem('competitionsMenu', JSON.stringify(navbarMenu[5].sub_menu));
-  localStorage.setItem('forumsMenu', JSON.stringify(navbarMenu[6].sub_menu));
+  localStorage.setItem('forumMenu', JSON.stringify(navbarMenu[6].sub_menu));
 };
 
 window.onload = () => {

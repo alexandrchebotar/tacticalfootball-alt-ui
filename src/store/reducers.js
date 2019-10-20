@@ -18,27 +18,13 @@ import {combineReducers} from 'redux';
 import {handleActions, combineActions} from 'redux-actions';
 import defaultState from './defaultState';
 
-const forums = handleActions(
+const menu = handleActions(
   {
     [combineActions(
       GET_INIT_DATA,
-    )]: (state, action) => ({
-      ...state, 
-      ...action.payload.forums,
-    }),
+    )]: (state, action) => action.payload.menu,
   },
-  defaultState.forums
-);
-const competitions = handleActions(
-  {
-    [combineActions(
-      GET_INIT_DATA,
-    )]: (state, action) => ({
-      ...state, 
-      ...action.payload.competitions,
-    }),
-  },
-  defaultState.competitions
+  defaultState.menu
 );
 const user = handleActions(
   {
@@ -120,8 +106,7 @@ const loading = handleActions(
 );
 
 export const appState = combineReducers({
-  competitions,
-  forums,
+  menu,
   user,
   currentClub,
   search,

@@ -20,7 +20,7 @@ import playersJSON from './players.json';
 import trainingJSON from './training.json';
 import transfersJSON from './transfers.json';
 import clubTransfersJSON from './clubTransfers.json';
-import {MenuItem} from '../types';
+import {MenuItem, MainMenuItemWithSubMenu} from '../types';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 import { AnyAction } from 'redux';
 
@@ -69,22 +69,35 @@ export const markNews = createAction(MARK_NEWS, ({news}:any) => ({
   currentClub: {news},
 }));
 
-export const initApp = (): ThunkAction<void, {}, {}, AnyAction> => {
+export const initApp = (): ThunkAction<void, {menu: MainMenuItemWithSubMenu[]}, {}, AnyAction> => {
   return (dispatch, getState) => {
     // thunk initApp
 
     // get menu data
     const competitionsMenu = JSON.parse(localStorage.getItem('competitionsMenu') || '');
-    const forumsMenu = JSON.parse(localStorage.getItem('forumsMenu') || '');
+    const forumMenu = JSON.parse(localStorage.getItem('forumMenu') || '');
     const getMenu = (menu: MenuItem[]): MenuItem[] => {
-      return menu.map(({text, sub_menu}) => ({text, sub_menu: sub_menu ? getMenu(sub_menu) : null}));
+      return menu.map(({text, sub_menu}) => ({text, subMenu: sub_menu ? getMenu(sub_menu) : null}));
     };
+    const menu = getState().menu.map((item) => {
+      if (item.text === 'competitions') {
+        return ({
+          text: 'competitions',
+          subMenu: getMenu(competitionsMenu)
+        });
+      }
+      if (item.text === 'forum') {
+        return ({
+          text: 'forum',
+          subMenu: getMenu(forumMenu)
+        });
+      }
+      return item;
+    });
 
-debugger;
     // send all init data to store
     dispatch(getInitData({
-      competitions: getMenu(competitionsMenu),
-      forums: getMenu(forumsMenu),
+      menu,
       // user,
       // currentClub,
     }));

@@ -51,9 +51,9 @@ window.console.log = function() {
 };
 const getMenus = () => {
   document.querySelector('.rb-nav_arrow').parentNode.click();
-  navbarMenu = _console.find(item => item[0].sub_menu && item[0].sub_menu.find(item => item.sub_menu && item.sub_menu[0].text==='Current'))[0].sub_menu;
-  window._competitionsMenu = navbarMenu[5].sub_menu;
-  window._forumsMenu = navbarMenu[6].sub_menu;
+  const navbarMenu = _console.find(item => item[0].sub_menu && item[0].sub_menu.find(item => item.sub_menu && item.sub_menu[0].text==='Current'))[0].sub_menu;
+  localStorage.setItem('competitionsMenu', JSON.stringify(navbarMenu[5].sub_menu));
+  localStorage.setItem('forumsMenu', JSON.stringify(navbarMenu[6].sub_menu));
 };
 
 window.onload = () => {
@@ -121,27 +121,27 @@ function loadAltUI() {
   head.innerHTML = headContent;
   const bodyContent = '<div id="root"></div>';
   body.innerHTML = bodyContent;
-  history.pushState(null, "TF Alt UI", "/");
+  window.history.pushState(null, "TF Alt UI", "/");
   if (originHash) {
-    history.pushState(null, "TF Alt UI", originHash);
+    window.history.pushState(null, "TF Alt UI", originHash);
   }
   // load CSS
   const css1 = document.createElement('link');
   css1.rel = 'stylesheet';
-  css1.href = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@0.1.1/dist/static/css/1.css';
+  css1.href = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@0.1.4/dist/static/css/1.css';
   head.appendChild(css1);
   const css2 = document.createElement('link');
   css2.rel = 'stylesheet';
-  css2.href = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@0.1.1/dist/static/css/2.css';
+  css2.href = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@0.1.4/dist/static/css/2.css';
   head.appendChild(css2);
   // load JS
   const js1 = document.createElement('script');
-  js1.src = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@0.1.1/dist/static/js/1.js';
+  js1.src = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@0.1.4/dist/static/js/1.js';
   body.appendChild(js1);
   const js2 = document.createElement('script');
-  js2.src = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@0.1.1/dist/static/js/2.js';
+  js2.src = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@0.1.4/dist/static/js/2.js';
   body.appendChild(js2);
   const js3 = document.createElement('script');
-  js3.src = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@0.1.1/dist/static/js/3.js';
+  js3.src = 'https://cdn.jsdelivr.net/gh/AlexandrChebotar/tacticalfootball-alt-ui@0.1.4/dist/static/js/3.js';
   body.appendChild(js3);
   }

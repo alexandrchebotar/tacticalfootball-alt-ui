@@ -1,92 +1,13 @@
 import React, {Component, Fragment} from 'react';
-// import {Helmet} from 'react-helmet-async';
 import { Helmet } from 'react-helmet-async';
 import { connect } from 'react-redux';
-import {
-  // Tabs,
-  // Tab,
-  // Text,
-  // HTMLSelect,
-  // Checkbox,
-  Button,
-  Collapse,
-} from '@blueprintjs/core';
+import { Button, Collapse} from '@blueprintjs/core';
 import parse from 'html-react-parser'
 import {markNewsOpened} from '../../store/actions';
 import MatchPreview from '../../components/MatchPreview';
+import {HomeProps, HomeState} from '../../types';
 
 import './style.scss';
-
-interface HomeProps {
-  clubId: number,
-  clubName: string,
-  logo: string,
-  leagueInfo: {
-    position_txt: string,
-    name: string,
-    id: number,
-  },
-  rankings: Array<{
-    type: string,
-    rank: number,
-    rating: number,
-    url: string,
-  }>,
-  streaks: [string],
-  news: {
-    msgs: Array<{
-      id: number,
-      club_id: number,
-      date: string,
-      opened: boolean,
-      topic: string,
-      body: string,
-    }>,
-    total: number,
-  },
-  matches: Array<{
-    away_info: {
-      club_id: number,
-      club_name: string,
-      goals: number|null,
-      match_info: null|{
-        match_id: number,
-        team_id: number|null,
-        club_id?: number,
-      },
-      show_create: boolean,
-      show_pending_button: boolean,
-      show_visit: boolean,
-      team_id: number|null,
-    },
-    competition: string,
-    date: string,
-    formatted_date: string,
-    home_info: {
-      club_id: number,
-      club_name: string,
-      goals: number|null,
-      match_info: null|{
-        match_id: number,
-        team_id: number|null,
-        club_id?: number,
-      },
-      show_create: boolean,
-      show_pending_button: boolean,
-      show_visit: boolean,
-      team_id: number|null,
-    },
-    id: number,
-    match_subscript: any,
-    pending: boolean,
-    played: boolean,
-  }>,
-  markNewsOpened: (newsId: number) => void,
-};
-
-interface HomeState {
-  openNews: Array<number>,
-};
 
 const mapStateToProps = ({currentClub: {id, name, logo, leagueInfo, rankings, streaks, news, matches}}: any) => {
   return {clubId: id, clubName: name, logo, leagueInfo, rankings, streaks, news, matches};
@@ -102,13 +23,6 @@ class Home extends Component<HomeProps> {
   state: HomeState = {
     openNews: [5233001],
   };
-
-  // componentDidMount() {
-  //   this.props.getPlayers();
-  // };
-  // componentWillUnmount() {
-  //   this.props.clearPlayers();
-  // };
 
   toggleNews(newsId: number) {
     this.setState((state: HomeState) => {

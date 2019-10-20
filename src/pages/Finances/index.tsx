@@ -2,41 +2,9 @@ import React, {FunctionComponent, Fragment} from 'react';
 import {Helmet} from 'react-helmet-async';
 import { connect } from 'react-redux';
 import FinanceReport from './FinanceReport';
+import {Transaction, FinanseReportItem, FinancesProps} from '../../types';
 
 import './style.scss';
-
-interface Transaction {
-  club_id: number,
-  created_at: string,
-  description: string,
-  id: number,
-  season_id: number,
-  updated_at: string,
-  value: number,
-  week: number,
-};
-interface FinancesProps {
-  clubId: number,
-  clubName: string,
-  finances: {
-    bank_balance: number,
-    frozen_cash: number,
-    value: number,
-    weekly_finances: {
-      match_income: number,
-      sponsors: number,
-      total: number,
-      wage: number,
-    },
-    transactions: Array<{
-      message: string,
-      total: number,
-      list: Array<Transaction>,      
-    }>,
-  },
-};
-interface FinanseReportItem {description: string, value: number};
-
 
 const mapStateToProps = ({currentClub: {id, name, finances}}: any) => {
   return {clubId: id, clubName: name, finances};

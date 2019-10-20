@@ -1,13 +1,30 @@
+import {IconName} from "@blueprintjs/core";
 // export * from './actions';
 
 // init App
 export interface MenuItem {
   text: string,
-  sub_menu: Array<MenuItem> | null,
+  menu_action?: {
+    ui_sref: string,
+  },
+  sub_menu?: Array<MenuItem> | null,
   key?: string,
   $$hashKey?: string,
 };
 
+// mainMenu
+export interface MainMenuItem {
+  text: string,
+  href?: string,
+  id?: number,
+  icon?: IconName,
+  alert?: boolean,
+  subMenu?: Array<MainMenuItem> | null,
+};
+
+export interface MainMenuItemWithSubMenu extends MainMenuItem {
+  subMenu: Array<MainMenuItem>,
+};
 
 // pages-office-home
 

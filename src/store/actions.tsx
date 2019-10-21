@@ -73,11 +73,22 @@ export const initApp = (): ThunkAction<void, {menu: MainMenuItemWithSubMenu[]}, 
   return (dispatch, getState) => {
     // thunk initApp
 
+    const getId = (menu_action: any) => {
+      const matchId = menu_action.ui_sref.match(/(competition_id|forum_id): [0-9]+,/);
+      return (matchId) ?
+        matchId[0].replace(/[^0-9]+/, '') :
+        null;
+    };
+
     // get menu data
     const competitionsMenu = JSON.parse(localStorage.getItem('competitionsMenu') || '');
     const forumMenu = JSON.parse(localStorage.getItem('forumMenu') || '');
     const getMenu = (menu: MenuItem[]): MenuItem[] => {
-      return menu.map(({text, sub_menu}) => ({text, subMenu: sub_menu ? getMenu(sub_menu) : null}));
+      return menu.map(({text, sub_menu, menu_action}) => ({
+        text,
+        subMenu: sub_menu ? getMenu(sub_menu) : null,
+        id: menu_action ? getId(menu_action) : null,
+      }));
     };
     const menu = getState().menu.map((item) => {
       if (item.text === 'competitions') {

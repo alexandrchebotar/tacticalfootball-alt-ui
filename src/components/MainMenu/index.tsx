@@ -31,6 +31,8 @@ const mapStateToProps = ({menu}: {menu: MainMenuItemWithSubMenu[]}) => {
   return {menu};
 };
 
+export const RouteContext = React.createContext('office');
+
 class MainMenu extends Component<MainMenuProps> {
   state = {
     activeMenuItem: null,
@@ -71,13 +73,15 @@ class MainMenu extends Component<MainMenuProps> {
           key={text}
           content={
             <Menu className="main-menu-submenu">
-              <SubMenu text={text} categoryIcon={categoryIcon} subMenu={subMenu} handleItemClick={() => this.closeMenu(text)} />
-              {alert && text === 'forum' &&
-                <Fragment>
-                  <MenuDivider />
-                  <MenuItem text="mark all read" labelElement={<Icon icon="eye-on" />} />
-                </Fragment>
-              }
+              <RouteContext.Provider value={text} >
+                <SubMenu text={text} categoryIcon={categoryIcon} subMenu={subMenu} handleItemClick={() => this.closeMenu(text)} />
+                {alert && text === 'forum' &&
+                  <Fragment>
+                    <MenuDivider />
+                    <MenuItem text="mark all read" labelElement={<Icon icon="eye-on" />} />
+                  </Fragment>
+                }
+              </RouteContext.Provider>
             </Menu>
           }
           position="right-top"

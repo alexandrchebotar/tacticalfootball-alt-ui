@@ -15,11 +15,8 @@ const mapDispatchToProps = (dispatch: any) => {
   }
 };
 
-function App(props:any) {
-  const {initApp} = props;
-  useEffect(()=>{
-    initApp();
-  }, []);
+function App({initApp}:any) {
+  useEffect(initApp, []);
   return (
     <div className="App">
       <Infobar />

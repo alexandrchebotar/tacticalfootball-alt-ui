@@ -20,7 +20,7 @@ import playersJSON from './players.json';
 import trainingJSON from './training.json';
 import transfersJSON from './transfers.json';
 import clubTransfersJSON from './clubTransfers.json';
-import {MenuItem} from '../types';
+import {MenuItem, MainMenuItemWithSubMenu} from '../types';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 import { AnyAction } from 'redux';
 
@@ -69,22 +69,46 @@ export const markNews = createAction(MARK_NEWS, ({news}:any) => ({
   currentClub: {news},
 }));
 
-export const initApp = (): ThunkAction<void, {}, {}, AnyAction> => {
+export const initApp = (): ThunkAction<void, {menu: MainMenuItemWithSubMenu[]}, {}, AnyAction> => {
   return (dispatch, getState) => {
     // thunk initApp
 
-    // get menu data
-    const competitionsMenu = JSON.parse(localStorage.getItem('competitionsMenu') || '');
-    const forumsMenu = JSON.parse(localStorage.getItem('forumsMenu') || '');
-    const getMenu = (menu: MenuItem[]): MenuItem[] => {
-      return menu.map(({text, sub_menu}) => ({text, sub_menu: sub_menu ? getMenu(sub_menu) : null}));
+    const getId = (menu_action: any) => {
+      const matchId = menu_action.ui_sref.match(/(competition_id|forum_id): [0-9]+,/);
+      return (matchId) ?
+        matchId[0].replace(/[^0-9]+/gi, '') :
+        null;
     };
 
-debugger;
+    // get menu data
+    const competitionsMenu = JSON.parse(localStorage.getItem('competitionsMenu') || '');
+    const forumMenu = JSON.parse(localStorage.getItem('forumMenu') || '');
+    const getMenu = (menu: MenuItem[]): MenuItem[] => {
+      return menu.map(({text, sub_menu, menu_action}) => ({
+        text,
+        subMenu: sub_menu ? getMenu(sub_menu) : null,
+        id: menu_action ? getId(menu_action) : null,
+      }));
+    };
+    const menu = getState().menu.map((item) => {
+      if (item.text === 'competitions') {
+        return ({
+          text: 'competitions',
+          subMenu: getMenu(competitionsMenu)
+        });
+      }
+      if (item.text === 'forum') {
+        return ({
+          text: 'forum',
+          subMenu: getMenu(forumMenu)
+        });
+      }
+      return item;
+    });
+
     // send all init data to store
     dispatch(getInitData({
-      competitions: getMenu(competitionsMenu),
-      forums: getMenu(forumsMenu),
+      menu,
       // user,
       // currentClub,
     }));

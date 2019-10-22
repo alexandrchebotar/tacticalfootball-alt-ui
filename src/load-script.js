@@ -4,7 +4,7 @@
 // @match https://tacticalfootball.com/*
 // @grant none
 // ==/UserScript==
-debugger;
+
 // load AltUI if location contains hash
 let originHash = null;
 if (window.location.hash) {
@@ -52,6 +52,8 @@ window.console.log = function() {
 const getMenus = () => {
   document.querySelector('.rb-nav_arrow').parentNode.click();
   const navbarMenu = _console.find(item => item[0].sub_menu && item[0].sub_menu.find(item => item.sub_menu && item.sub_menu[0].text==='Current'))[0].sub_menu;
+  localStorage.setItem('userInfo', JSON.stringify(navbarMenu[1]));
+  localStorage.setItem('clubsInfo', JSON.stringify(navbarMenu[4]));
   localStorage.setItem('competitionsMenu', JSON.stringify(navbarMenu[5].sub_menu));
   localStorage.setItem('forumMenu', JSON.stringify(navbarMenu[6].sub_menu));
 };

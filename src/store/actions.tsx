@@ -76,7 +76,7 @@ export const initApp = (): ThunkAction<void, {menu: MainMenuItemWithSubMenu[]}, 
     const getId = (menu_action: any) => {
       const matchId = menu_action.ui_sref.match(/(competition_id|forum_id): [0-9]+,/);
       return (matchId) ?
-        matchId[0].replace(/[^0-9]+/, '') :
+        matchId[0].replace(/[^0-9]+/gi, '') :
         null;
     };
 

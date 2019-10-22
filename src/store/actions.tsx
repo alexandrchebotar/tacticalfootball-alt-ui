@@ -69,20 +69,21 @@ export const markNews = createAction(MARK_NEWS, ({news}:any) => ({
   currentClub: {news},
 }));
 
-export const initApp = (): ThunkAction<void, {menu: MainMenuItemWithSubMenu[]}, {}, AnyAction> => {
+export const initApp = (): ThunkAction<void, {user: any, currentClub: any, menu: MainMenuItemWithSubMenu[]}, {}, AnyAction> => {
   return (dispatch, getState) => {
     // thunk initApp
 
+    const state = getState();
     const getId = (menu_action: any) => {
-      const matchId = menu_action.ui_sref.match(/(competition_id|forum_id): [0-9]+,/);
+      const matchId = menu_action.ui_sref.match(/(competition_id|forum_id|club_id|user_id): [0-9]+,/);
       return (matchId) ?
         matchId[0].replace(/[^0-9]+/gi, '') :
         null;
     };
-
-    // get menu data
-    const competitionsMenu = JSON.parse(localStorage.getItem('competitionsMenu') || '');
-    const forumMenu = JSON.parse(localStorage.getItem('forumMenu') || '');
+    const getClub = (clubInfo: any) => ({
+      id: getId(clubInfo.menu_action),
+      name: clubInfo.text,
+    });
     const getMenu = (menu: MenuItem[]): MenuItem[] => {
       return menu.map(({text, sub_menu, menu_action}) => ({
         text,
@@ -90,7 +91,20 @@ export const initApp = (): ThunkAction<void, {menu: MainMenuItemWithSubMenu[]}, 
         id: menu_action ? getId(menu_action) : null,
       }));
     };
-    const menu = getState().menu.map((item) => {
+    // get menu data
+    const userInfo = JSON.parse(localStorage.getItem('userInfo') || '');
+    const clubsInfo = JSON.parse(localStorage.getItem('clubsInfo') || '');
+    const competitionsMenu = JSON.parse(localStorage.getItem('competitionsMenu') || '');
+    const forumMenu = JSON.parse(localStorage.getItem('forumMenu') || '');
+    const currentClub = getClub(clubsInfo);
+    const user = {
+      ... state.user,
+      id: getId(userInfo.menu_action),
+      icon: userInfo.img_url,
+      activeClubId: currentClub.id,
+      clubs: clubsInfo.sub_menu.map((clubInfo: any) => getClub(clubInfo)),
+    };
+    const menu = state.menu.map((item) => {
       if (item.text === 'competitions') {
         return ({
           text: 'competitions',
@@ -109,8 +123,8 @@ export const initApp = (): ThunkAction<void, {menu: MainMenuItemWithSubMenu[]}, 
     // send all init data to store
     dispatch(getInitData({
       menu,
-      // user,
-      // currentClub,
+      user,
+      currentClub,
     }));
 /************************************************/
   };

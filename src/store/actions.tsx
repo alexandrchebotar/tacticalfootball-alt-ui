@@ -15,7 +15,7 @@ import {
   MARK_NEWS,
 } from '../common/constants';
 import {createAction} from 'redux-actions';
-//import axios from 'axios';
+import axios from 'axios';
 import playersJSON from './players.json';
 import trainingJSON from './training.json';
 import transfersJSON from './transfers.json';
@@ -120,7 +120,7 @@ export const initApp = (): ThunkAction<void, {user: any, currentClub: any, menu:
       return item;
     });
 
-    // send all init data to store
+    // send all init data to store  
     dispatch(getInitData({
       menu,
       user,
@@ -130,33 +130,33 @@ export const initApp = (): ThunkAction<void, {user: any, currentClub: any, menu:
   };
 };
 
-export const getPlayers = (): ThunkAction<void, {}, {}, AnyAction> => {
+export const getPlayers = (): ThunkAction<void, {currentClub: any}, {}, AnyAction> => {
   return (dispatch, getState) => {
     // thunk getPlayers
     // startFetchAction
     dispatch(startFetchPlayers());
 
 /******* enable after CORS resolve **************/
-    // const clubId = getState().currentClub.id;
-    // axios.get(`https://tacticalfootball.com/api/clubs/${clubId}?serialiser=ClubPlayers`)
-    // .then(res => {
-    //   if (res.status !== 200) {
-    //     throw new Error(res.statusText);
-    //   }
-    //   const {players} = res.data;
-    //   dispatch(endFetchPlayers({players}));
-    // })
-    // .catch(err => {
-    //   dispatch(endFetchPlayers({players: []}));
-    //   console.log('getPlayers error: ' + err);
-    // })
+    const clubId = getState().currentClub.id;
+    axios.get(`https://tacticalfootball.com/api/clubs/${clubId}?serialiser=ClubPlayers`)
+    .then((res: any) => {
+      if (res.status !== 200) {
+        throw new Error(res.statusText);
+      }
+      const {players} = res.data;
+      dispatch(endFetchPlayers({players}));
+    })
+    .catch((err: any) => {
+      dispatch(endFetchPlayers({players: []}));
+      console.log('getPlayers error: ' + err);
+    })
 /************************************************/
 
 /******* remove after CORS resolve **************/
-    const players = playersJSON;
+    // const players = playersJSON;
 
     // endFetch action
-    dispatch(endFetchPlayers({players}));
+    // dispatch(endFetchPlayers({players}));
 /************************************************/
   };
 };

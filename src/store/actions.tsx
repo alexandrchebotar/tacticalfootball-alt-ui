@@ -24,6 +24,8 @@ import {MenuItem, MainMenuItemWithSubMenu} from '../types';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 import { AnyAction } from 'redux';
 
+const apiPath = process.env.REACT_APP_API_PATH;
+
 export const getInitData = createAction(GET_INIT_DATA);
 export const startFetchPlayers = createAction(START_FETCH_PLAYERS, () => ({
   loading: {players: true},
@@ -138,7 +140,7 @@ export const getPlayers = (): ThunkAction<void, {currentClub: any}, {}, AnyActio
 
 /******* enable after CORS resolve **************/
     const clubId = getState().currentClub.id;
-    axios.get(`https://tacticalfootball.com/api/clubs/${clubId}?serialiser=ClubPlayers`)
+    axios.get(`${apiPath}/api/clubs/${clubId}?serialiser=ClubPlayers`)
     .then((res: any) => {
       if (res.status !== 200) {
         throw new Error(res.statusText);

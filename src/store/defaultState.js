@@ -73,10 +73,14 @@ const defaultState = {
       {name: 'England', id: 102, news: false}, 
       {name: 'Some Affiliate Club with long name', id: 102, news: false}, 
     ],
+    activeClub: {
+      id: 729,
+      name: 'SKIF',
+    },
     messages: true,
   },
   currentClub: {
-    id: 788,
+    id: 729,
     name: 'SKIF',
     players: [],
     sells: [],

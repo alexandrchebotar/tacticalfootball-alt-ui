@@ -4,18 +4,7 @@
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^3.15.1",
-    "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.8",
-    "@types/react": "^16.9.4",
-    "@types/react-big-calendar": "^0.22.3",
-    "@types/react-dom": "^16.9.1",
-    "@types/react-helmet": "^5.0.11",
-    "@types/react-helmet-async": "^0.0.3",
-    "@types/react-redux": "^7.1.4",
-    "@types/react-router-dom": "^5.1.0",
-    "@types/redux-actions": "^2.6.1",
     "axios": "^0.19.0",
-    "gh-pages": "^2.0.1",
     "html-react-parser": "^0.9.1",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
@@ -30,15 +19,15 @@
     "redux": "^4.0.1",
     "redux-actions": "^2.6.5",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0",
-    "typescript": "^3.6.3"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy": "lcp --proxyUrl https://tacticalfootball.com"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,5 +43,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "typescript": "^3.6.3",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.8",
+    "@types/react": "^16.9.4",
+    "@types/react-big-calendar": "^0.22.3",
+    "@types/react-dom": "^16.9.1",
+    "@types/react-helmet": "^5.0.11",
+    "@types/react-helmet-async": "^0.0.3",
+    "@types/react-redux": "^7.1.4",
+    "@types/react-router-dom": "^5.1.0",
+    "@types/redux-actions": "^2.6.1",
+    "gh-pages": "^2.0.1",
+    "local-cors-proxy": "^1.0.2"
   }
 }
